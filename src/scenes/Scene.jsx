@@ -95,7 +95,7 @@ const Scene = () => {
         scale={[4, 5.5, 5.4]}
       />
       <ING_Tech
-        position={[-120, -30, 230]}
+        position={[-120, -30, 200]}
         rotation={[0, -0.25, 0]}
         scale={[0.5, 0.48, 0.5]}
       />
