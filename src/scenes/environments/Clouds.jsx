@@ -40,11 +40,11 @@ const CustomClouds = () => {
   });
 
   const cloudConfigs = useMemo(() => [
-    { position: [-100, 20, -90], scale: [13, 13, 13], rotation:[0, 1.2, 0] },
-    { position: [-50, 0, -250], scale: [8, 8, 8], rotation:[0, 1.2, 0] },
-    { position: [120, 0, -300], scale: [17, 17, 17], rotation:[0, 1.2, 0] },
-    { position: [150, 0, -50], scale: [8.5, 8.5, 8.5], rotation:[0, 1.2, 0] },
-    { position: [40, 0, 80], scale: [5, 5, 5], rotation:[0, 1.2, 0] }
+    { position: [-100, 40, -90], scale: [13, 13, 13], rotation:[0, 1.2, 0] },
+    { position: [-50, 30, -250], scale: [8, 8, 8], rotation:[0, 1.2, 0] },
+    { position: [120, 40, -300], scale: [16, 16, 16], rotation:[0, 1.2, 0] },
+    { position: [150, 30, -50], scale: [8.5, 8.5, 8.5], rotation:[0, 1.2, 0] },
+    { position: [40, 20, 80], scale: [5, 5, 5], rotation:[0, 1.2, 0] }
   ], []);
 
   return (
