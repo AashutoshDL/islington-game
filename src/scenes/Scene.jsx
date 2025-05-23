@@ -1,6 +1,7 @@
 import { Canvas } from "@react-three/fiber";
-import React from "react";
+import React, {useState} from "react";
 import { OrbitControls } from "@react-three/drei";
+import CameraController from "./utils/CameraController";
 
 //environment imports
 import Tree from "./environments/Tree";
@@ -30,14 +31,27 @@ import LightWithHelper from "./utils/LightwithHelper";
 import StartingBase from "./environments/StartingBase";
 
 const Scene = () => {
+
+    const [useCam1, setUseCam1] = useState(true);
+
   return (
+    <>
+      <button
+        onClick={() => setUseCam1((prev) => !prev)}
+        style={{ position: "absolute", zIndex: 10, top: 10, left: 10 }}
+      >
+        Switch Camera
+      </button>
     <Canvas
       style={{ width: "100vw", height: "100vh", background: "#93aa53" }}
       gl={{ preserveDrawingBuffer: true }}
-      camera={{ position: [120, 120, 120], fov: 60 }}
+      // camera={{ position: [120, 120, 120], fov: 60 }}
       shadows
       // flat //to make the palne the same color as the canvas
-    >
+    > 
+      <CameraController active={useCam1} position={[120, 120, 120]} />
+      <CameraController active={!useCam1} position={[0, 200, 0]} />
+      
       <OrbitControls enablePan={true} />
       {/* <ambientLight intensity={0.5} /> */}
 
@@ -47,10 +61,10 @@ const Scene = () => {
 
       {/* uncomment these for environment */}
 
-      <Tree count={15} />
-      <CustomClouds />
-      <Cars />
+      {/* <Tree count={15} /> */}
+      {/* <CustomClouds /> */}
       {/* <BirdFlock /> */}
+      <Cars />
 
       <Skill_road
         position={[3, -34.3, 50.2]}
@@ -146,6 +160,7 @@ const Scene = () => {
         <meshBasicMaterial  color="#93aa53" />
       </mesh>
     </Canvas>
+    </>
   );
 };
 
