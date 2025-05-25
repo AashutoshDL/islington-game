@@ -1,26 +1,31 @@
-// CameraController.js
-import { PerspectiveCamera } from "@react-three/drei";
-import { useThree } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
+import { useThree, useFrame } from "@react-three/fiber";
+import { useRef, useEffect } from "react";
+import * as THREE from "three";
 
-const CameraController = ({ active, position, fov = 60 }) => {
-  const cameraRef = useRef();
-  const { set } = useThree();
+const CameraController = ({ id, activeCamera, position }) => {
+  const { camera } = useThree();
+  const targetPosition = useRef(new THREE.Vector3(...position));
+  const moving = useRef(false);
 
   useEffect(() => {
-    if (active && cameraRef.current) {
-      set({ camera: cameraRef.current });
+    if (activeCamera === id) {
+      targetPosition.current.set(...position);
+      moving.current = true;
     }
-  }, [active, set]);
+  }, [activeCamera, id, position]);
 
-  return (
-    <PerspectiveCamera
-      ref={cameraRef}
-      makeDefault={false}
-      position={position}
-      fov={fov}
-    />
-  );
+  useFrame(() => {
+    if (activeCamera === id && moving.current) {
+      camera.position.lerp(targetPosition.current, 0.05);
+
+      if (camera.position.distanceTo(targetPosition.current) < 0.01) {
+        camera.position.copy(targetPosition.current);
+        moving.current = false;
+      }
+    }
+  });
+
+  return null;
 };
 
 export default CameraController;
