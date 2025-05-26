@@ -8,6 +8,7 @@ export const getCloudRefs = () => cloudRefs;
 
 const CustomClouds = () => {
   const { scene } = useGLTF("/models/environment_models/cloud1.glb");
+  // const { scene } = useGLTF("/models/environment_models/cloud_test.glb");
   const { camera } = useThree();
 
   useEffect(() => {
