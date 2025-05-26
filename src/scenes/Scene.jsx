@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import React, { useState } from "react";
-import { OrbitControls } from "@react-three/drei";
+import {Text, OrbitControls } from "@react-three/drei";
 import CameraController from "./utils/CameraController";
 import { useCamera, CameraProvider } from "./context/CameraContext";
 
@@ -33,8 +33,8 @@ import StartingBase from "./environments/StartingBase";
 import Character from "./environments/Character";
 
 const Scene = () => {
-  const {activeCamera,setActiveCamera}=useCamera();
-  
+  const { activeCamera, setActiveCamera } = useCamera();
+
   return (
     <>
       <Canvas
@@ -42,13 +42,30 @@ const Scene = () => {
         gl={{ preserveDrawingBuffer: true }}
         camera={{ position: [120, 120, 120], fov: 60 }}
         shadows
-        flat //to make the palne the same color as the canvas
+        // flat //to make the palne the same color as the canvas
       >
         <CameraController
           id="skill_annotation"
           activeCamera={activeCamera}
           position={[-10, 10, 20]} // <- your desired annotation view
+          onMoveComplete={() =>
+            console.log("Camera move complete. Free to move now!")
+          }
         />
+
+        <Text
+          position={[-170, 0, -60]}
+          rotation={[0,1.3,0]}
+          fontSize={15}
+          color="white"
+          maxWidth={200}
+          lineHeight={1}
+          letterSpacing={0.02}
+          textAlign="center"
+          font="/fonts/Bebas_Neue/BebasNeue-Regular.ttf"
+        >
+          SKILL{'\n'}BLOCK
+        </Text>
 
         <OrbitControls enablePan={true} />
         {/* <ambientLight intensity={0.5}/> */}
