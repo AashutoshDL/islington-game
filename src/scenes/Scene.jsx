@@ -9,6 +9,7 @@ import Skill_road from "./environments/Skill_road";
 import Kumari_road from "./environments/Kumari_road";
 import Large_road from "./environments/Large_road";
 import Cars from "./environments/Cars";
+import Realcharacter from "./environments/Realchar";
 
 // import BirdFlock from "./environments/BirdFlock";
 
@@ -135,6 +136,8 @@ const Scene = () => {
         rotation={[0, -0.31, 0]}
         scale={[18, 18, 20]}
       />
+      <Realcharacter position={[0, -35.99, 0]} scale={[5,5,5]}/>
+
 
       <mesh
         rotation={[-Math.PI / 2, 0, 2.8]}
