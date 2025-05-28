@@ -31,6 +31,8 @@ import BaskeballCourt from "./college/BasketballCourt";
 import LightWithHelper from "./utils/LightwithHelper";
 import StartingBase from "./environments/StartingBase";
 import Character from "./environments/Character";
+import CharacterController from "./utils/CharacterController";
+import Hills from "./environments/Hills";
 
 const Scene = () => {
   const { activeCamera, setActiveCamera } = useCamera();
@@ -42,7 +44,7 @@ const Scene = () => {
         gl={{ preserveDrawingBuffer: true }}
         camera={{ position: [120, 120, 120], fov: 60 }}
         shadows
-        // flat //to make the palne the same color as the canvas
+        flat //to make the palne the same color as the canvas
       >
         <CameraController
           id="skill_annotation"
@@ -79,6 +81,7 @@ const Scene = () => {
         {/* <Tree count={15} /> */}
         {/* <CustomClouds /> */}
         {/* <BirdFlock /> */}
+        <Hills />
 
         <Cars />
 
@@ -167,19 +170,15 @@ const Scene = () => {
           scale={[18, 18, 20]}
         />
 
-        <Character
-          position={[-60, -35.7, -190]}
-          rotation={[0, 0, 0]}
-          scale={[3, 3, 3]}
-        />
 
+        <CharacterController />
         <mesh
           rotation={[-Math.PI / 2, 0, 2.8]}
           position={[-70, -50, 60]}
           receiveShadow
           castShadow
         >
-          <planeGeometry args={[500, 800]} />
+          <planeGeometry args={[1500, 1500]} />
           <meshBasicMaterial color="#93aa53" />
         </mesh>
       </Canvas>
