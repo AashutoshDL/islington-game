@@ -9,1292 +9,517 @@ export default function Canteen(props) {
   const { nodes, materials } = useGLTF('/models/college_models/Canteen.glb')
   return (
     <group {...props} dispose={null}>
-      <group position={[2.895, 3.027, 23.097]} rotation={[Math.PI / 2, 0, 0]} scale={0.522}>
-        <group position={[4.479, -2.891, 0]}>
+      <group
+        position={[7.351, 5.547, 0]}
+        rotation={[Math.PI / 2, 0, 0]}
+        scale={[1.814, 1.57, 1.57]}>
+        <group position={[-14.979, 1.11, 1.151]} scale={[3.534, 9.432, 2.49]}>
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.polySurface137.geometry}
-            material={materials['Canteen_Area:railingt']}
-            position={[-12.964, 7.645, 2.182]}
+            geometry={nodes.Mesh011.geometry}
+            material={materials.side_building}
           />
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.polySurface550.geometry}
-            material={materials['Canteen_Area:railingt']}
-            position={[-12.964, -3.134, 2.182]}
-            scale={[1, 0.151, 1]}
+            geometry={nodes.Mesh011_1.geometry}
+            material={materials.blue_buildijg_sde}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh011_2.geometry}
+            material={materials.lambert11}
           />
         </group>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube10.geometry}
+          material={materials.table_and_chair}
+          position={[-15.433, -4.07, 0]}
+          rotation={[0, 0, -Math.PI / 2]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube17.geometry}
+          material={materials.table_and_chair}
+          position={[-13.879, -6.128, 0]}
+          rotation={[0, 0, -Math.PI / 2]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube18.geometry}
+          material={materials.table_and_chair}
+          position={[-13.879, -5.099, 0]}
+          rotation={[0, 0, -Math.PI / 2]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube19.geometry}
+          material={materials.table_and_chair}
+          position={[-13.879, -4.07, 0]}
+          rotation={[0, 0, -Math.PI / 2]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube2.geometry}
+          material={materials.white}
+          position={[-12.693, 3.751, 2.056]}
+          scale={[0.607, 2.447, 0.602]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube20.geometry}
+          material={materials.table_and_chair}
+          position={[-17.789, -1.287, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube21.geometry}
+          material={materials.table_and_chair}
+          position={[-17.789, -3.136, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube22.geometry}
+          material={materials.table_and_chair}
+          position={[-17.789, -4.985, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube23.geometry}
+          material={materials.table_and_chair}
+          position={[-19.483, -3.136, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube24.geometry}
+          material={materials.table_and_chair}
+          position={[-19.483, -1.287, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube25.geometry}
+          material={materials.table_and_chair}
+          position={[-19.483, -4.985, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube26.geometry}
+          material={materials.table_and_chair}
+          position={[-29.432, -4.985, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube27.geometry}
+          material={materials.table_and_chair}
+          position={[-29.432, -3.136, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube28.geometry}
+          material={materials.table_and_chair}
+          position={[-29.432, -1.287, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube29.geometry}
+          material={materials.table_and_chair}
+          position={[-27.396, -1.287, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube30.geometry}
+          material={materials.table_and_chair}
+          position={[-27.396, -3.136, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube31.geometry}
+          material={materials.table_and_chair}
+          position={[-27.396, -4.985, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube39.geometry}
+          material={materials.railingt}
+          position={[4.627, -3.885, 1.866]}
+          scale={[0.107, 4.982, 1]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube74.geometry}
+          material={materials.table_and_chair}
+          position={[-21.153, -1.287, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube75.geometry}
+          material={materials.table_and_chair}
+          position={[-21.153, -3.136, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube76.geometry}
+          material={materials.table_and_chair}
+          position={[-21.153, -4.985, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube77.geometry}
+          material={materials.table_and_chair}
+          position={[-22.761, -1.287, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube78.geometry}
+          material={materials.table_and_chair}
+          position={[-22.761, -3.136, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube79.geometry}
+          material={materials.table_and_chair}
+          position={[-22.761, -4.985, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube8.geometry}
+          material={materials.table_and_chair}
+          position={[-15.433, -6.128, 0]}
+          rotation={[0, 0, -Math.PI / 2]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube80.geometry}
+          material={materials.table_and_chair}
+          position={[-25.392, -4.985, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube81.geometry}
+          material={materials.table_and_chair}
+          position={[-25.392, -3.136, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube82.geometry}
+          material={materials.table_and_chair}
+          position={[-25.392, -1.287, -1.045]}
+          rotation={[0, 0, Math.PI]}
+          scale={1.361}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube83.geometry}
+          material={materials.railingt}
+          position={[4.627, -9.852, 1.866]}
+          scale={[0.107, 1.203, 1]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube84.geometry}
+          material={materials.railingt}
+          position={[4.627, -12.414, 1.866]}
+          scale={[0.107, 0.336, 1]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube85.geometry}
+          material={materials.table_and_chair}
+          position={[-13.736, -9.681, 0]}
+          rotation={[0, 0, -Math.PI / 2]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube86.geometry}
+          material={materials.table_and_chair}
+          position={[-13.736, -8.652, 0]}
+          rotation={[0, 0, -Math.PI / 2]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube87.geometry}
+          material={materials.table_and_chair}
+          position={[-13.736, -7.623, 0]}
+          rotation={[0, 0, -Math.PI / 2]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube88.geometry}
+          material={materials.table_and_chair}
+          position={[-15.399, -9.681, 0]}
+          rotation={[0, 0, -Math.PI / 2]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube89.geometry}
+          material={materials.table_and_chair}
+          position={[-15.399, -8.652, 0]}
+          rotation={[0, 0, -Math.PI / 2]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube9.geometry}
+          material={materials.table_and_chair}
+          position={[-15.433, -5.099, 0]}
+          rotation={[0, 0, -Math.PI / 2]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube90.geometry}
+          material={materials.table_and_chair}
+          position={[-15.399, -7.623, 0]}
+          rotation={[0, 0, -Math.PI / 2]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pCube91.geometry}
+          material={materials.lambert29}
+          position={[-13.213, 3.751, 1.259]}
+          scale={[0.015, 2.447, 0.166]}
+        />
+        <group position={[-3.575, -0.489, -0.55]} scale={1.183}>
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh005.geometry}
+            material={materials.wood}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh005_1.geometry}
+            material={materials.one_more_bite}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh005_2.geometry}
+            material={materials.one_more_bit_stove_gray}
+          />
+        </group>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.polySurface57.geometry}
+          material={materials.wood}
+          position={[-21.129, -6.316, -3.171]}
+          scale={2.601}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.polySurface58.geometry}
+          material={materials.wood}
+          position={[-18.919, -9.264, -2.556]}
+          scale={[1.381, 3.721, 2.308]}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.polySurface59.geometry}
+          material={materials.wood}
+          position={[-21.129, -12.642, -3.171]}
+          scale={2.601}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.polySurface60.geometry}
+          material={materials.wood}
+          position={[-18.319, -11.545, -2.556]}
+          scale={[1.256, 2.308, 2.308]}
+        />
+        <group position={[-5.731, 3.616, 2.505]}>
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh035.geometry}
+            material={materials.windoes_sky_blue}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh035_1.geometry}
+            material={materials.Min_building_color}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh035_2.geometry}
+            material={materials.Roof_canteen}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh035_3.geometry}
+            material={materials.white}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh035_4.geometry}
+            material={materials.lambert5}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh035_5.geometry}
+            material={materials.dark_green}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh035_6.geometry}
+            material={materials.lambert8}
+          />
+        </group>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pPlane3.geometry}
+          material={materials.lambert11}
+          position={[-9.936, 0.13, -0.717]}
+          scale={[5.417, 9.916, 3.49]}
+        />
+        <group
+          position={[-6.78, -8.887, -1.694]}
+          rotation={[0, 0, -Math.PI / 2]}
+          scale={[6.974, 6.651, 3.49]}>
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh010.geometry}
+            material={materials.learning_jone_canteen}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh010_1.geometry}
+            material={materials.inside_wall}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh010_2.geometry}
+            material={materials.leaning_zone_back_wall}
+          />
+        </group>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pPlane5.geometry}
+          material={materials.blue_spot}
+          position={[0.796, -8.313, 2.786]}
+          scale={[5.004, 5.228, 5.694]}
+        />
       </group>
-      <group position={[0.062, 0.115, -2.83]} rotation={[Math.PI / 2, 0, -0.055]} scale={0.153}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface562.geometry}
-          material={materials['Canteen_Area:windoes_sky_blue']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface563.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface564.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface565.geometry}
-          material={materials['Canteen_Area:HumanBody:blinn1']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface566.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface567.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface568.geometry}
-          material={materials['Canteen_Area:lambert5']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface569.geometry}
-          material={materials['Canteen_Area:railingt']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface570.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface571.geometry}
-          material={materials['Canteen_Area:lambert5']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface572.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface573.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface574.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface575.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface576.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface577.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface578.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface579.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface580.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface581.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface582.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface583.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface584.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface585.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface586.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface587.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface588.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface589.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface590.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface591.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface592.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface593.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface594.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface595.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface596.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface597.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface598.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface599.geometry}
-          material={materials['Canteen_Area:wood']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface600.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface601.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface602.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface603.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface604.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface605.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface606.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface607.geometry}
-          material={materials['Canteen_Area:lambert11']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface608.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface609.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface610.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface611.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface612.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface613.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface614.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface615.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface616.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface617.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface618.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface619.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface620.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface621.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface622.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface623.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface624.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface625.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface626.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface627.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface628.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface629.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface630.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface631.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface632.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface633.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface634.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface635.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface636.geometry}
-          material={materials['Canteen_Area:wood']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface637.geometry}
-          material={materials['Canteen_Area:wood']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface638.geometry}
-          material={materials['Canteen_Area:wood']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface639.geometry}
-          material={materials['Canteen_Area:lambert5']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface641.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface642.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface643.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface644.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <group position={[18.111, -44.839, -6.161]} scale={3.406}>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.pCube92.geometry}
+        material={materials.lambert1}
+        position={[1.457, 3.15, 1.655]}
+        rotation={[Math.PI / 2, 0, Math.PI / 2]}
+        scale={[0.19, 0.01, 0.01]}
+      />
+      <group
+        position={[7.351, 5.547, 0]}
+        rotation={[Math.PI / 2, 0, 0]}
+        scale={[1.814, 1.57, 1.57]}>
+        <group
+          position={[-6.78, -8.887, -1.694]}
+          rotation={[0, 0, -Math.PI / 2]}
+          scale={[6.974, 6.651, 3.49]}>
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Mesh084.geometry}
-            material={materials['Canteen_Area:one_more_bite']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh084_1.geometry}
-            material={materials['Canteen_Area:one_more_bit_stove_gray']}
+            geometry={nodes.polySurface62.geometry}
+            material={materials.learning_jone_canteen}
+            position={[0, -1.065, 0]}
+            scale={[1, 1.14, 1]}
           />
         </group>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface646.geometry}
-          material={materials['Canteen_Area:one_more_bite']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface649.geometry}
-          material={materials['Canteen_Area:windoes_sky_blue']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface759.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface760.geometry}
-          material={materials['Canteen_Area:white']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface879.geometry}
-          material={materials['Canteen_Area:windoes_sky_blue']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <group position={[18.111, -44.839, -6.161]} scale={3.406}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh090.geometry}
-            material={materials['Canteen_Area:Min_building_color']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh090_1.geometry}
-            material={materials['Canteen_Area:Roof_canteen']}
-          />
-        </group>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface881.geometry}
-          material={materials['Canteen_Area:lambert5']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface882.geometry}
-          material={materials['Canteen_Area:white']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface883.geometry}
-          material={materials['Canteen_Area:lambert5']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface884.geometry}
-          material={materials['Canteen_Area:windoes_sky_blue']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface885.geometry}
-          material={materials['Canteen_Area:white']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface886.geometry}
-          material={materials['Canteen_Area:windoes_sky_blue']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface887.geometry}
-          material={materials['Canteen_Area:lambert5']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <group position={[18.111, -44.839, -6.161]} scale={3.406}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh098.geometry}
-            material={materials['Canteen_Area:Min_building_color']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh098_1.geometry}
-            material={materials['Canteen_Area:dark_green']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh098_2.geometry}
-            material={materials['Canteen_Area:lambert8']}
-          />
-        </group>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface889.geometry}
-          material={materials['Canteen_Area:dark_green']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface890.geometry}
-          material={materials['Canteen_Area:white']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface891.geometry}
-          material={materials['Canteen_Area:white']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface892.geometry}
-          material={materials['Canteen_Area:lambert5']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <group position={[18.111, -44.839, -6.161]} scale={3.406}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh103.geometry}
-            material={materials['Canteen_Area:Min_building_color']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh103_1.geometry}
-            material={materials['Canteen_Area:Roof_canteen']}
-          />
-        </group>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface894.geometry}
-          material={materials['Canteen_Area:lambert5']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <group position={[18.111, -44.839, -6.161]} scale={3.406}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh105.geometry}
-            material={materials['Canteen_Area:Min_building_color']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh105_1.geometry}
-            material={materials['Canteen_Area:Roof_canteen']}
-          />
-        </group>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface896.geometry}
-          material={materials['Canteen_Area:windoes_sky_blue']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface897.geometry}
-          material={materials['Canteen_Area:windoes_sky_blue']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface898.geometry}
-          material={materials['Canteen_Area:windoes_sky_blue']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface899.geometry}
-          material={materials['Canteen_Area:windoes_sky_blue']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface900.geometry}
-          material={materials['Canteen_Area:white']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface901.geometry}
-          material={materials['Canteen_Area:white']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface902.geometry}
-          material={materials['Canteen_Area:white']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface903.geometry}
-          material={materials['Canteen_Area:white']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface904.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface905.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface906.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface907.geometry}
-          material={materials['Canteen_Area:lambert5']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface908.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface910.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface911.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <group position={[18.111, -44.839, -6.161]} scale={3.406}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh121.geometry}
-            material={materials['Canteen_Area:learning_jone_canteen']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh121_1.geometry}
-            material={materials['Canteen_Area:inside_wall']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh121_2.geometry}
-            material={materials['Canteen_Area:leaning_zone_back_wall']}
-          />
-        </group>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface913.geometry}
-          material={materials['Canteen_Area:lambert5']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface914.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface915.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface916.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface957.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface958.geometry}
-          material={materials['Canteen_Area:white']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface959.geometry}
-          material={materials['Canteen_Area:white']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface960.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface961.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface962.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface963.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface964.geometry}
-          material={materials['Canteen_Area:blue_spot']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <group position={[18.111, -44.839, -6.161]} scale={3.406}>
-          {/* <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh134.geometry}
-            material={materials['Canteen_Area:Impact_Block:island_rock']}
-          /> */}
-          {/* <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh134_1.geometry}
-            material={materials['Canteen_Area:Impact_Block:blcok_white_island']}
-          /> */}
-        </group>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface966.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface968.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface969.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <group position={[18.111, -44.839, -6.161]} scale={3.406}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh138.geometry}
-            material={materials['Canteen_Area:side_building']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh138_1.geometry}
-            material={materials['Canteen_Area:blue_buildijg_sde']}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh138_2.geometry}
-            material={materials['Canteen_Area:lambert11']}
-          />
-        </group>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface971.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface972.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface973.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface974.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface975.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface976.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface977.geometry}
-          material={materials['Canteen_Area:windoes_sky_blue']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface978.geometry}
-          material={materials['Canteen_Area:lambert5']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface979.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface980.geometry}
-          material={materials['Canteen_Area:lambert5']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface981.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface982.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.polySurface983.geometry}
-          material={materials['Canteen_Area:table_and_chair']}
-          position={[18.111, -44.839, -6.161]}
-          scale={3.406}
-        />
       </group>
     </group>
   )
