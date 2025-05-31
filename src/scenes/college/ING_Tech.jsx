@@ -6,7 +6,7 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export default function ING_Tech(props) {
-  const { nodes, materials } = useGLTF('/models/college_models/ING tech block.glb')
+  const { nodes, materials } = useGLTF('/models/college_models/ING_tech.glb')
   return (
     <group {...props} dispose={null}>
       <group
@@ -68,4 +68,4 @@ export default function ING_Tech(props) {
   )
 }
 
-useGLTF.preload('/models/college_models/ING tech block.glb')
+useGLTF.preload('/models/college_models/ING_tech.glb')

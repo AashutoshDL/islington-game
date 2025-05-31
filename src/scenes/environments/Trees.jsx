@@ -1,68 +1,69 @@
-import React, { useEffect } from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { useEffect } from "react";
+import { useGLTF } from "@react-three/drei";
 
-const newTreeRefs = []
+const bushRefs = [];
 
-export const getNewTreeRefs = () => newTreeRefs
+export const getBushRefs = () => bushRefs;
 
-const newTreeConfigs = [
-  { position: [110, -35.5, 29.2], rotation: [0, 2.9, 0], scale: [1, 1, 1] },
-  { position: [105, -35.5, 39.2], rotation: [0, 2.9, 0], scale: [1, 1, 1] },
-  { position: [133, -35.5, 35.6], rotation: [0, 2.9, 0], scale: [1, 1, 1] },
-  { position: [128, -35.5, 45.6], rotation: [0, 2.9, 0], scale: [1, 1, 1] },
-  { position: [158, -35.5, 42.9], rotation: [0, 2.9, 0], scale: [1, 1, 1] },
-  { position: [151, -35.5, 52.6], rotation: [0, 2.9, 0], scale: [1, 1, 1] },
-]
+const bushConfigs = [
+  { position: [-110, -35.5, -13], rotation: [0, 0, 0], scale: [4, 4, 4] },
+  { position: [-100, -35.5, -10], rotation: [0, 0, 0], scale: [4, 4, 4] },
+  { position: [-90, -35.5, -7], rotation: [0, 0, 0], scale: [4, 4, 4] },
+  { position: [-80, -35.5, -4], rotation: [0, 0, 0], scale: [4, 4, 4] },
+  { position: [-70, -35.5, -1], rotation: [0, 0, 0], scale: [4, 4, 4] },
+  { position: [-60, -35.5, 2], rotation: [0, 0, 0], scale: [4, 4, 4] },
+  { position: [-50, -35.5, 5], rotation: [0, 0, 0], scale: [4, 4, 4] },
+];
 
-const NewTrees = () => {
-  const { nodes, materials } = useGLTF('/models/environment_models/Trees.glb')
+const Bushes = () => {
+  const { nodes, materials } = useGLTF(
+    "/models/environment_models/Bush with Flowers.glb"
+  );
 
   const addRef = (ref) => {
-    if (ref && !newTreeRefs.includes(ref)) {
-      newTreeRefs.push(ref)
+    if (ref && !bushRefs.includes(ref)) {
+      bushRefs.push(ref);
     }
-  }
+  };
 
   useEffect(() => {
-    newTreeRefs.length = 0 // Clear on reload
-  }, [])
+    bushRefs.length = 0;
+  }, []);
 
-  const renderTreeSet = () => (
+  const renderBush = () => (
     <>
-      <group position={[200.468, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={100}>
-        <mesh geometry={nodes.NormalTree_1_1.geometry} material={materials.NormalTree_Bark} castShadow receiveShadow />
-        <mesh geometry={nodes.NormalTree_1_2.geometry} material={materials.NormalTree_Leaves} castShadow receiveShadow />
-      </group>
-      <group position={[205.39, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={100}>
-        <mesh geometry={nodes.NormalTree_2_1.geometry} material={materials.NormalTree_Bark} castShadow receiveShadow />
-        <mesh geometry={nodes.NormalTree_2_2.geometry} material={materials.NormalTree_Leaves} castShadow receiveShadow />
-      </group>
-      <group position={[210.091, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={100}>
-        <mesh geometry={nodes.NormalTree_3_1.geometry} material={materials.NormalTree_Bark} castShadow receiveShadow />
-        <mesh geometry={nodes.NormalTree_3_2.geometry} material={materials.NormalTree_Leaves} castShadow receiveShadow />
-      </group>
-      <group position={[216.945, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={100}>
-        <mesh geometry={nodes.NormalTree_4_1.geometry} material={materials.NormalTree_Bark} castShadow receiveShadow />
-        <mesh geometry={nodes.NormalTree_4_2.geometry} material={materials.NormalTree_Leaves} castShadow receiveShadow />
-      </group>
-      <group position={[221.728, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={100}>
-        <mesh geometry={nodes.NormalTree_5_1.geometry} material={materials.NormalTree_Bark} castShadow receiveShadow />
-        <mesh geometry={nodes.NormalTree_5_2.geometry} material={materials.NormalTree_Leaves} castShadow receiveShadow />
-      </group>
+      <mesh
+        geometry={nodes.Bush_Common_Flowers_1.geometry}
+        material={materials.Leaves_NormalTree}
+        castShadow
+        receiveShadow
+      />
+      <mesh
+        geometry={nodes.Bush_Common_Flowers_2.geometry}
+        material={materials.Flowers}
+        castShadow
+        receiveShadow
+      />
     </>
-  )
+  );
 
   return (
     <>
-      {newTreeConfigs.map(({ position, rotation, scale }, idx) => (
-        <group key={idx} ref={addRef} position={position} rotation={rotation} scale={scale}>
-          {renderTreeSet()}
+      {bushConfigs.map(({ position, rotation, scale }, idx) => (
+        <group
+          key={idx}
+          ref={addRef}
+          position={position}
+          rotation={rotation}
+          scale={scale}
+        >
+          {renderBush()}
         </group>
       ))}
     </>
-  )
-}
+  );
+};
 
-export default NewTrees
+export default Bushes;
 
-useGLTF.preload('/models/environment_models/Trees.glb')
+useGLTF.preload("/models/environment_models/Bush with Flowers.glb");

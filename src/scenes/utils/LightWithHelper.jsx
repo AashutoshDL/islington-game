@@ -18,7 +18,7 @@ const LightWithHelper = () => {
   return (
     <directionalLight
       ref={lightRef}
-      position={[100, 200, 100]}
+      position={[100, 200, -300]}
       intensity={5}
       castShadow
       shadow-mapSize-width={2048}

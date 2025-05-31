@@ -7,6 +7,7 @@ import { useGLTF } from '@react-three/drei'
 
 export default function Island(props) {
   const { nodes, materials } = useGLTF('/models/environment_models/Floating Island.glb')
+  
   return (
     <group {...props} dispose={null}>
       <mesh

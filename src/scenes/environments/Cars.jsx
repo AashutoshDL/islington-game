@@ -26,21 +26,55 @@ const whiteCar_path = [
 const carsConfigs = [
   {
     modelPath: '/models/environment_models/beige_car.glb',
-    position: [-80, -36.2, -150],
-    rotation: [0, -1.5, 0],
-    scale: [3, 3, 3],
+    position: [-100, -36.2, -110],
+    rotation: [0, 2.9, 0],
+    scale: [2, 2, 2],
     animate: false,
   },
   {
-    modelPath: '/models/environment_models/white_car.glb',
-    position: [[-119.7, -36.5, -7]],
-    rotation: [0, 1.2, 0],
-    scale: [3.2, 3.2, 3.2],
-    animate: true, // This car will be animated
-    path: whiteCar_path,
-    speed: 0.01, // Adjust speed (0.005 = slow, 0.02 = fast)
+    modelPath: '/models/environment_models/toyota_hilux_2015.glb',
+    position: [-85, -36.2, -106],
+    rotation: [0, -1.8, 0],
+    scale: [0.5, 0.5, 0.5],
+    animate: false,
   },
-  
+  {
+    modelPath: '/models/environment_models/Bus.glb',
+    position: [-92, -36.2, -110],
+    rotation: [0, 3, 0],
+    scale: [0.5, 0.5, 0.5],
+    animate: false,
+  },
+  {
+    modelPath: '/models/environment_models/SUV.glb',
+    position: [-76, -36.2, -104],
+    rotation: [0, -3.3, 0],
+    scale: [2, 2, 2],
+    animate: false,
+  },
+  {
+    modelPath: '/models/environment_models/beige_car.glb',
+    position: [-62, -36.2, -100],
+    rotation: [0, 3, 0],
+    scale: [2, 2, 2],
+    animate: false,
+  },
+  {
+    modelPath: '/models/environment_models/beige_car.glb',
+    position: [-52, -36.2, -100],
+    rotation: [0, 3, 0],
+    scale: [2, 2, 2],
+    animate: false,
+  },
+  // {
+  //   modelPath: '/models/environment_models/white_car.glb',
+  //   position: [[-119.7, -36.5, -7]],
+  //   rotation: [0, 1.2, 0],
+  //   scale: [3.2, 3.2, 3.2],
+  //   animate: true, // This car will be animated
+  //   path: whiteCar_path,
+  //   speed: 0.01, // Adjust speed (0.005 = slow, 0.02 = fast)
+  // },
 ]
 
 const AnimatedCar = ({ config, addRef }) => {

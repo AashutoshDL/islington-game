@@ -6,7 +6,7 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export default function StartingPoint(props) {
-  const { nodes, materials } = useGLTF('/models/college_models/Starting point.glb')
+  const { nodes, materials } = useGLTF('/models/college_models/StartingPoint.glb')
   return (
     <group {...props} dispose={null}>
       <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
@@ -123,4 +123,4 @@ export default function StartingPoint(props) {
   )
 }
 
-useGLTF.preload('/models/college_models/Starting point.glb')
+useGLTF.preload('/models/college_models/StartingPoint.glb')
