@@ -26,7 +26,7 @@ const whiteCar_path = [
 const carsConfigs = [
   {
     modelPath: '/models/environment_models/beige_car.glb',
-    position: [-80, -41.2, -150],
+    position: [-80, -36.2, -150],
     rotation: [0, -1.5, 0],
     scale: [3, 3, 3],
     animate: false,
@@ -40,13 +40,7 @@ const carsConfigs = [
     path: whiteCar_path,
     speed: 0.01, // Adjust speed (0.005 = slow, 0.02 = fast)
   },
-  {
-    modelPath: '/models/environment_models/scooter.glb',
-    position: [40, -34, 10],
-    rotation: [0, 0.3, 0],
-    scale: [2.9, 2.9, 2.9],
-    animate: false,
-  },
+  
 ]
 
 const AnimatedCar = ({ config, addRef }) => {

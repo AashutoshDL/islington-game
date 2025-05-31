@@ -25,29 +25,40 @@ import Impact from "./college/Impact";
 import ING_Tech from "./college/ING_Tech";
 import Canteen from "./college/Canteen";
 import UK from "./college/UK";
-import IT from "./college/IT";
-import MultimediaStudios from "./college/MultimediaStudios";
 import StartingPoint from "./college/StartingPoint";
 import BaskeballCourt from "./college/BasketballCourt";
 import LightWithHelper from "./utils/LightwithHelper";
 import StartingBase from "./environments/StartingBase";
 import Character from "./environments/Character";
 import CharacterController from "./utils/CharacterController";
-import Hills from "./environments/Hills";
-import Valley from "./environments/UpdatedHills";
+
 import Londonblock from "./college/UK";
 import SkillSSD from "./college/SkillBlockStudentService";
+import BaseBrit from "./environments/base";
+import Pavement from "./environments/pavement";
+import Island from "./environments/FloatingIsland";
+import CoffeeStation from "./college/CoffeeStation";
+
 const Scene = () => {
   const { activeCamera, setActiveCamera } = useCamera();
 
   return (
     <>
       <Canvas
-        style={{ width: "100vw", height: "100vh", background: "#93aa53" }}
-        gl={{ preserveDrawingBuffer: true }}
-        camera={{ position: [120, 120, 120], fov: 60 }}
+        style={{ width: "100vw", height: "100vh", background: "#87CEEB" }}
+        gl={{ 
+          preserveDrawingBuffer: true,
+          antialias: true, // Better quality for distant objects
+          powerPreference: "high-performance" // Use dedicated GPU if available
+        }}
+        camera={{ 
+          position: [120, 120, 120], 
+          fov: 60,
+          near: 0.1, // Keep near plane close for detail
+          far: 1000000 // Significantly increased render distance
+        }}
         shadows
-        flat //to make the palne the same color as the canvas
+        flat //to make the plane the same color as the canvas
       >
         <CameraController
           id="skill_annotation"
@@ -72,32 +83,30 @@ const Scene = () => {
           SKILL{'\n'}BLOCK
         {/* </Text> */}
 
-        <OrbitControls enablePan={true} />
+        <OrbitControls 
+          enablePan={true} 
+          maxDistance={2000} // Allow camera to zoom out further
+          minDistance={1} // Allow camera to get closer
+        />
         {/* <ambientLight intensity={0.5}/> */}
 
         <LightWithHelper />
 
-        {/* <directionalLight position={[10, 20, 10]} intensity={5} /> */}
+        {/* Enhanced fog for better depth perception at long distances */}
+        <fog attach="fog" args={['#87CEEB', 100, 5000]} />
 
         {/* uncomment these for environment */}
 
-        {/* <Tree count={15} /> */}
+        <NewTrees count={6} />
         {/* <CustomClouds /> */}
         {/* <BirdFlock /> */}
         {/* <Hills /> */}
-        <NewTrees position={[110, -35.5, 29.2]} rotation ={[0,2.9,0]}/>
-        <NewTrees position={[105, -35.5, 39.2]} rotation ={[0,2.9,0]}/>
-        <NewTrees position={[133, -35.5, 35.6]} rotation ={[0,2.9,0]}/>
-        <NewTrees position={[128, -35.5, 45.6]} rotation ={[0,2.9,0]}/>
-        <NewTrees position={[158, -35.5, 42.9]} rotation ={[0,2.9,0]}/>
-        <NewTrees position={[151, -35.5, 52.6]} rotation ={[0,2.9,0]}/>
-        <Valley 
-        position={[-90, -61.8, -250]} rotation= {[0,-0.3,0]} scale={[4.5,3,3]}
-        />
-
-        <Valley 
-        position={[-140, -61.8, 550]} rotation= {[0,3,0]} scale={[4.5,3,3]}
-        />
+        <Pavement count = {1} />
+        <Island 
+          position={[-193, -306.3, 638.2]}
+          rotation={[0, -0.318, 0]}
+          scale={[238,208,228]}/>
+        
 
         <Cars />
         <Skill_road
@@ -117,7 +126,7 @@ const Scene = () => {
         />
         {/* displaying colleges for the main scene */}
         <Kumari 
-        position={[-0, -41.9, -154]} 
+        position={[-0, -36.9, -154]} 
         rotation={[0, 4.4, 0]} 
         scale={[2,2,2]}
         />
@@ -138,27 +147,34 @@ const Scene = () => {
           rotation={[0, -0.3, 0]}
           scale={[2,2,2]}
         />
+        
         <Britian
           position={[19, -36.6, -62]}
           rotation={[0, 1.27, 0]}
           scale={[2,2,2]}
         />
+        <BaseBrit 
+          position={[10, -37, -58]}
+          rotation={[0, 1.26, 0]}
+          scale={[25,2,20]}
+        />
+
         {/* <Chautari
           position={[-15, -50.7, 104]}
           rotation={[0, -1.85, 0]}
           scale={[0.7, 0.7, 0.7]}
         /> */}
         <Impact
-          position={[89, -31, 13]}
-          rotation={[0, -0.33, 0]}
-          scale={[4, 5.5, 5.4]}
+          position={[85, -35.9, -12]}
+          rotation={[0, -1.88, 0]}
+          scale={[2,2,2]}
         />
-        {/* not scale soo 
-          <ING_Tech
-          position={[-120, -30, 200]}
+         
+        <ING_Tech
+          position={[-70, -38, 80]}
           rotation={[0, -0.25, 0]}
-          scale={[0.5, 0.48, 0.5]}
-        /> */}
+          scale={[2,2,2]}
+        />
         <Canteen
           position={[-92, -40.35, 146]}
           rotation={[0, -0.3, 0]}
@@ -169,19 +185,10 @@ const Scene = () => {
           rotation={[0, 2.89, 0]}
           scale={[2,2,2]}
         />
-        <IT
-          position={[-128, -33.3, 212]}
-          rotation={[0, -0.32, 0]}
-          scale={[9.3, 8.4, 7.5]}
-        />
-        <MultimediaStudios
-          position={[-195, -32, 357]}
-          rotation={[0, -0.31, 0]}
-          scale={[0.3, 0.2, 0.2]}
-        />
+        
         <StartingPoint
-          position={[50, -42, -180]}
-          rotation={[0, -0.28, 0]}
+          position={[-128, -37.35, 203]}
+          rotation={[0, -0.32, 0]}
           scale={[2, 2, 2]}
         />
         <BaskeballCourt
@@ -189,19 +196,22 @@ const Scene = () => {
           rotation={[0, -0.32, 0]}
           scale={[2,2,2]}
         />
-
-        
-
+        <CoffeeStation 
+          position={[-93, -37.35, 195]}
+          rotation={[0, -0.32, 0]}
+          scale={[2,2,2]}/>
 
         <CharacterController />
+        
+        {/* Extended ground plane for better long-distance rendering */}
         <mesh
           rotation={[-Math.PI / 2, 0, 2.8]}
           position={[-70, -50, 60]}
           receiveShadow
           castShadow
         >
-          <planeGeometry args={[1500, 1500]} />
-          <meshBasicMaterial color="#93aa53" />
+          {/* <planeGeometry args={[5000, 5000]} /> 
+          <meshBasicMaterial color="#93aa53" /> */}
         </mesh>
       </Canvas>
     </>
