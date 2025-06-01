@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { Volume2, VolumeX, Info, Play, X } from "lucide-react";
 import { useCamera } from "./context/CameraContext";
 
 const UI = () => {
   const [logoError, setLogoError] = useState(false);
-  const { switchCamera } = useCamera() || {};
+  const { switchCamera } = useCamera();
   const [isMuted, setIsMuted] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
   const [hideUI, setHideUI] = useState(false);
@@ -25,37 +26,17 @@ const UI = () => {
     }
   };
 
-  const buttonStyle = {
-    backgroundColor: "white",
-    border: "none",
-    borderRadius: "50%",
-    width: "60px",
-    height: "60px",
-    fontSize: "24px",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)",
-    cursor: "pointer",
-    zIndex: 1000,
-  };
-
   return (
     <>
       {!hideUI && (
         <>
           {/* Logo */}
-          <div
-            style={{
-              position: "absolute",
-              top: "54px",
-              left: "118px",
-              zIndex: 1000,
-              pointerEvents: "none",
-            }}
-          >
+          <div className="absolute top-14 left-28 z-50 pointer-events-none">
             {!logoError ? (
               <img
                 src="/logo.png"
                 alt="Logo"
-                style={{ width: "250px", borderRadius: "8px" }}
+                className="w-64 rounded-xl shadow-lg"
                 onError={() => {
                   console.error("Logo failed to load from /logo.png");
                   setLogoError(true);
@@ -63,116 +44,138 @@ const UI = () => {
                 onLoad={() => console.log("Logo loaded successfully")}
               />
             ) : (
-              <div
-                style={{
-                  background: "rgba(255,255,255,0.9)",
-                  padding: "10px",
-                  borderRadius: "8px",
-                  color: "#333",
-                  fontSize: "14px",
-                }}
-              >
+              <div className="bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-lg text-gray-800 text-sm font-medium border border-gray-200">
                 Logo not found at /logo.png
               </div>
             )}
           </div>
 
-          {/* Mute Button */}
-          <button
-            onClick={toggleMute}
-            aria-label={isMuted ? "Unmute audio" : "Mute audio"}
-            style={{
-              position: "absolute",
-              top: "40px",
-              right: "40px",
-              ...buttonStyle,
-            }}
-            title={isMuted ? "Unmute" : "Mute"}
-          >
-            {isMuted ? "🔇" : "🔊"}
-          </button>
+          {/* Control Buttons Container */}
+          <div className="absolute top-10 right-10 flex flex-col gap-3 z-50">
+            {/* Mute Button */}
+            <button
+              onClick={toggleMute}
+              aria-label={isMuted ? "Unmute audio" : "Mute audio"}
+              className={`
+                group relative w-14 h-14 rounded-full backdrop-blur-md border border-white/20 
+                transition-all duration-300 hover:scale-105 active:scale-95
+                ${
+                  isMuted
+                    ? "bg-red-500/80 hover:bg-red-500/90 text-white shadow-lg shadow-red-500/25"
+                    : "bg-white/80 hover:bg-white/90 text-gray-700 shadow-lg shadow-black/10"
+                }
+              `}
+              title={isMuted ? "Unmute" : "Mute"}
+            >
+              {isMuted ? (
+                <VolumeX className="w-6 h-6 mx-auto" />
+              ) : (
+                <Volume2 className="w-6 h-6 mx-auto" />
+              )}
 
-          {/* Info Button */}
-          <button
-            onClick={toggleInfo}
-            aria-label="Toggle information display"
-            style={{
-              position: "absolute",
-              top: "120px",
-              right: "40px",
-              ...buttonStyle,
-              color: "#000",
-            }}
-            title="Show controls info"
-          >
-            i
-          </button>
+              {/* Hover tooltip */}
+              <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+                {isMuted ? "Unmute" : "Mute"}
+              </div>
+            </button>
+
+            {/* Info Button */}
+            <button
+              onClick={toggleInfo}
+              aria-label="Toggle information display"
+              className={`
+                group relative w-14 h-14 rounded-full backdrop-blur-md border border-white/20
+                transition-all duration-300 hover:scale-105 active:scale-95
+                ${
+                  showInfo
+                    ? "bg-blue-500/80 hover:bg-blue-500/90 text-white shadow-lg shadow-blue-500/25"
+                    : "bg-white/80 hover:bg-white/90 text-gray-700 shadow-lg shadow-black/10"
+                }
+              `}
+              title="Show controls info"
+            >
+              <Info className="w-6 h-6 mx-auto" />
+
+              {/* Hover tooltip */}
+              <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+                Controls Info
+              </div>
+            </button>
+          </div>
 
           {/* Info Panel */}
           {showInfo && (
-            <div
-              style={{
-                position: "absolute",
-                top: "200px",
-                right: "40px",
-                backgroundColor: "rgba(255, 255, 255, 0.95)",
-                padding: "16px",
-                borderRadius: "12px",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
-                maxWidth: "300px",
-                fontSize: "16px",
-                color: "#333",
-                zIndex: 1000,
-              }}
-            >
-              <strong>Controls:</strong>
-              <br />
-              Use <b>W A S D</b> keys to move your character.
-              <br />
-              Press <b>i</b> again to hide this message.
+            <div className="absolute top-44 right-10 z-50 animate-in slide-in-from-right-2 duration-300">
+              <div className="bg-white/95 backdrop-blur-md border border-white/20 shadow-2xl rounded-2xl p-6 max-w-sm">
+                <div className="flex items-start justify-between mb-4">
+                  <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                    <Info className="w-5 h-5 text-blue-500" />
+                    Controls
+                  </h3>
+                  <button
+                    onClick={toggleInfo}
+                    className="p-1 rounded-full hover:bg-gray-100 transition-colors duration-200"
+                    aria-label="Close info panel"
+                  >
+                    <X className="w-4 h-4 text-gray-500" />
+                  </button>
+                </div>
+
+                <div className="space-y-3 text-gray-600">
+                  <div className="flex items-center gap-3">
+                    <div className="flex gap-1">
+                      {["W", "A", "S", "D"].map((key) => (
+                        <kbd
+                          key={key}
+                          className="px-2 py-1 text-xs font-mono bg-gray-100 border border-gray-300 rounded shadow-sm"
+                        >
+                          {key}
+                        </kbd>
+                      ))}
+                    </div>
+                    <span className="text-sm">Move character</span>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <kbd className="px-2 py-1 text-xs font-mono bg-gray-100 border border-gray-300 rounded shadow-sm">
+                      i
+                    </kbd>
+                    <span className="text-sm">Toggle this panel</span>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
 
           {/* Copyright */}
-          <div
-            style={{
-              position: "absolute",
-              bottom: "20px",
-              left: "30px",
-              fontSize: "14px",
-              fontFamily: "Arial, sans-serif",
-              padding: "8px 12px",
-              color: "black",
-              borderRadius: "6px",
-              zIndex: 1000,
-              pointerEvents: "none",
-            }}
-          >
-            © ING Skill Academy — SMARC
+          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
+            <div className="bg-black/40 backdrop-blur-sm text-white px-4 py-2 rounded-full text-lg font-medium border border-white/10">
+              © ING Skill Academy — SMARC
+            </div>
           </div>
 
           {/* Play Button */}
-          <button
-            onClick={moveCamera}
-            aria-label="Start experience and move camera"
-            style={{
-              position: "absolute",
-              bottom: "50px",
-              right: "50px",
-              backgroundColor: "#28a745",
-              color: "#fff",
-              fontSize: "24px",
-              fontFamily: "Arial, sans-serif",
-              padding: "10px 20px",
-              border: "none",
-              borderRadius: "10px",
-              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-              cursor: "pointer",
-              zIndex: 1000,
-            }}
-          >
-            ▶ Play
-          </button>
+          <div className="absolute bottom-12 right-12 z-50">
+            <button
+              onClick={moveCamera}
+              aria-label="Start experience and move camera"
+              className="
+                group relative px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 
+                hover:from-green-600 hover:to-emerald-700 text-white font-semibold 
+                rounded-2xl shadow-xl shadow-green-500/25 hover:shadow-green-500/40
+                transition-all duration-300 hover:scale-105 active:scale-95
+                border border-green-400/20
+              "
+            >
+              <div className="flex items-center gap-3">
+                <Play className="w-6 h-6 fill-current" />
+                <span className="text-lg">Play</span>
+              </div>
+
+              {/* Animated glow effect */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-400 to-emerald-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"></div>
+            </button>
+          </div>
         </>
       )}
     </>

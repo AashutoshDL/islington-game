@@ -4,16 +4,15 @@ import { useThree } from "@react-three/fiber";
 
 const LightWithHelper = () => {
   const lightRef = useRef();
-  
 
   const { scene } = useThree();
 
-  useEffect(() => {
-    if (lightRef.current) {
-      const helper = new DirectionalLightHelper(lightRef.current, 5);
-      scene.add(helper);
-    }
-  }, [scene]);
+  // useEffect(() => {
+  //   if (lightRef.current) {
+  //     const helper = new DirectionalLightHelper(lightRef.current, 5);
+  //     scene.add(helper);
+  //   }
+  // }, [scene]);
 
   return (
     <directionalLight
@@ -23,7 +22,6 @@ const LightWithHelper = () => {
       castShadow
       shadow-mapSize-width={2048}
       shadow-mapSize-height={2048}
-      
     />
   );
 };
