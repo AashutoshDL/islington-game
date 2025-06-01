@@ -45,11 +45,11 @@ const IslandScene = () => {
           }
         />
 
-        <OrbitControls
+        {/* <OrbitControls
           enablePan={true}
           maxDistance={2000} // Allow camera to zoom out further
           minDistance={1} // Allow camera to get closer
-        />
+        /> */}
         <FloatingWrapper
           baseY={-106.3}
           position={[-193, -106.3, 638.2]}
