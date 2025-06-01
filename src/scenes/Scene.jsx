@@ -1,4 +1,4 @@
-import { Canvas, useThree } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import React, { useState, useEffect, useRef } from "react";
 import { Text, OrbitControls, Html } from "@react-three/drei";
 import CameraController from "./utils/CameraController";
@@ -12,8 +12,8 @@ import Kumari_road from "./environments/Kumari_road";
 import Large_road from "./environments/Large_road";
 import Cars from "./environments/Cars";
 import Realcharacter from "./environments/Realchar";
-import NewTrees from "./environments/Trees";
-// import BirdFlock from "./environments/BirdFlock";
+import Shrubs from "./environments/Shrubs";
+import BirdFlock from "./environments/BirdFlock";
 
 //college imports
 import Kumari from "./college/Kumari";
@@ -38,211 +38,41 @@ import BaseBrit from "./environments/base";
 import Pavement from "./environments/pavement";
 import Island from "./environments/FloatingIsland";
 import CoffeeStation from "./college/CoffeeStation";
+import UI from "./UI";
+import Forest from "./environments/Forest";
 
-function CameraLookAt({ target = [0, 0, 0] }) {
+
+const OrbitingCamera = () => {
   const { camera } = useThree();
+  const radius = 1300; // Distance from the center of the island
+  const height = 750; // Constant height
+  const center = { x: 250, z: -100 }; // Island's center position (adjust if needed)
 
-  useEffect(() => {
-    camera.lookAt(...target);
-  }, [camera, target]);
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime();
+    const angle = t * -0.05; // Slow orbit speed
+
+    camera.position.x = center.x + radius * Math.cos(angle);
+    camera.position.z = center.z + radius * Math.sin(angle);
+
+    camera.lookAt(center.x, 0, center.z); // Keep looking at the center of the island
+  });
 
   return null;
-}
+};
 
 const Scene = () => {
   const { activeCamera, setActiveCamera } = useCamera();
   const skillRoadRef = useRef();
   const kumariRoadRef = useRef();
   const largeRoadRef = useRef();
-  const [logoError, setLogoError] = useState(false);
-
-  const [isMuted, setIsMuted] = useState(false);
-  const [showInfo, setShowInfo] = useState(false);
-  const toggleInfo = () => setShowInfo(!showInfo);
-
-  const toggleMute = () => {
-    setIsMuted((prev) => !prev);
-    // Optionally control global audio here
-    // e.g., document.querySelectorAll('audio, video').forEach(el => el.muted = !isMuted);
-  };
-
-  const moveCamera = () => {
-    console.log("Camera is moving to island!");
-    setActiveCamera('island');
-  };
 
   // Combine all road refs into an array
   const allRoadRefs = [skillRoadRef, kumariRoadRef, largeRoadRef];
 
   return (
     <>
-      {/* Logo positioned outside Canvas as an overlay */}
-      <div
-        style={{
-          position: "absolute",
-          top: "54px",
-          left: "118px",
-          zIndex: 1000,
-          pointerEvents: "none",
-        }}
-      >
-        <img
-          src="/logo.png"
-          alt="Logo"
-          style={{
-            width: "250px",
-            borderRadius: "8px",
-            display: logoError ? "none" : "block",
-          }}
-          onError={() => {
-            console.error("Logo failed to load from /logo.png");
-            setLogoError(true);
-          }}
-          onLoad={() => console.log("Logo loaded successfully")}
-        />
-        {logoError && (
-          <div
-            style={{
-              background: "rgba(255,255,255,0.9)",
-              padding: "10px",
-              borderRadius: "8px",
-              color: "#333",
-              fontSize: "14px",
-            }}
-          >
-            Logo not found at /logo.png
-          </div>
-        )}
-      </div>
-
-      {/* Title "Cyber Quest" at top center */}
-      <div
-        style={{
-          position: "absolute",
-          top: "50px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          zIndex: 1000,
-          pointerEvents: "none",
-        }}
-      >
-        <h1
-          style={{
-            color: "#ffffff",
-            fontSize: "64px",
-            fontWeight: "bold",
-            fontFamily: "Trebuchet MS",
-            textShadow: "2px 2px 6px rgba(0,0,0,0.7)",
-            margin: 0,
-          }}
-        >
-          CYBERSECURITY GAMIFIED
-        </h1>
-      </div>
-      <button
-        onClick={toggleMute}
-        style={{
-          position: "absolute",
-          top: "40px",
-          right: "40px",
-          backgroundColor: "white",
-          color: "#fff",
-          border: "none",
-          borderRadius: "50%",
-          width: "60px",
-          height: "60px",
-          fontSize: "24px",
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)",
-          cursor: "pointer",
-          zIndex: 1000,
-        }}
-        title={isMuted ? "Unmute" : "Mute"}
-      >
-        {isMuted ? "🔇" : "🔊"}
-      </button>
-      <button
-        onClick={toggleInfo}
-        style={{
-          position: "absolute",
-          top: "120px",
-          right: "40px",
-          backgroundColor: "white",
-          color: "#000",
-          border: "none",
-          borderRadius: "50%",
-          width: "60px",
-          height: "60px",
-          fontSize: "24px",
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)",
-          cursor: "pointer",
-          zIndex: 1000,
-        }}
-      >
-        i
-      </button>
-
-      {/* Info Panel */}
-      {showInfo && (
-        <div
-          style={{
-            position: "absolute",
-            top: "200px",
-            right: "40px",
-            backgroundColor: "rgba(255, 255, 255, 0.95)",
-            padding: "16px",
-            borderRadius: "12px",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
-            maxWidth: "300px",
-            fontSize: "16px",
-            color: "#333",
-            zIndex: 1000,
-          }}
-        >
-          <strong>Controls:</strong>
-          <br />
-          Use <b>W A S D</b> keys to move your character.
-          <br />
-          Press <b>i</b> again to hide this message.
-        </div>
-      )}
-
-      <div
-        style={{
-          position: "absolute",
-          bottom: "20px",
-          left: "30px",
-          color: "#ffffff",
-          fontSize: "14px",
-          fontFamily: "Arial, sans-serif",
-          padding: "8px 12px",
-          color: "black",
-          borderRadius: "6px",
-          zIndex: 1000,
-          pointerEvents: "none",
-        }}
-      >
-        © ING Skill Academy — SMARC
-      </div>
-      <button
-        onClick={moveCamera}
-        style={{
-          position: "absolute",
-          bottom: "50px",
-          right: "50px",
-          backgroundColor: "#28a745", // Green color
-          color: "#fff",
-          fontSize: "24px",
-          fontFamily: "Arial, sans-serif",
-          padding: "10px 20px",
-          border: "none",
-          borderRadius: "10px",
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-          cursor: "pointer",
-          zIndex: 1000,
-        }}
-      >
-        ▶ Play
-      </button>
+      <UI />
       <Canvas
         style={{ width: "100vw", height: "100vh", background: "#72badb" }}
         gl={{
@@ -259,7 +89,7 @@ const Scene = () => {
         shadows
         flat //to make the plane the same color as the canvas
       >
-        <CameraLookAt target={[0, 0, 0]} />
+        <OrbitingCamera />
 
         {/* Multiple Camera Controllers for different views */}
         <CameraController
@@ -268,24 +98,6 @@ const Scene = () => {
           position={[-10, 10, 20]} // Island view position
           onMoveComplete={() =>
             console.log("Camera moved to island view. Free to move now!")
-          }
-        />
-        
-        <CameraController
-          id="overview"
-          activeCamera={activeCamera}
-          position={[-400, 750, -1200]} // Original overview position
-          onMoveComplete={() =>
-            console.log("Camera moved to overview. Free to move now!")
-          }
-        />
-
-        <CameraController
-          id="skill"
-          activeCamera={activeCamera}
-          position={[-150, 50, 50]} // Close view of Skill building
-          onMoveComplete={() =>
-            console.log("Camera moved to skill view. Free to move now!")
           }
         />
 
@@ -299,10 +111,12 @@ const Scene = () => {
         {/* Enhanced fog for better depth perception at long distances */}
         <fog attach="fog" args={["#87CEEB", 300, 7000]} />
         {/* uncomment these for environment */}
-        <NewTrees count={6} />
+        <Shrubs />
         {/* <CustomClouds /> */}
-        {/* <BirdFlock /> */}
+        <BirdFlock />
         {/* <Hills /> */}
+        <Forest />
+
         <Pavement count={1} />
         <Island
           position={[-193, -306.3, 638.2]}
