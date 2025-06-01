@@ -9,100 +9,56 @@ export default function Alumni(props) {
   const { nodes, materials } = useGLTF('/models/college_models/Alumni.glb')
   return (
     <group {...props} dispose={null}>
-      <group
-        position={[-1.62, 4.746, -0.06]}
-        rotation={[Math.PI / 2, 0, 0]}
-        scale={[3.996, 8.999, 6.961]}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh.geometry}
-          material={materials['Material.001']}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh_1.geometry}
-          material={materials['Material.007']}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh_2.geometry}
-          material={materials['Material.010']}
-        />
-      </group>
-      <group
-        position={[1.309, 4.746, -0.112]}
-        rotation={[Math.PI / 2, 0, 0]}
-        scale={[2.07, 9.16, 8.127]}>
+      <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Mesh001.geometry}
-          material={materials['Material.001']}
+          material={materials.lambert11}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Mesh001_1.geometry}
-          material={materials['Material.007']}
+          material={materials.lambert12}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_2.geometry}
+          material={materials['Material.004']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_3.geometry}
+          material={materials.lambert10}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_4.geometry}
+          material={materials.alumni_support}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_5.geometry}
+          material={materials.alumni_base}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_6.geometry}
+          material={materials.wall}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_7.geometry}
+          material={materials.lambert14}
         />
       </group>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.pagoda.geometry}
-        material={materials['Material.009']}
-        position={[1.348, 8.913, -0.112]}
-        rotation={[Math.PI / 2, 0, 0]}
-        scale={[1.978, 9.255, 0.313]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.windows_1.geometry}
-        material={materials['Material.002']}
-        position={[-0.188, 1.003, -0.06]}
-        rotation={[Math.PI / 2, 0, 0]}
-        scale={1.191}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.windows_2.geometry}
-        material={materials['Material.003']}
-        position={[0.018, 2.012, 0.53]}
-        rotation={[Math.PI / 2, 0, 0]}
-        scale={1.037}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.side_wondows_1.geometry}
-        material={materials['Material.006']}
-        position={[-0.477, 1.003, -0.06]}
-        rotation={[Math.PI / 2, 0, 0]}
-        scale={1.191}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.big_windows.geometry}
-        material={materials['Material.005']}
-        position={[-0.188, 1.003, -0.06]}
-        rotation={[Math.PI / 2, 0, 0]}
-        scale={1.191}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Text.geometry}
-        material={materials['Material.004']}
-        position={[-0.188, 1.003, -0.06]}
-        rotation={[Math.PI / 2, 0, 0]}
-        scale={1.191}
-      />
     </group>
   )
 }

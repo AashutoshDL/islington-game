@@ -1,15 +1,45 @@
-import React, { useRef } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
+import React, {
+  useRef,
+  useImperativeHandle,
+  useEffect,
+  forwardRef,
+} from "react";
+import { useGLTF, useAnimations } from "@react-three/drei";
 
-export default function Character(props) {
-  const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/models/environment_models/Business Man.glb')
-  const { actions } = useAnimations(animations, group)
+const Character = forwardRef((props, ref) => {
+  const group = useRef();
+  const { nodes, materials, animations } = useGLTF(
+    "/models/environment_models/Business Man.glb"
+  );
+  const { actions } = useAnimations(animations, group);
+
+  const currentAction = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    object: group.current,
+    playAnimation: (name) => {
+      if (currentAction.current !== actions[name]) {
+        currentAction.current?.fadeOut(0.2);
+        currentAction.current = actions[name];
+        currentAction.current?.reset().fadeIn(0.2).play();
+      }
+    },
+  }));
+
+  useEffect(() => {
+    actions["CharacterArmature|Idle"]?.play();
+    currentAction.current = actions["CharacterArmature|Idle"];
+  }, [actions]);
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Root_Scene">
         <group name="RootNode">
-          <group name="CharacterArmature" rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+          <group
+            name="CharacterArmature"
+            rotation={[-Math.PI / 2, 0, 0]}
+            scale={100}
+          >
             <primitive object={nodes.Root} />
           </group>
           <skinnedMesh
@@ -32,7 +62,8 @@ export default function Character(props) {
             name="Suit_Body"
             position={[0, 0.007, 0]}
             rotation={[-Math.PI / 2, 0, 0]}
-            scale={100}>
+            scale={100}
+          >
             <skinnedMesh
               name="Suit_Body_1"
               geometry={nodes.Suit_Body_1.geometry}
@@ -87,7 +118,9 @@ export default function Character(props) {
         </group>
       </group>
     </group>
-  )
-}
+  );
+});
 
-useGLTF.preload('/models/environment_models/Business Man.glb')
+useGLTF.preload("/models/environment_models/Business Man.glb");
+
+export default Character;

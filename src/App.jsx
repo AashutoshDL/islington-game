@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import {Routes,Route} from 'react-router-dom'
-import Scene from './scenes/Scene'
+import IslandScene from './scenes/IslandScene'
 
 function App() {
 
   return (
     <Routes>
-      <Route path='/'element={<Scene />} />
+      <Route path='/'element={<IslandScene />} />
     </Routes>
   )
 }

@@ -6,57 +6,121 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export default function StartingPoint(props) {
-  const { nodes, materials } = useGLTF('/models/college_models/Starting Point.glb')
+  const { nodes, materials } = useGLTF('/models/college_models/StartingPoint.glb')
   return (
     <group {...props} dispose={null}>
-      <group position={[5.801, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={3.273}>
-        {/* <mesh
+      <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+        <mesh
           castShadow
           receiveShadow
           geometry={nodes.Mesh.geometry}
-          material={materials['Impact_Block:island_rock']}
+          material={materials.lambert1}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Mesh_1.geometry}
-          material={materials['Impact_Block:blcok_white_island']}
-        /> */}
-        {/* <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh_2.geometry}
-          material={materials['Canteen_Area:Impact_Block:blcok_white_island']}
-        /> */}
-      </group>
-      <group position={[-5.836, 0, 0]} rotation={[Math.PI / 2, 0, 0]} scale={3.273}>
+          material={materials.MM_Table}
+        />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh001.geometry}
+          geometry={nodes.Mesh_2.geometry}
+          material={materials.lambert61}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_3.geometry}
+          material={materials.CCCamera}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_4.geometry}
+          material={materials.lambert71}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_5.geometry}
+          material={materials.lambert63}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_6.geometry}
+          material={materials.green_screen}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_7.geometry}
           material={materials.Black1}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh001_1.geometry}
+          geometry={nodes.Mesh_8.geometry}
           material={materials.start_pont_window1}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh001_2.geometry}
+          geometry={nodes.Mesh_9.geometry}
           material={materials.Starting_point1}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh001_3.geometry}
+          geometry={nodes.Mesh_10.geometry}
           material={materials.start_block_brown1}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_11.geometry}
+          material={materials.lambert55}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_12.geometry}
+          material={materials.lambert48}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_13.geometry}
+          material={materials.lambert49}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_14.geometry}
+          material={materials.lambert53}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_15.geometry}
+          material={materials.lambert54}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_16.geometry}
+          material={materials['Britain_Block_wth_small_island:white_building_main']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_17.geometry}
+          material={materials.lambert56}
         />
       </group>
     </group>
   )
 }
 
-useGLTF.preload('/models/college_models/Starting Point.glb')
+useGLTF.preload('/models/college_models/StartingPoint.glb')

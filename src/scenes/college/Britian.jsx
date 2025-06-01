@@ -2,137 +2,157 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export default function Britian(props) {
-  const { nodes, materials } = useGLTF('/models/college_models/Britain.glb')
+  const { nodes, materials } = useGLTF('/models/college_models/Britain2.glb')
   return (
     <group {...props} dispose={null}>
-      <group position={[-4.045, -4.072, -6.411]} rotation={[Math.PI / 2, 0, -0.072]} scale={1.56}>
+      <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.polySurface141.geometry}
-          material={materials['stripe.001']}
+          geometry={nodes.Mesh.geometry}
+          material={materials.lambert29}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.polySurface142.geometry}
-          material={materials['aiStandardSurface1.001']}
+          geometry={nodes.Mesh_1.geometry}
+          material={materials.Chair1}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.polySurface41.geometry}
-          material={materials['windows_rod.001']}
-          position={[-3.056, -3.377, 6.488]}
-          rotation={[0, 0, -Math.PI / 2]}
-          scale={[1.436, 0.738, 2.078]}
+          geometry={nodes.Mesh_2.geometry}
+          material={materials.blue_chair}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.polySurface51.geometry}
-          material={materials['stripe.001']}
-        />
-      </group>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.polySurface181.geometry}
-        material={materials['Chair1.002']}
-        position={[-3.86, -4.068, 6.553]}
-        rotation={[Math.PI / 2, 0, 0]}
-        scale={1.112}
-      />
-      <group position={[2.918, -3.815, 0.262]} rotation={[Math.PI / 2, 0, 0]} scale={1.866}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh012.geometry}
-          material={materials['roof.001']}
+          geometry={nodes.Mesh_3.geometry}
+          material={materials.FLOOR_2}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh012_1.geometry}
-          material={materials['Chair1.002']}
+          geometry={nodes.Mesh_4.geometry}
+          material={materials.lambert22}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh012_2.geometry}
-          material={materials['lambert15.002']}
+          geometry={nodes.Mesh_5.geometry}
+          material={materials.black_tree_part}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh012_3.geometry}
-          material={materials['lambert14.002']}
+          geometry={nodes.Mesh_6.geometry}
+          material={materials.Brit_sitting}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh012_4.geometry}
-          material={materials['lambert16.002']}
+          geometry={nodes.Mesh_7.geometry}
+          material={materials.floor}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh012_5.geometry}
-          material={materials['lambert1.002']}
+          geometry={nodes.Mesh_8.geometry}
+          material={materials.lambert28}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh012_6.geometry}
-          material={materials['windows_wood_plus.001']}
+          geometry={nodes.Mesh_9.geometry}
+          material={materials.lambert1}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh012_7.geometry}
-          material={materials['main_body.001']}
+          geometry={nodes.Mesh_10.geometry}
+          material={materials.windows_rod}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh012_8.geometry}
-          material={materials['stripe.001']}
+          geometry={nodes.Mesh_11.geometry}
+          material={materials.stripe}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh012_9.geometry}
-          material={materials['windows_rod.001']}
+          geometry={nodes.Mesh_12.geometry}
+          material={materials.aiStandardSurface7}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh012_10.geometry}
-          material={materials['windows_handle.001']}
+          geometry={nodes.Mesh_13.geometry}
+          material={materials.marveel_brit}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh012_11.geometry}
-          material={materials['windows_glass_plus.001']}
-        />
-      </group>
-      <group position={[2.918, -4.176, 0.262]} rotation={[Math.PI / 2, 0, 0]} scale={1.866}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh013.geometry}
-          material={materials['Base.001']}
+          geometry={nodes.Mesh_14.geometry}
+          material={materials.marble}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh013_1.geometry}
-          material={materials['lambert19.001']}
+          geometry={nodes.Mesh_15.geometry}
+          material={materials.roof}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_16.geometry}
+          material={materials.lambert15}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_17.geometry}
+          material={materials.lambert14}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_18.geometry}
+          material={materials.lambert16}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_19.geometry}
+          material={materials.windows_wood_plus}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_20.geometry}
+          material={materials.main_body}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_21.geometry}
+          material={materials.windows_handle}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_22.geometry}
+          material={materials.windows_glass_plus}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_23.geometry}
+          material={materials.aiStandardSurface1}
         />
       </group>
     </group>
   )
 }
 
-useGLTF.preload('/models/college_models/Britain.glb')
+useGLTF.preload('/models/college_models/Britain2.glb')

@@ -9,34 +9,54 @@ export default function BaskeballCourt(props) {
   const { nodes, materials } = useGLTF('/models/college_models/Basketball court.glb')
   return (
     <group {...props} dispose={null}>
-      <group rotation={[Math.PI / 2, 0, 0]} scale={0.06}>
-        {/* <mesh
+      <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+        <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh004.geometry}
-          material={materials['Impact_Block:island_rock.001']}
+          geometry={nodes.Mesh.geometry}
+          material={materials.Baskteball_rng}
         />
         <mesh
           castShadow
           receiveShadow
-          geometry={nodes.Mesh004_1.geometry}
-          material={materials['Canteen_Area:Impact_Block:blcok_white_island.001']}
-        /> */}
+          geometry={nodes.Mesh_1.geometry}
+          material={materials.basketball_long}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_2.geometry}
+          material={materials.board}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_3.geometry}
+          material={materials.basketball_pole_down}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh_4.geometry}
+          material={materials.Basketball_court}
+        />
       </group>
-      <group rotation={[Math.PI / 2, 0, 0]} scale={0.06}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh005.geometry}
-          material={materials['Canteen_Area:blue_spot.003']}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh005_1.geometry}
-          material={materials['lambert67.003']}
-        />
-      </group>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.pPlane1.geometry}
+        material={materials.ring}
+        position={[10.588, 3.525, 3.125]}
+        scale={[0.017, 0.005, 0.017]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.pPlane2.geometry}
+        material={materials.ring}
+        position={[-11.708, 3.525, 3.128]}
+        scale={[0.017, 0.005, 0.017]}
+      />
     </group>
   )
 }

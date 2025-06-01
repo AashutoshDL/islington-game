@@ -6,93 +6,115 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export default function UK(props) {
-  const { nodes, materials } = useGLTF('/models/college_models/Uk.glb')
+  const { nodes, materials } = useGLTF('/models/college_models/londonblock.glb')
   return (
     <group {...props} dispose={null}>
-      <group rotation={[Math.PI / 2, 0, 0]} scale={0.232}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh.geometry}
-          material={materials.lambert1}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh_1.geometry}
-          material={materials.windoes_cyan}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh_2.geometry}
-          material={materials.uk_block_main_color}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh_3.geometry}
-          material={materials.sideways_uk}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh_4.geometry}
-          material={materials.lambert32}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh_5.geometry}
-          material={materials.lambert31}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh_6.geometry}
-          material={materials.lambert42}
-        />
-      </group>
-      <group rotation={[Math.PI / 2, 0, 0]} scale={0.232}>
+      <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Mesh001.geometry}
-          material={materials.windoes_cyan}
+          material={materials.Uk_Block_main}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Mesh001_1.geometry}
-          material={materials.Doors}
+          material={materials.wood_windows}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Mesh001_2.geometry}
-          material={materials.Black}
+          material={materials.windows}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Mesh001_3.geometry}
-          material={materials.start_pont_window}
+          material={materials['lambert1.001']}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Mesh001_4.geometry}
-          material={materials.lambert43}
+          material={materials.Uk_door}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Mesh001_5.geometry}
-          material={materials.lambert44}
+          material={materials.blue_windows_wood}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_6.geometry}
+          material={materials.lambert2}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_7.geometry}
+          material={materials.lambert7}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_8.geometry}
+          material={materials['window_glass.001']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_9.geometry}
+          material={materials.lower_windows}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_10.geometry}
+          material={materials['banner.001']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_11.geometry}
+          material={materials.London_block_main}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_12.geometry}
+          material={materials.lambert12}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_13.geometry}
+          material={materials.London_blue}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_14.geometry}
+          material={materials.Door}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_15.geometry}
+          material={materials.STAIS}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_16.geometry}
+          material={materials['WALL TOP']}
         />
       </group>
     </group>
   )
 }
 
-useGLTF.preload('/models/college_models/Uk.glb')
+useGLTF.preload('/models/college_models/londonblock.glb')
