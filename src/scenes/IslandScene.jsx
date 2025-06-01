@@ -10,7 +10,6 @@ import FloatingRock from "./environments/FloatingRock";
 import FloatingWrapper from "./utils/FloatingWrapper";
 import Scene from "./Scene";
 
-
 const IslandScene = () => {
   const { activeCamera, setActiveCamera } = useCamera();
   return (
@@ -39,7 +38,8 @@ const IslandScene = () => {
         <CameraController
           id="island"
           activeCamera={activeCamera}
-          position={[150, 250, -150]} // Island view position
+          position={[150, 180, -150]}
+          lookAt={[0, 100, 0]}
           onMoveComplete={() =>
             console.log("Camera moved to island view. Free to move now!")
           }
