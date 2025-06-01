@@ -7,7 +7,7 @@ const FloatingWrapper = ({
   rotation = [0, 0, 0],
   scale = [1, 1, 1],
   floatSpeed = 2.5,   // 👈 slow float speed
-  amplitude = 0       // 👈 smooth, visible height
+  amplitude = 10       // 👈 smooth, visible height
 }) => {
   const groupRef = useRef();
 
