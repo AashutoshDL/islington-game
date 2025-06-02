@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import React from "react";
+import React, { useEffect } from "react";
 import Island from "./environments/FloatingIsland";
 import { useCamera } from "./context/CameraContext";
 import UI from "./UI";
@@ -9,9 +9,20 @@ import LightWithHelper from "./utils/LightwithHelper";
 import FloatingRock from "./environments/FloatingRock";
 import FloatingWrapper from "./utils/FloatingWrapper";
 import Scene from "./Scene";
+import TriggerGame from "./utils/TriggerGame";
+import { useProgress } from "@react-three/drei";
 
-const IslandScene = () => {
+
+const IslandScene = ({onLoadComplete }) => {
   const { activeCamera, setActiveCamera } = useCamera();
+    const { active } = useProgress();
+
+  useEffect(() => {
+    if (!active) {
+      onLoadComplete();
+    }
+  }, [active, onLoadComplete]);
+
   return (
     <>
       <UI />
@@ -45,11 +56,11 @@ const IslandScene = () => {
           }
         />
 
-        {/* <OrbitControls
+        <OrbitControls
           enablePan={true}
           maxDistance={2000} // Allow camera to zoom out further
           minDistance={1} // Allow camera to get closer
-        /> */}
+        />
         <FloatingWrapper
           baseY={-106.3}
           position={[-193, -106.3, 638.2]}
@@ -86,6 +97,7 @@ const IslandScene = () => {
           <Scene />
         </FloatingWrapper>
       </Canvas>
+      <TriggerGame />
     </>
   );
 };

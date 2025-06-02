@@ -2,11 +2,9 @@ import React, { useRef } from "react";
 import { useCamera } from "./context/CameraContext";
 
 //environment imports
-import Skill_road from "./environments/Skill_road";
 import Kumari_road from "./environments/Kumari_road";
 import Large_road from "./environments/Large_road";
 import Cars from "./environments/Cars";
-import Shrubs from "./environments/Shrubs";
 import BirdFlock from "./environments/BirdFlock";
 import Kumari from "./college/Kumari";
 import Skill from "./college/Skill";
@@ -25,6 +23,8 @@ import Pavement from "./environments/pavement";
 import CoffeeStation from "./college/CoffeeStation";
 import Resource from "./college/Resource";
 
+import Skill_road from "./environments/Skill_road";
+import Shrubs from "./environments/Shrubs";
 import Island from "./environments/FloatingIsland";
 import Tree from "./environments/Tree";
 import CustomClouds from "./environments/Clouds";
@@ -36,6 +36,7 @@ import Character from "./environments/Character";
 import UK from "./college/UK";
 import UI from "./UI";
 import Forest from "./environments/Forest";
+import HimalParking from "./college/HimalParking";
 
 const Scene = () => {
   const { activeCamera, setActiveCamera } = useCamera();
@@ -108,6 +109,11 @@ const Scene = () => {
         position={[10, -37, -58]}
         rotation={[0, 1.26, 0]}
         scale={[25, 2, 20]}
+      />
+      <HimalParking
+        position={[55, -37, -45]}
+        rotation={[0, 1.26, 0]}
+        scale={[3,3,3]}
       />
       {/* <Chautari
           position={[-15, -50.7, 104]}

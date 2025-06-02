@@ -7,12 +7,15 @@ export const useCamera = () => useContext(CameraContext);
 export const CameraProvider = ({ children }) => {
   const [activeCamera, setActiveCamera] = useState("default");
   const [floatingOffset, setFloatingOffset] = useState(0);
-  const [floatingAmplitude, setFloatingAmplitude] = useState(15); // default amplitude
+  const [floatingAmplitude, setFloatingAmplitude] = useState(0);
+
+  // 🧍 New state for storing character position
+  const [characterPosition, setCharacterPosition] = useState({ x: 0, y: 0, z: 0 });
 
   const switchCamera = (camName) => {
     setActiveCamera(camName);
-    setFloatingOffset(null);      // Reset offset on camera switch
-    setFloatingAmplitude(null);   // Also reset amplitude to null to stop floating
+    setFloatingOffset(null);
+    setFloatingAmplitude(null);
   };
 
   return (
@@ -24,6 +27,8 @@ export const CameraProvider = ({ children }) => {
         setFloatingOffset,
         floatingAmplitude,
         setFloatingAmplitude,
+        characterPosition,
+        setCharacterPosition,
       }}
     >
       {children}
