@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import Character from "../environments/Character";
+import { useCamera } from "../context/CameraContext"; // Make sure path is correct
 
 export default function CharacterController() {
   const characterRef = useRef();
@@ -10,6 +11,8 @@ export default function CharacterController() {
 
   const keys = useRef({ w: false, a: false, s: false, d: false });
   const [isMoving, setIsMoving] = useState(false);
+
+  const { setCharacterPosition } = useCamera(); // 🔁 Access setter from context
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -61,6 +64,9 @@ export default function CharacterController() {
         char.playAnimation("CharacterArmature|Idle");
       }
     }
+
+    const { x, y, z } = character.position;
+    setCharacterPosition({ x, y, z });
   });
 
   return (
@@ -70,5 +76,5 @@ export default function CharacterController() {
       rotation={[0, 0, 0]}
       scale={[3, 3, 3]}
     />
-  );    
+  );
 }
