@@ -5,7 +5,7 @@ services:
       dockerfile: docker/production/Dockerfile
     container_name: islington-game
     ports:
-      - "3002:3002"
+      - "3003:3003"
     networks:
       - islington-game-network
 
