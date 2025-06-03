@@ -28,7 +28,7 @@ import Shrubs from "./environments/Shrubs";
 import Island from "./environments/FloatingIsland";
 import Tree from "./environments/Tree";
 import CustomClouds from "./environments/Clouds";
-import Chautari from "./college/Chautari";
+// import Chautari from "./college/Chautari";
 import LightWithHelper from "./utils/LightwithHelper";
 import StartingBase from "./environments/StartingBase";
 import Realcharacter from "./environments/Realchar";
@@ -37,6 +37,7 @@ import UK from "./college/UK";
 import UI from "./UI";
 import Forest from "./environments/Forest";
 import HimalParking from "./college/HimalParking";
+import Chautari from "./college/Chautari";
 
 const Scene = () => {
   const { activeCamera, setActiveCamera } = useCamera();
@@ -113,13 +114,13 @@ const Scene = () => {
       <HimalParking
         position={[55, -37, -45]}
         rotation={[0, 1.26, 0]}
-        scale={[3,3,3]}
+        scale={[3, 3, 3]}
       />
-      {/* <Chautari
-          position={[-15, -50.7, 104]}
-          rotation={[0, -1.85, 0]}
-          scale={[0.7, 0.7, 0.7]}
-        /> */}
+      <Chautari
+        position={[-15, -35.7, 104]}
+        rotation={[0, -1.85, 0]}
+        scale={[1.3, 1.3, 1.3]}
+      />
       <Impact
         position={[85, -35.9, -12]}
         rotation={[0, -1.88, 0]}
