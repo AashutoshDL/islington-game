@@ -5,17 +5,16 @@ import { useCamera } from "./context/CameraContext";
 import UI from "./UI";
 import CameraController from "./utils/CameraController";
 import { OrbitControls } from "@react-three/drei";
-import LightWithHelper from "./utils/LightwithHelper";
+import LightWithHelper from "./utils/LightWithHelper";
 import FloatingRock from "./environments/FloatingRock";
 import FloatingWrapper from "./utils/FloatingWrapper";
 import Scene from "./Scene";
 import TriggerGame from "./utils/TriggerGame";
 import { useProgress } from "@react-three/drei";
 
-
-const IslandScene = ({onLoadComplete }) => {
+const IslandScene = ({ onLoadComplete }) => {
   const { activeCamera, setActiveCamera } = useCamera();
-    const { active } = useProgress();
+  const { active } = useProgress();
 
   useEffect(() => {
     if (!active) {
@@ -56,11 +55,7 @@ const IslandScene = ({onLoadComplete }) => {
           }
         />
 
-        <OrbitControls
-          enablePan={true}
-          maxDistance={2000} // Allow camera to zoom out further
-          minDistance={1} // Allow camera to get closer
-        />
+        <OrbitControls enablePan={true} maxDistance={2000} minDistance={1} />
         <FloatingWrapper
           baseY={-106.3}
           position={[-193, -106.3, 638.2]}

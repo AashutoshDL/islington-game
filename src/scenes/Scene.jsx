@@ -23,26 +23,12 @@ import Pavement from "./environments/pavement";
 import CoffeeStation from "./college/CoffeeStation";
 import Resource from "./college/Resource";
 
-import Skill_road from "./environments/Skill_road";
-import Shrubs from "./environments/Shrubs";
-import Island from "./environments/FloatingIsland";
-import Tree from "./environments/Tree";
-import CustomClouds from "./environments/Clouds";
-// import Chautari from "./college/Chautari";
-import LightWithHelper from "./utils/LightwithHelper";
-import StartingBase from "./environments/StartingBase";
-import Realcharacter from "./environments/Realchar";
-import Character from "./environments/Character";
-import UK from "./college/UK";
-import UI from "./UI";
-import Forest from "./environments/Forest";
 import HimalParking from "./college/HimalParking";
 import Chautari from "./college/Chautari";
 
 const Scene = () => {
   const { activeCamera, setActiveCamera } = useCamera();
 
-  const skillRoadRef = useRef();
   const kumariRoadRef = useRef();
   const largeRoadRef = useRef();
 

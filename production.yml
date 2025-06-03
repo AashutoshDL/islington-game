@@ -1,0 +1,14 @@
+services:
+  islington-game:
+    build:
+      context: .
+      dockerfile: docker/production/Dockerfile
+    container_name: islington-game
+    ports:
+      - "3002:3002"
+    networks:
+      - islington-game-network
+
+networks:
+  islington-game-network:
+    driver: bridge
