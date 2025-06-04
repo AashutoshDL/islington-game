@@ -7,7 +7,7 @@ export const useCamera = () => useContext(CameraContext);
 export const CameraProvider = ({ children }) => {
   const [activeCamera, setActiveCamera] = useState("default");
   const [floatingOffset, setFloatingOffset] = useState(0);
-  const [floatingAmplitude, setFloatingAmplitude] = useState(10);
+  const [floatingAmplitude, setFloatingAmplitude] = useState(5);
 
   // 🧍 New state for storing character position
   const [characterPosition, setCharacterPosition] = useState({
