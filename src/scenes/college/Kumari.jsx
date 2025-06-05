@@ -1,10 +1,34 @@
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { useRef, useState, useEffect } from "react";
+import { useGLTF, Html } from "@react-three/drei";
+import * as THREE from "three";
+import { useCamera } from "../context/CameraContext";
+import HoverTooltip from "../tooltip/hoverToolTip"
 
 export default function Kumari(props) {
   const { nodes, materials } = useGLTF('/models/college_models/Kuamri_car.glb')
+  const groupRef = useRef();
+  const [hovered, setHovered] = useState(false);
+  const { activeCamera } = useCamera();
+
+  const handlePointerOver = (e) => {
+    if (activeCamera == "default") return;
+    e.stopPropagation();
+    setHovered(true);
+  };
+
+  const handlePointerOut = (e) => {
+    if (activeCamera == "default") return;
+    e.stopPropagation();
+    setHovered(false);
+  };
   return (
-    <group {...props} dispose={null}>
+    <group
+      {...props}
+      dispose={null}
+      ref={groupRef}
+      onPointerOver={handlePointerOver}
+      onPointerOut={handlePointerOut}
+    >
       <group position={[22.405, -0.283, 11.81]} rotation={[0, -1.334, 0]}>
         <mesh
           castShadow
@@ -457,6 +481,8 @@ export default function Kumari(props) {
           material={materials.floor}
         />
       </group>
+      {hovered && <HoverTooltip text="Kumari Block" position={[20, 25, 0]} />}
+      
     </group>
   )
 }

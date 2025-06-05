@@ -5,20 +5,14 @@ import { useCamera } from "./context/CameraContext";
 import UI from "./UI";
 import CameraController from "./utils/CameraController";
 import { OrbitControls, Cloud } from "@react-three/drei";
-import LightWithHelper from "./utils/LightWithHelper";
+// import LightWithHelper from "./utils/LightWithHelper";
 import FloatingRock from "./environments/FloatingRock";
 import FloatingWrapper from "./utils/FloatingWrapper";
 import Scene from "./Scene";
 import TriggerGame from "./utils/TriggerGame";
 import { useProgress } from "@react-three/drei";
-import {
-  EffectComposer,
-  Bloom,
-  Vignette,
-  DepthOfField,
-  ChromaticAberration,
-} from "@react-three/postprocessing";
-import { BlendFunction } from "postprocessing";
+import CameraLogger from "./utils/CameraLogger";
+
 
 const IslandScene = ({ onLoadComplete }) => {
   const { activeCamera, setActiveCamera } = useCamera();
@@ -47,11 +41,9 @@ const IslandScene = ({ onLoadComplete }) => {
         shadows
         flat
       >
-        <ambientLight intensity={0.5} />
-
-        <LightWithHelper />
-
-        {/* <fog attach="fog" args={["#87CEEB", 1000, 6500]} /> */}
+        {/* <LightWithHelper /> */}
+        <CameraLogger />
+        <fog attach="fog" args={["#ffffff", 1, 5500]} />
 
         <CameraController
           id="island"
@@ -62,7 +54,16 @@ const IslandScene = ({ onLoadComplete }) => {
             console.log("Camera moved to island view. Free to move now!")
           }
         />
-
+        <CameraController
+          id="default"
+          activeCamera={activeCamera}
+          position={[-400, 750, -1200]}
+          lookAt={[0, 0, 0]}
+          onMoveComplete={() =>
+            console.log("Camera moved to default view.")
+          }
+        />        
+          
         <OrbitControls enablePan={true} maxDistance={2000} minDistance={1} />
         <FloatingWrapper
           baseY={-106.3}
