@@ -7,18 +7,18 @@ const LightWithHelper = () => {
 
   const { scene } = useThree();
 
-  // useEffect(() => {
-  //   if (lightRef.current) {
-  //     const helper = new DirectionalLightHelper(lightRef.current, 5);
-  //     scene.add(helper);
-  //   }
-  // }, [scene]);
+  useEffect(() => {
+    if (lightRef.current) {
+      const helper = new DirectionalLightHelper(lightRef.current, 5);
+      scene.add(helper);
+    }
+  }, [scene]);
 
   return (
     <directionalLight
       ref={lightRef}
-      position={[100, 200, -300]}
-      intensity={5}
+      position={[100, 500, -300]}
+      intensity={4}
       castShadow
       shadow-mapSize-width={2048}
       shadow-mapSize-height={2048}

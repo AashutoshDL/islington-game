@@ -4,13 +4,21 @@ import Island from "./environments/FloatingIsland";
 import { useCamera } from "./context/CameraContext";
 import UI from "./UI";
 import CameraController from "./utils/CameraController";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Cloud } from "@react-three/drei";
 import LightWithHelper from "./utils/LightWithHelper";
 import FloatingRock from "./environments/FloatingRock";
 import FloatingWrapper from "./utils/FloatingWrapper";
 import Scene from "./Scene";
 import TriggerGame from "./utils/TriggerGame";
 import { useProgress } from "@react-three/drei";
+import {
+  EffectComposer,
+  Bloom,
+  Vignette,
+  DepthOfField,
+  ChromaticAberration,
+} from "@react-three/postprocessing";
+import { BlendFunction } from "postprocessing";
 
 const IslandScene = ({ onLoadComplete }) => {
   const { activeCamera, setActiveCamera } = useCamera();
@@ -28,9 +36,7 @@ const IslandScene = ({ onLoadComplete }) => {
       <Canvas
         style={{ width: "100vw", height: "100vh", background: "#72badb" }}
         gl={{
-          preserveDrawingBuffer: true,
-          antialias: true,
-          powerPreference: "high-performance",
+          alpha: true,
         }}
         camera={{
           position: [-400, 750, -1200],
@@ -41,9 +47,11 @@ const IslandScene = ({ onLoadComplete }) => {
         shadows
         flat
       >
-        <ambientLight intensity={1.5} />
+        <ambientLight intensity={0.5} />
+
         <LightWithHelper />
-        <fog attach="fog" args={["#87CEEB", 300, 7000]} />
+
+        {/* <fog attach="fog" args={["#87CEEB", 1000, 6500]} /> */}
 
         <CameraController
           id="island"
@@ -63,6 +71,23 @@ const IslandScene = ({ onLoadComplete }) => {
           scale={[238, 208, 228]}
         >
           <Island setActiveCamera={setActiveCamera} />
+        </FloatingWrapper>
+
+        <FloatingWrapper
+          baseY={-106.3}
+          position={[-793, -16.3, 1400]}
+          rotation={[0, -0.318, 0]}
+          scale={[100, 100, 100]}
+        >
+          <Island />
+        </FloatingWrapper>
+        <FloatingWrapper
+          baseY={-106.3}
+          position={[2000, -916.3, 1500]}
+          rotation={[0, -0.318, 0]}
+          scale={[100, 100, 100]}
+        >
+          <Island />
         </FloatingWrapper>
 
         <FloatingWrapper
@@ -91,6 +116,40 @@ const IslandScene = ({ onLoadComplete }) => {
         >
           <Scene />
         </FloatingWrapper>
+
+        {/* thick clouds */}
+        <Cloud
+          position={[1500, -3505, 0]}
+          scale={[1000, 900, 1000]}
+          opacity={1}
+          speed={0.0002}
+          segments={1}
+          depthWrite={false}
+        />
+        <Cloud
+          position={[1500, -3505, 1110]}
+          scale={[1000, 900, 1000]}
+          opacity={1}
+          speed={0.0002}
+          segments={1}
+          depthWrite={false}
+        />
+        <Cloud
+          position={[-2000, -3505, 0]}
+          scale={[1000, 900, 1000]}
+          opacity={1}
+          speed={0.0002}
+          segments={1}
+          depthWrite={false}
+        />
+        <Cloud
+          position={[-2000, -3505, 1510]}
+          scale={[1000, 900, 1000]}
+          opacity={1}
+          speed={0.0002}
+          segments={1}
+          depthWrite={false}
+        />
       </Canvas>
       <TriggerGame />
     </>

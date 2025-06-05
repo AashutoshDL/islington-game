@@ -7,9 +7,6 @@ export default function Bird(props) {
   const { actions,names } = useAnimations(animations, group)
 
   useEffect(() => {
-    // Log available animation names
-    console.log('Available animations:', names)
-
     // Play the first animation if available
     if (names[0] && actions[names[0]]) {
       actions[names[0]].reset().play()
