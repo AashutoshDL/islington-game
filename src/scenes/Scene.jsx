@@ -25,6 +25,8 @@ import Resource from "./college/Resource";
 
 import HimalParking from "./college/HimalParking";
 import Chautari from "./college/Chautari";
+import LightWithHelper from "./utils/LightWithHelper";
+
 
 const Scene = () => {
   const { activeCamera, setActiveCamera } = useCamera();
@@ -47,6 +49,7 @@ const Scene = () => {
 
       <Pavement count={1} />
       <Cars />
+      <LightWithHelper />
       {/* <Skill_road
         position={[45, -34.3, 22.2]}
         rotation={[0, -0.318, 0]}
@@ -148,16 +151,21 @@ const Scene = () => {
         scale={[2, 2, 2]}
       />
       <CharacterController roadRef={largeRoadRef} />
-      {/* Extended ground plane for better long-distance rendering */}
-      <mesh
-        rotation={[-Math.PI / 2, 0, 2.8]}
-        position={[-70, -50, 60]}
+
+      {/* <mesh
         receiveShadow
-        castShadow
+        rotation={[-Math.PI / 2, 0, 2.8]}
+        position={[-70, 18, -90]}
       >
-        {/* <planeGeometry args={[5000, 5000]} /> 
-          <meshBasicMaterial color="#93aa53" /> */}
+        <planeGeometry args={[1000, 1000]} />
+        <meshStandardMaterial color="lightgrey" />
       </mesh>
+
+      <mesh castShadow position={[0, 0, 0]}>
+        <boxGeometry args={[5, 5, 5]} />
+        <meshStandardMaterial color="red" />
+      </mesh> */}
+
     </>
   );
 };
