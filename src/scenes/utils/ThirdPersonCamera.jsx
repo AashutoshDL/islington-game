@@ -9,17 +9,21 @@ const ThirdPersonCamera = () => {
   const camRef = useRef();
 
   const speed = 0.3;
-  const turnSpeed = 0.5;
-
+  const turnSpeed = 0.1; // smoother character rotation
   const keys = useRef({ w: false, a: false, s: false, d: false });
   const [isMoving, setIsMoving] = useState(false);
 
-  // Camera offsets (same as your original)
+  // Camera offsets
   const cameraOffset = new THREE.Vector3(4, 7, -10);
   const lookAtOffset = new THREE.Vector3(-80, 150, 300);
-  const lerpFactor = 0.05;
 
-  // Handle key press/release events
+  // Smoother interpolation factors
+  const cameraLerpFactor = 0.035; // slower = smoother
+  const lookAtLerpFactor = 0.045;
+
+  const lookAtTargetVec = useRef(new THREE.Vector3());
+
+  // Key event handlers
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (["w", "a", "s", "d"].includes(e.key)) keys.current[e.key] = true;
@@ -41,9 +45,7 @@ const ThirdPersonCamera = () => {
     const camera = camRef.current;
     if (!char || !camera) return;
 
-    const character = char.object; // 3D object from Character component
-
-    // Calculate movement direction
+    const character = char.object;
     const moveDir = new THREE.Vector3();
     if (keys.current.w) moveDir.z += 1;
     if (keys.current.s) moveDir.z -= 1;
@@ -52,7 +54,6 @@ const ThirdPersonCamera = () => {
 
     const moving = moveDir.length() > 0;
 
-    // Handle animation state and movement
     if (moving) {
       if (!isMoving) {
         setIsMoving(true);
@@ -62,7 +63,6 @@ const ThirdPersonCamera = () => {
       moveDir.normalize().multiplyScalar(speed);
       character.position.add(moveDir);
 
-      // Smoothly rotate character to movement direction
       const targetAngle = Math.atan2(moveDir.x, moveDir.z);
       const currentAngle = character.rotation.y;
       character.rotation.y = THREE.MathUtils.lerp(currentAngle, targetAngle, turnSpeed);
@@ -73,20 +73,29 @@ const ThirdPersonCamera = () => {
       }
     }
 
-    // Update camera position smoothly based on character position + offset
-    const desiredCamPos = new THREE.Vector3().copy(character.position).add(cameraOffset);
-    camera.position.lerp(desiredCamPos, lerpFactor);
+    // Smooth camera position
+    const rotatedCameraOffset = cameraOffset.clone().applyAxisAngle(
+      new THREE.Vector3(0, 1, 0),
+      character.rotation.y
+    );
+    const desiredCamPos = new THREE.Vector3().copy(character.position).add(rotatedCameraOffset);
+    camera.position.lerp(desiredCamPos, cameraLerpFactor);
 
-    // Calculate look-at target with offset
-    const lookAtTarget = new THREE.Vector3().copy(character.position).add(lookAtOffset);
-    camera.lookAt(lookAtTarget);
+    // Extra-smooth lookAt target
+    const rotatedLookAtOffset = lookAtOffset.clone().applyAxisAngle(
+      new THREE.Vector3(0, 1, 0),
+      character.rotation.y
+    );
+    const desiredLookAt = new THREE.Vector3().copy(character.position).add(rotatedLookAtOffset);
+    lookAtTargetVec.current.lerp(desiredLookAt, lookAtLerpFactor);
+    camera.lookAt(lookAtTargetVec.current);
   });
 
   return (
     <>
       <Character
         ref={characterRef}
-        position={[119, -34.45, -145]} // your initial character position
+        position={[119, -34.45, -145]}
         rotation={[0, 0, 0]}
         scale={[3, 3, 3]}
       />
