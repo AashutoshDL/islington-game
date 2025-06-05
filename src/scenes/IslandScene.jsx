@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Island from "./environments/FloatingIsland";
 import { useCamera } from "./context/CameraContext";
 import UI from "./UI";
@@ -12,11 +12,14 @@ import Scene from "./Scene";
 import TriggerGame from "./utils/TriggerGame";
 import { useProgress } from "@react-three/drei";
 import CameraLogger from "./utils/CameraLogger";
-
+import ThirdPersonCamera from "./utils/ThirdPersonCamera";
+import BackgroundIsland from "./utils/BackgroundIsland";
 
 const IslandScene = ({ onLoadComplete }) => {
   const { activeCamera, setActiveCamera } = useCamera();
   const { active } = useProgress();
+  const { switchCamera } = useCamera();
+  const characterRef = useRef();
 
   useEffect(() => {
     if (!active) {
@@ -41,18 +44,20 @@ const IslandScene = ({ onLoadComplete }) => {
         shadows
         flat
       >
-        {/* <LightWithHelper /> */}
-
         <fog attach="fog" args={["#ffffff", 1, 5500]} />
+        <CameraLogger />
 
         <CameraController
           id="island"
           activeCamera={activeCamera}
           position={[150, 180, -150]}
           lookAt={[0, 100, 0]}
-          onMoveComplete={() =>
-            console.log("Camera moved to island view. Free to move now!")
-          }
+          onMoveComplete={() => {
+            console.log(
+              "Camera moved to island view. Switching to third person mode."
+            );
+            switchCamera("thirdPerson");
+          }}
         />
 
         <OrbitControls enablePan={true} maxDistance={2000} minDistance={1} />
@@ -67,19 +72,19 @@ const IslandScene = ({ onLoadComplete }) => {
 
         <FloatingWrapper
           baseY={-106.3}
-          position={[-793, -16.3, 1400]}
+          position={[-793, -216.3, 2000]}
           rotation={[0, -0.318, 0]}
-          scale={[100, 100, 100]}
+          scale={[3, 3, 3]}
         >
-          <Island />
+          <BackgroundIsland />
         </FloatingWrapper>
         <FloatingWrapper
           baseY={-106.3}
-          position={[2000, -916.3, 1500]}
+          position={[2600, -916.3, 1000]}
           rotation={[0, -0.318, 0]}
-          scale={[100, 100, 100]}
+          scale={[4, 4, 4]}
         >
-          <Island />
+          <BackgroundIsland />
         </FloatingWrapper>
 
         <FloatingWrapper

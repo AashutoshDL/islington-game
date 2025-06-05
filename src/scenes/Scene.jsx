@@ -15,7 +15,7 @@ import ING_Tech from "./college/ING_Tech";
 import Canteen from "./college/Canteen";
 import StartingPoint from "./college/StartingPoint";
 import BaskeballCourt from "./college/BasketballCourt";
-import CharacterController from "./utils/CharacterController";
+// import CharacterController from "./utils/CharacterController";
 import Londonblock from "./college/UK";
 import SkillSSD from "./college/SkillBlockStudentService";
 import BaseBrit from "./environments/base";
@@ -26,6 +26,7 @@ import Resource from "./college/Resource";
 import HimalParking from "./college/HimalParking";
 import Chautari from "./college/Chautari";
 import LightWithHelper from "./utils/LightWithHelper";
+import ThirdPersonCamera from "./utils/ThirdPersonCamera";
 
 
 const Scene = () => {
@@ -150,8 +151,11 @@ const Scene = () => {
         rotation={[0, -0.32, 0]}
         scale={[2, 2, 2]}
       />
-      <CharacterController roadRef={largeRoadRef} />
+      {/* <CharacterController roadRef={largeRoadRef} /> */}
 
+        {activeCamera === "thirdPerson" && (
+          <ThirdPersonCamera />
+        )}
       {/* <mesh
         receiveShadow
         rotation={[-Math.PI / 2, 0, 2.8]}
@@ -165,7 +169,6 @@ const Scene = () => {
         <boxGeometry args={[5, 5, 5]} />
         <meshStandardMaterial color="red" />
       </mesh> */}
-
     </>
   );
 };
