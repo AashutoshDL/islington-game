@@ -27,10 +27,11 @@ import HimalParking from "./college/HimalParking";
 import Chautari from "./college/Chautari";
 import LightWithHelper from "./utils/LightWithHelper";
 import ThirdPersonCamera from "./utils/ThirdPersonCamera";
-
+import CameraController from "./utils/CameraController";
 
 const Scene = () => {
   const { activeCamera, setActiveCamera } = useCamera();
+  const { switchCamera } = useCamera();
 
   const kumariRoadRef = useRef();
   const largeRoadRef = useRef();
@@ -152,10 +153,34 @@ const Scene = () => {
         scale={[2, 2, 2]}
       />
       {/* <CharacterController roadRef={largeRoadRef} /> */}
+      <CameraController
+        id="default"
+        activeCamera={activeCamera}
+        position={[-400, 750, -1200]}
+        lookAt={[0, 100, 0]}
+        fov={60}
+        near={0.1}
+        far={10000}
+        startPosition={[0, 100, 100]}
+      />
 
-        {activeCamera === "thirdPerson" && (
-          <ThirdPersonCamera />
-        )}
+      <CameraController
+        id="island"
+        activeCamera={activeCamera}
+        position={[150, 180, -150]}
+        lookAt={[0, 100, 0]}
+        fov={60}
+        near={0.1}
+        far={10000}
+        onMoveComplete={() => {
+          console.log(
+            "Camera moved to island view. Switching to third person mode."
+          );
+          switchCamera("thirdPerson");
+        }}
+      />
+
+      {activeCamera === "thirdPerson" && <ThirdPersonCamera />}
       {/* <mesh
         receiveShadow
         rotation={[-Math.PI / 2, 0, 2.8]}

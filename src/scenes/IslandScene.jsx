@@ -1,25 +1,19 @@
 import { Canvas } from "@react-three/fiber";
-import React, { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Island from "./environments/FloatingIsland";
 import { useCamera } from "./context/CameraContext";
 import UI from "./UI";
-import CameraController from "./utils/CameraController";
 import { OrbitControls, Cloud } from "@react-three/drei";
-// import LightWithHelper from "./utils/LightWithHelper";
 import FloatingRock from "./environments/FloatingRock";
 import FloatingWrapper from "./utils/FloatingWrapper";
 import Scene from "./Scene";
 import TriggerGame from "./utils/TriggerGame";
 import { useProgress } from "@react-three/drei";
-import CameraLogger from "./utils/CameraLogger";
-import ThirdPersonCamera from "./utils/ThirdPersonCamera";
 import BackgroundIsland from "./utils/BackgroundIsland";
 
 const IslandScene = ({ onLoadComplete }) => {
   const { activeCamera, setActiveCamera } = useCamera();
   const { active } = useProgress();
-  const { switchCamera } = useCamera();
-  const characterRef = useRef();
 
   useEffect(() => {
     if (!active) {
@@ -35,32 +29,17 @@ const IslandScene = ({ onLoadComplete }) => {
         gl={{
           alpha: true,
         }}
-        camera={{
-          position: [-400, 750, -1200],
-          fov: 60,
-          near: 0.1,
-          far: 10000,
-        }}
         shadows
         flat
       >
         <fog attach="fog" args={["#ffffff", 1, 5500]} />
-        <CameraLogger />
 
-        <CameraController
-          id="island"
-          activeCamera={activeCamera}
-          position={[150, 180, -150]}
-          lookAt={[0, 100, 0]}
-          onMoveComplete={() => {
-            console.log(
-              "Camera moved to island view. Switching to third person mode."
-            );
-            switchCamera("thirdPerson");
-          }}
+        <OrbitControls
+          enablePan={true}
+          maxDistance={2000}
+          minDistance={1}
         />
 
-        <OrbitControls enablePan={true} maxDistance={2000} minDistance={1} />
         <FloatingWrapper
           baseY={-106.3}
           position={[-193, -106.3, 638.2]}

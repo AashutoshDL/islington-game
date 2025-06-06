@@ -1,8 +1,7 @@
-import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export default function Kumari(props) {
-  const { nodes, materials } = useGLTF('/models/college_models/Kuamri_car.glb')
+  const { nodes, materials } = useGLTF('/models/college_models/new_kumari_fountain.glb')
   return (
     <group {...props} dispose={null}>
       <group position={[22.405, -0.283, 11.81]} rotation={[0, -1.334, 0]}>
@@ -164,7 +163,7 @@ export default function Kumari(props) {
         receiveShadow
         geometry={nodes.Motorcycle001.geometry}
         material={materials.Mat}
-        position={[12.206, -0.701, 37.801]}
+        position={[12.206, -0.433, 37.801]}
         rotation={[-Math.PI, 1.334, -Math.PI]}
         scale={0.021}
       />
@@ -257,50 +256,6 @@ export default function Kumari(props) {
         rotation={[Math.PI, -0.249, Math.PI]}
         scale={0.172}
       />
-      <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh005.geometry}
-          material={materials['lambert1.002']}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh005_1.geometry}
-          material={materials['banner.002']}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh005_2.geometry}
-          material={materials.lambert7}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh005_3.geometry}
-          material={materials.white_building_main}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh005_4.geometry}
-          material={materials.lambert9}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh005_5.geometry}
-          material={materials['lambert13.001']}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh005_6.geometry}
-          material={materials['blinn1.002']}
-        />
-      </group>
       <group position={[-2.266, 0.31, -1.459]} rotation={[Math.PI / 2, 0, 0.078]} scale={0.008}>
         <mesh
           castShadow
@@ -457,8 +412,72 @@ export default function Kumari(props) {
           material={materials.floor}
         />
       </group>
+      <group position={[0.159, -0.529, -0.025]} rotation={[Math.PI / 2, 0, 0.018]} scale={0.01}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001.geometry}
+          material={materials['lambert1.001']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_1.geometry}
+          material={materials.banner}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_2.geometry}
+          material={materials['lambert7.001']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_3.geometry}
+          material={materials.buidling_white}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_4.geometry}
+          material={materials['lambert9.001']}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_5.geometry}
+          material={materials.Kumari_roof}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh001_6.geometry}
+          material={materials.blinn1}
+        />
+      </group>
+      <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh002.geometry}
+          material={materials.red_brick}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh002_1.geometry}
+          material={materials.Fountain_snake}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Mesh002_2.geometry}
+          material={materials.holder}
+        />
+      </group>
     </group>
   )
 }
 
-useGLTF.preload('/models/college_models/Kuamri_car.glb')
+useGLTF.preload('/models/college_models/new_kumari_fountain.glb')
