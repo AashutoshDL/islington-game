@@ -10,6 +10,7 @@ import Scene from "./Scene";
 import TriggerGame from "./utils/TriggerGame";
 import { useProgress } from "@react-three/drei";
 import BackgroundIsland from "./utils/BackgroundIsland";
+import ThinClouds from "./environments/ThinClouds";
 
 const IslandScene = ({ onLoadComplete }) => {
   const { activeCamera, setActiveCamera } = useCamera();
@@ -87,9 +88,9 @@ const IslandScene = ({ onLoadComplete }) => {
 
         <FloatingWrapper
           baseY={-746.3}
-          position={[15, 201.5, 18.2]}
+          position={[25, 222.5, 18.2]}
           rotation={[0, 0, 0]}
-          scale={[1, 1, 1]}
+          scale={[1.3, 1.3, 1.3]}
         >
           <Scene />
         </FloatingWrapper>
@@ -127,6 +128,9 @@ const IslandScene = ({ onLoadComplete }) => {
           segments={1}
           depthWrite={false}
         />
+
+        {/* thin clouds above the scene */}
+        <ThinClouds />
       </Canvas>
       <TriggerGame />
     </>

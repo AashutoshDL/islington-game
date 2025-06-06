@@ -18,7 +18,6 @@ import BaskeballCourt from "./college/BasketballCourt";
 // import CharacterController from "./utils/CharacterController";
 import Londonblock from "./college/UK";
 import SkillSSD from "./college/SkillBlockStudentService";
-import BaseBrit from "./environments/base";
 import Pavement from "./environments/pavement";
 import CoffeeStation from "./college/CoffeeStation";
 import Resource from "./college/Resource";
@@ -97,11 +96,7 @@ const Scene = () => {
         rotation={[0, 1.27, 0]}
         scale={[2, 2, 2]}
       />
-      <BaseBrit
-        position={[10, -37, -58]}
-        rotation={[0, 1.26, 0]}
-        scale={[25, 2, 20]}
-      />
+
       <HimalParking
         position={[55, -44, -45]}
         rotation={[0, 1.26, 0]}
