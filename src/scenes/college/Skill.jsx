@@ -1,10 +1,34 @@
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { useRef, useState, useEffect } from "react";
+import { useGLTF, Html } from "@react-three/drei";
+import * as THREE from "three";
+import { useCamera } from "../context/CameraContext";
+import HoverTooltip from "../tooltip/hoverToolTip"
 
 export default function Skill(props) {
   const { nodes, materials } = useGLTF('/models/college_models/Skill_parking.glb')
-  return (
-    <group {...props} dispose={null}>
+    const groupRef = useRef();
+    const [hovered, setHovered] = useState(false);
+    const { activeCamera } = useCamera();
+  
+    const handlePointerOver = (e) => {
+      if (activeCamera == "default") return;
+      e.stopPropagation();
+      setHovered(true);
+    };
+  
+    const handlePointerOut = (e) => {
+      if (activeCamera == "default") return;
+      e.stopPropagation();
+      setHovered(false);
+    };
+    return (
+      <group
+        {...props}
+        dispose={null}
+        ref={groupRef}
+        onPointerOver={handlePointerOver}
+        onPointerOut={handlePointerOut}
+      >
       <group
         position={[1.721, -0.288, 4.841]}
         rotation={[Math.PI / 2, 0, 0]}
@@ -573,6 +597,8 @@ export default function Skill(props) {
         rotation={[Math.PI / 2, 0, 0]}
         scale={0.01}
       />
+      {hovered && <HoverTooltip text="Skill Block" position={[-10, 35, -10]} />}
+
     </group>
   )
 }
