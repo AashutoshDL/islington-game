@@ -5,7 +5,7 @@ import { useCamera } from "./context/CameraContext";
 const UI = () => {
   const [logoError, setLogoError] = useState(false);
   const { switchCamera } = useCamera();
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const [showInfo, setShowInfo] = useState(false);
   const [hideUI, setHideUI] = useState(false);
 

@@ -30,12 +30,12 @@ const IslandScene = ({ onLoadComplete }) => {
         gl={{
           shadows: true,
         }}
-        camera={{
-          position: [-400, 750, -1200],
-          fov: 60,
-          near: 0.1,
-          far: 10000,
-        }}
+        // camera={{
+        //   position: [-400, 750, -1200],
+        //   fov: 60,
+        //   near: 0.1,
+        //   far: 10000,
+        // }}
         shadows
       >
         <fog attach="fog" args={["#ffffff", 1, 5500]} />
@@ -88,7 +88,7 @@ const IslandScene = ({ onLoadComplete }) => {
 
         <FloatingWrapper
           baseY={-746.3}
-          position={[25, 222.5, 18.2]}
+          position={[25, 214, 18.2]}
           rotation={[0, 0, 0]}
           scale={[1.3, 1.3, 1.3]}
         >

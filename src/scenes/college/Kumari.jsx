@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useGLTF, Html } from "@react-three/drei";
 import * as THREE from "three";
 import { useCamera } from "../context/CameraContext";
-import HoverTooltip from "../tooltip/hoverToolTip"
+import HoverToolTip from "../utils/HoverToolTip";
 
 export default function Kumari(props) {
   const { nodes, materials } = useGLTF('/models/college_models/new_kumari_fountain.glb')
@@ -501,10 +501,7 @@ export default function Kumari(props) {
           material={materials.holder}
         />
       </group>
-<<<<<<< HEAD
-=======
-      {hovered && <HoverTooltip text="Kumari Block" position={[20, 25, 0]} />}
->>>>>>> UI/HoverUpdate2
+      {hovered && <HoverToolTip text="Kumari Block" position={[20, 25, 0]} />}
     </group>
   )
 }

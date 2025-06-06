@@ -2,7 +2,8 @@ import React, { useRef, useState, useEffect } from "react";
 import { useGLTF, Html } from "@react-three/drei";
 import * as THREE from "three";
 import { useCamera } from "../context/CameraContext";
-import HoverTooltip from "../tooltip/hoverToolTip"
+import HoverToolTip from "../utils/HoverToolTip";
+
 
 export default function Britian(props) {
   const { nodes, materials } = useGLTF('/models/college_models/Britain2.glb')
@@ -175,17 +176,10 @@ export default function Britian(props) {
           material={materials.aiStandardSurface1}
         />
       </group>
-<<<<<<< HEAD
-=======
-      {hovered && <HoverTooltip text="BRIT BLOCK" position={[0, 15, -2]} />}
+      {hovered && <HoverToolTip text="BRIT BLOCK" position={[0, 15, -2]} />}
      
->>>>>>> UI/HoverUpdate2
     </group>
   )
 }
 
-<<<<<<< HEAD
 useGLTF.preload('/models/college_models/Britain2.glb')
-=======
-useGLTF.preload('/models/college_models/Britain2.glb')
->>>>>>> UI/HoverUpdate2

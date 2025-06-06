@@ -2,7 +2,8 @@ import React, { useRef, useState, useEffect } from "react";
 import { useGLTF, Html } from "@react-three/drei";
 import * as THREE from "three";
 import { useCamera } from "../context/CameraContext";
-import HoverTooltip from "../tooltip/hoverToolTip"
+import HoverToolTip from "../utils/HoverToolTip";
+
 
 export default function Impact(props) {
   const { nodes, materials } = useGLTF('/models/college_models/Impact.glb')
@@ -133,16 +134,9 @@ export default function Impact(props) {
           material={materials.himal_flat}
         />
       </group>
-<<<<<<< HEAD
-=======
-          {hovered && <HoverTooltip text="IMPACT BLOCK" position={[-5, 29, -5]} />}
->>>>>>> UI/HoverUpdate2
+          {hovered && <HoverToolTip text="IMPACT BLOCK" position={[-5, 29, -5]} />}
     </group>
   )
 }
 
-<<<<<<< HEAD
 useGLTF.preload('/models/college_models/Impact.glb')
-=======
-useGLTF.preload('/models/college_models/Impact.glb')
->>>>>>> UI/HoverUpdate2

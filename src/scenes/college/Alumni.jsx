@@ -2,7 +2,8 @@ import React, { useRef, useState, useEffect } from "react";
 import { useGLTF, Html } from "@react-three/drei";
 import * as THREE from "three";
 import { useCamera } from "../context/CameraContext";
-import HoverTooltip from "../tooltip/hoverToolTip"
+import HoverToolTip from "../utils/HoverToolTip";
+
 
 export default function Alumni(props) {
   const { nodes, materials } = useGLTF('/models/college_models/Alumni.glb')
@@ -79,7 +80,7 @@ export default function Alumni(props) {
           material={materials.lambert14}
         />
       </group>
-      {hovered && <HoverTooltip text="Alumni Block" position={[15, 25, 5]} />}
+      {hovered && <HoverToolTip text="Alumni Block" position={[15, 25, 5]} />}
 
     </group>
   )

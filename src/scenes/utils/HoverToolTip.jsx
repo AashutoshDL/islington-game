@@ -1,7 +1,6 @@
 import { Html } from "@react-three/drei";
-import React from "react";
 
-const HoverTooltip = ({ text = "", position = [0, 20, 0] }) => {
+const HoverToolTip = ({ text = "", position = [0, 20, 0] }) => {
   return (
     <Html position={position} center>
       <div style={{ fontFamily: "'Lato', sans-serif" }}>
@@ -22,4 +21,4 @@ const HoverTooltip = ({ text = "", position = [0, 20, 0] }) => {
   );
 };
 
-export default HoverTooltip;
+export default HoverToolTip;

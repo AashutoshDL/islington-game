@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useGLTF, Html } from "@react-three/drei";
 import * as THREE from "three";
 import { useCamera } from "../context/CameraContext";
-import HoverTooltip from "../tooltip/hoverToolTip"
+import HoverToolTip from "../utils/HoverToolTip";
 
 export default function Skill(props) {
   const { nodes, materials } = useGLTF('/models/college_models/Skill_parking.glb')
@@ -597,11 +597,8 @@ export default function Skill(props) {
         rotation={[Math.PI / 2, 0, 0]}
         scale={0.01}
       />
-<<<<<<< HEAD
-=======
-      {hovered && <HoverTooltip text="Skill Block" position={[-10, 35, -10]} />}
+      {hovered && <HoverToolTip text="Skill Block" position={[-10, 35, -10]} />}
 
->>>>>>> UI/HoverUpdate2
     </group>
   )
 }

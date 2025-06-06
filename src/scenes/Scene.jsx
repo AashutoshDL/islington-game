@@ -108,7 +108,7 @@ const Scene = () => {
         scale={[1.3, 1.3, 1.3]}
       />
       <Impact
-        position={[85, -35.9, -12]}
+        position={[85, -41.9, -12]}
         rotation={[0, -1.88, 0]}
         scale={[2, 2, 2]}
       />
@@ -148,7 +148,7 @@ const Scene = () => {
         scale={[2, 2, 2]}
       />
       {/* <CharacterController roadRef={largeRoadRef} /> */}
-      {/* <CameraController
+      <CameraController
         id="default"
         activeCamera={activeCamera}
         position={[-400, 750, -1200]}
@@ -156,21 +156,18 @@ const Scene = () => {
         fov={60}
         near={0.1}
         far={10000}
-        startPosition={[0, 100, 100]}
-      /> */}
+        startPosition={[-250, 250, -450]}
+      />
 
       <CameraController
         id="island"
         activeCamera={activeCamera}
-        position={[150, 180, -150]}
+        position={[200, 200, -200]}
         lookAt={[0, 100, 0]}
         fov={60}
         near={0.1}
         far={10000}
         onMoveComplete={() => {
-          console.log(
-            "Camera moved to island view. Switching to third person mode."
-          );
           switchCamera("thirdPerson");
         }}
       />

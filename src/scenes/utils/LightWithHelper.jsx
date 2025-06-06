@@ -32,7 +32,7 @@ const LightWithHelper = () => {
       <ambientLight intensity={0.5} />
 
       <directionalLight
-        ref={fillLightRef}
+        // ref={fillLightRef}
         position={[-300, 500, -400]}
         intensity={0.5}
         castShadow
@@ -40,7 +40,7 @@ const LightWithHelper = () => {
 
       <directionalLight
         castShadow
-        ref={directionalLightRef}
+        // ref={directionalLightRef}
         position={[500, 500, -400]}
         intensity={1.2}
         shadow-mapSize-width={512}

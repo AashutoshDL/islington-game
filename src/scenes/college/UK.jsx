@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useGLTF, Html } from "@react-three/drei";
 import * as THREE from "three";
 import { useCamera } from "../context/CameraContext";
-import HoverTooltip from "../tooltip/hoverToolTip"
+import HoverToolTip from '../utils/HoverToolTip';
 
 export default function UK(props) {
   const { nodes, materials } = useGLTF(
@@ -135,7 +135,7 @@ export default function UK(props) {
           receiveShadow
         />
       </group>
-      {hovered && <HoverTooltip text="UK Block" position={[0, 25, 0]} />}
+      {hovered && <HoverToolTip text="UK Block" position={[0, 25, 0]} />}
       
     </group>
   );
