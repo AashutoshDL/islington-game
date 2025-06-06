@@ -1,24 +1,16 @@
 import { Canvas } from "@react-three/fiber";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Island from "./environments/FloatingIsland";
 import { useCamera } from "./context/CameraContext";
 import UI from "./UI";
-import CameraController from "./utils/CameraController";
 import { OrbitControls, Cloud } from "@react-three/drei";
-import LightWithHelper from "./utils/LightWithHelper";
 import FloatingRock from "./environments/FloatingRock";
 import FloatingWrapper from "./utils/FloatingWrapper";
 import Scene from "./Scene";
 import TriggerGame from "./utils/TriggerGame";
 import { useProgress } from "@react-three/drei";
-import {
-  EffectComposer,
-  Bloom,
-  Vignette,
-  DepthOfField,
-  ChromaticAberration,
-} from "@react-three/postprocessing";
-import { BlendFunction } from "postprocessing";
+import BackgroundIsland from "./utils/BackgroundIsland";
+import ThinClouds from "./environments/ThinClouds";
 
 const IslandScene = ({ onLoadComplete }) => {
   const { activeCamera, setActiveCamera } = useCamera();
@@ -36,34 +28,20 @@ const IslandScene = ({ onLoadComplete }) => {
       <Canvas
         style={{ width: "100vw", height: "100vh", background: "#72badb" }}
         gl={{
-          alpha: true,
+          shadows: true,
         }}
-        camera={{
-          position: [-400, 750, -1200],
-          fov: 60,
-          near: 0.1,
-          far: 10000,
-        }}
+        // camera={{
+        //   position: [-400, 750, -1200],
+        //   fov: 60,
+        //   near: 0.1,
+        //   far: 10000,
+        // }}
         shadows
-        flat
       >
-        <ambientLight intensity={0.5} />
-
-        <LightWithHelper />
-
-        {/* <fog attach="fog" args={["#87CEEB", 1000, 6500]} /> */}
-
-        <CameraController
-          id="island"
-          activeCamera={activeCamera}
-          position={[150, 180, -150]}
-          lookAt={[0, 100, 0]}
-          onMoveComplete={() =>
-            console.log("Camera moved to island view. Free to move now!")
-          }
-        />
+        <fog attach="fog" args={["#ffffff", 1, 5500]} />
 
         <OrbitControls enablePan={true} maxDistance={2000} minDistance={1} />
+
         <FloatingWrapper
           baseY={-106.3}
           position={[-193, -106.3, 638.2]}
@@ -75,19 +53,19 @@ const IslandScene = ({ onLoadComplete }) => {
 
         <FloatingWrapper
           baseY={-106.3}
-          position={[-793, -16.3, 1400]}
+          position={[-793, -216.3, 2000]}
           rotation={[0, -0.318, 0]}
-          scale={[100, 100, 100]}
+          scale={[3, 3, 3]}
         >
-          <Island />
+          <BackgroundIsland />
         </FloatingWrapper>
         <FloatingWrapper
           baseY={-106.3}
-          position={[2000, -916.3, 1500]}
+          position={[2600, -916.3, 1000]}
           rotation={[0, -0.318, 0]}
-          scale={[100, 100, 100]}
+          scale={[4, 4, 4]}
         >
-          <Island />
+          <BackgroundIsland />
         </FloatingWrapper>
 
         <FloatingWrapper
@@ -110,9 +88,9 @@ const IslandScene = ({ onLoadComplete }) => {
 
         <FloatingWrapper
           baseY={-746.3}
-          position={[15, 201.5, 18.2]}
+          position={[25, 214, 18.2]}
           rotation={[0, 0, 0]}
-          scale={[1, 1, 1]}
+          scale={[1.3, 1.3, 1.3]}
         >
           <Scene />
         </FloatingWrapper>
@@ -150,6 +128,9 @@ const IslandScene = ({ onLoadComplete }) => {
           segments={1}
           depthWrite={false}
         />
+
+        {/* thin clouds above the scene */}
+        <ThinClouds />
       </Canvas>
       <TriggerGame />
     </>

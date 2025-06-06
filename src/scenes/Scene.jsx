@@ -15,19 +15,22 @@ import ING_Tech from "./college/ING_Tech";
 import Canteen from "./college/Canteen";
 import StartingPoint from "./college/StartingPoint";
 import BaskeballCourt from "./college/BasketballCourt";
-import CharacterController from "./utils/CharacterController";
+// import CharacterController from "./utils/CharacterController";
 import Londonblock from "./college/UK";
 import SkillSSD from "./college/SkillBlockStudentService";
-import BaseBrit from "./environments/base";
 import Pavement from "./environments/pavement";
 import CoffeeStation from "./college/CoffeeStation";
 import Resource from "./college/Resource";
 
 import HimalParking from "./college/HimalParking";
 import Chautari from "./college/Chautari";
+import LightWithHelper from "./utils/LightWithHelper";
+import ThirdPersonCamera from "./utils/ThirdPersonCamera";
+import CameraController from "./utils/CameraController";
 
 const Scene = () => {
   const { activeCamera, setActiveCamera } = useCamera();
+  const { switchCamera } = useCamera();
 
   const kumariRoadRef = useRef();
   const largeRoadRef = useRef();
@@ -47,6 +50,7 @@ const Scene = () => {
 
       <Pavement count={1} />
       <Cars />
+      <LightWithHelper />
       {/* <Skill_road
         position={[45, -34.3, 22.2]}
         rotation={[0, -0.318, 0]}
@@ -74,7 +78,7 @@ const Scene = () => {
       <Skill
         position={[-175.7, -36.5, -15]}
         rotation={[0, -0.3, 0]}
-        scale={[2, 2, 2]}
+        scale={[3, 3, 3]}
         setActiveCamera={setActiveCamera}
       />
       <SkillSSD
@@ -92,13 +96,9 @@ const Scene = () => {
         rotation={[0, 1.27, 0]}
         scale={[2, 2, 2]}
       />
-      <BaseBrit
-        position={[10, -37, -58]}
-        rotation={[0, 1.26, 0]}
-        scale={[25, 2, 20]}
-      />
+
       <HimalParking
-        position={[55, -37, -45]}
+        position={[55, -44, -45]}
         rotation={[0, 1.26, 0]}
         scale={[3, 3, 3]}
       />
@@ -108,7 +108,7 @@ const Scene = () => {
         scale={[1.3, 1.3, 1.3]}
       />
       <Impact
-        position={[85, -35.9, -12]}
+        position={[85, -41.9, -12]}
         rotation={[0, -1.88, 0]}
         scale={[2, 2, 2]}
       />
@@ -147,17 +147,38 @@ const Scene = () => {
         rotation={[0, -0.32, 0]}
         scale={[2, 2, 2]}
       />
-      <CharacterController roadRef={largeRoadRef} />
-      {/* Extended ground plane for better long-distance rendering */}
-      <mesh
-        rotation={[-Math.PI / 2, 0, 2.8]}
-        position={[-70, -50, 60]}
-        receiveShadow
-        castShadow
-      >
-        {/* <planeGeometry args={[5000, 5000]} /> 
-          <meshBasicMaterial color="#93aa53" /> */}
-      </mesh>
+      {/* <CharacterController roadRef={largeRoadRef} /> */}
+      <CameraController
+        id="default"
+        activeCamera={activeCamera}
+        position={[-400, 750, -1200]}
+        lookAt={[0, 100, 0]}
+        fov={60}
+        near={0.1}
+        far={10000}
+        startPosition={[-250, 250, -450]}
+      />
+
+      <CameraController
+        id="island"
+        activeCamera={activeCamera}
+        position={[200, 200, -200]}
+        lookAt={[0, 100, 0]}
+        fov={60}
+        near={0.1}
+        far={10000}
+        onMoveComplete={() => {
+          switchCamera("thirdPerson");
+        }}
+      />
+
+      {activeCamera === "thirdPerson" && <ThirdPersonCamera />}
+
+        {/* <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0,-40,0]} receiveShadow>
+          <planeGeometry args={[300, 300]} />
+          <meshStandardMaterial color="gray" />
+        </mesh> */}
+
     </>
   );
 };

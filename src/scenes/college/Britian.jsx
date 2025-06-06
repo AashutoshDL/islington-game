@@ -1,10 +1,35 @@
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { useRef, useState, useEffect } from "react";
+import { useGLTF, Html } from "@react-three/drei";
+import * as THREE from "three";
+import { useCamera } from "../context/CameraContext";
+import HoverToolTip from "../utils/HoverToolTip";
+
 
 export default function Britian(props) {
   const { nodes, materials } = useGLTF('/models/college_models/Britain2.glb')
+  const groupRef = useRef();
+  const [hovered, setHovered] = useState(false);
+  const { activeCamera } = useCamera();
+
+  const handlePointerOver = (e) => {
+    if (activeCamera == "default") return;
+    e.stopPropagation();
+    setHovered(true);
+  };
+
+  const handlePointerOut = (e) => {
+    if (activeCamera == "default") return;
+    e.stopPropagation();
+    setHovered(false);
+  };
   return (
-    <group {...props} dispose={null}>
+    <group
+      {...props}
+      dispose={null}
+      ref={groupRef}
+      onPointerOver={handlePointerOver}
+      onPointerOut={handlePointerOut}
+    >
       <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
         <mesh
           castShadow
@@ -151,6 +176,8 @@ export default function Britian(props) {
           material={materials.aiStandardSurface1}
         />
       </group>
+      {hovered && <HoverToolTip text="BRIT BLOCK" position={[0, 15, -2]} />}
+     
     </group>
   )
 }
