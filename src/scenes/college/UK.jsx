@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useGLTF, Html } from "@react-three/drei";
 import * as THREE from "three";
 import { useCamera } from "../context/CameraContext";
+import HoverTooltip from "../tooltip/hoverToolTip"
 
 export default function UK(props) {
   const { nodes, materials } = useGLTF(
@@ -12,13 +13,13 @@ export default function UK(props) {
   const { activeCamera } = useCamera();
 
   const handlePointerOver = (e) => {
-    if (activeCamera !== "island") return;
+    if (activeCamera == "default") return;
     e.stopPropagation();
     setHovered(true);
   };
 
   const handlePointerOut = (e) => {
-    if (activeCamera !== "island") return;
+    if (activeCamera == "default") return;
     e.stopPropagation();
     setHovered(false);
   };
@@ -134,31 +135,8 @@ export default function UK(props) {
           receiveShadow
         />
       </group>
-
-      {hovered && (
-        <Html position={[-10, 25, 5]} center>
-          <div style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-            {/* Load Bebas Neue font */}
-            <link
-              href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
-              rel="stylesheet"
-            />
-
-            {/* Simple floating text */}
-            <div
-              style={{
-                color: "white",
-                fontSize: "18px",
-                letterSpacing: "1px",
-                textAlign: "center",
-                textShadow: "1px 1px 3px rgba(0,0,0,0.5)",
-              }}
-            >
-              UK BLOCK
-            </div>
-          </div>
-        </Html>
-      )}
+      {hovered && <HoverTooltip text="UK Block" position={[0, 25, 0]} />}
+      
     </group>
   );
 }

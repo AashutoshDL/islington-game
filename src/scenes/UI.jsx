@@ -12,52 +12,48 @@ const UI = () => {
   const toggleInfo = () => setShowInfo((prev) => !prev);
   const toggleMute = () => {
     setIsMuted((prev) => !prev);
-    // Optionally mute all global media
-    // document.querySelectorAll('audio, video').forEach(el => el.muted = !isMuted);
   };
 
   const moveCamera = () => {
-    if (switchCamera) {
-      console.log("Camera is moving to island!");
-      switchCamera("island");
-      setHideUI(true);
-    } else {
-      console.warn("switchCamera is not available from CameraContext.");
-    }
+    switchCamera("island");
+    setHideUI(true);
+  };
+
+  const exitCamera = () => {
+    switchCamera("default");
+    setHideUI(false);
+    setShowInfo(false);
   };
 
   return (
     <>
+      {/* Normal UI (when not hidden) */}
       {!hideUI && (
         <>
           {/* Logo */}
-          <div className="absolute top-14 left-28 z-50 pointer-events-none">
+          <div className="absolute top-10 left-10 z-50 pointer-events-none">
             {!logoError ? (
               <img
                 src="/logo.png"
                 alt="Logo"
-                className="w-64 rounded-xl shadow-lg"
-                onError={() => {
-                  console.error("Logo failed to load from /logo.png");
-                  setLogoError(true);
-                }}
-                onLoad={() => console.log("Logo loaded successfully")}
+                className="w-52 rounded-xl "
+                onError={() => setLogoError(true)}
               />
             ) : (
-              <div className="bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-lg text-gray-800 text-sm font-medium border border-gray-200">
-                Logo not found at /logo.png
+              <div className="bg-white/90 p-4 rounded-xl  text-gray-800 text-sm font-medium border border-gray-200">
+                Logo not found
               </div>
             )}
           </div>
 
-          {/* Control Buttons Container */}
+          {/* Top-right buttons */}
           <div className="absolute top-10 right-10 flex flex-col gap-3 z-50">
-            {/* Mute Button */}
+            {/* Mute */}
             <button
               onClick={toggleMute}
               aria-label={isMuted ? "Unmute audio" : "Mute audio"}
               className={`
-                group relative w-14 h-14 rounded-full backdrop-blur-md border border-white/20 
+                group relative w-12 h-12 rounded-full backdrop-blur-md border border-white/20 
                 transition-all duration-300 hover:scale-105 active:scale-95
                 ${
                   isMuted
@@ -65,26 +61,23 @@ const UI = () => {
                     : "bg-white/80 hover:bg-white/90 text-gray-700 shadow-lg shadow-black/10"
                 }
               `}
-              title={isMuted ? "Unmute" : "Mute"}
             >
               {isMuted ? (
                 <VolumeX className="w-6 h-6 mx-auto" />
               ) : (
                 <Volume2 className="w-6 h-6 mx-auto" />
               )}
-
-              {/* Hover tooltip */}
-              <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+              <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                 {isMuted ? "Unmute" : "Mute"}
               </div>
             </button>
 
-            {/* Info Button */}
+            {/* Info */}
             <button
               onClick={toggleInfo}
               aria-label="Toggle information display"
               className={`
-                group relative w-14 h-14 rounded-full backdrop-blur-md border border-white/20
+                group relative w-12 h-12 rounded-full backdrop-blur-md border border-white/20
                 transition-all duration-300 hover:scale-105 active:scale-95
                 ${
                   showInfo
@@ -92,12 +85,9 @@ const UI = () => {
                     : "bg-white/80 hover:bg-white/90 text-gray-700 shadow-lg shadow-black/10"
                 }
               `}
-              title="Show controls info"
             >
               <Info className="w-6 h-6 mx-auto" />
-
-              {/* Hover tooltip */}
-              <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+              <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                 Controls Info
               </div>
             </button>
@@ -114,13 +104,12 @@ const UI = () => {
                   </h3>
                   <button
                     onClick={toggleInfo}
-                    className="p-1 rounded-full hover:bg-gray-100 transition-colors duration-200"
+                    className="p-1 rounded-full hover:bg-gray-100"
                     aria-label="Close info panel"
                   >
                     <X className="w-4 h-4 text-gray-500" />
                   </button>
                 </div>
-
                 <div className="space-y-3 text-gray-600">
                   <div className="flex items-center gap-3">
                     <div className="flex gap-1">
@@ -135,7 +124,6 @@ const UI = () => {
                     </div>
                     <span className="text-sm">Move character</span>
                   </div>
-
                   <div className="flex items-center gap-3">
                     <kbd className="px-2 py-1 text-xs font-mono bg-gray-100 border border-gray-300 rounded shadow-sm">
                       i
@@ -147,13 +135,6 @@ const UI = () => {
             </div>
           )}
 
-          {/* Copyright */}
-          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
-            <div className="bg-black/40 backdrop-blur-sm text-white px-4 py-2 rounded-full text-lg font-medium border border-white/10">
-              © ING Skill Academy — SMARC
-            </div>
-          </div>
-
           {/* Play Button */}
           <div className="absolute bottom-12 right-12 z-50">
             <button
@@ -162,22 +143,49 @@ const UI = () => {
               className="
                 group relative px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 
                 hover:from-green-600 hover:to-emerald-700 text-white font-semibold 
-                rounded-2xl shadow-xl shadow-green-500/25 hover:shadow-green-500/40
-                transition-all duration-300 hover:scale-105 active:scale-95
-                border border-green-400/20
+                rounded-2xl transition-all duration-300 hover:scale-105 active:scale-95
+                border border-green-400/30
               "
             >
               <div className="flex items-center gap-3">
                 <Play className="w-6 h-6 fill-current" />
                 <span className="text-lg">Play</span>
               </div>
-
-              {/* Animated glow effect */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-400 to-emerald-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"></div>
             </button>
+          </div>
+
+
+          {/* Copyright */}
+          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
+            <div className="bg-black/20 backdrop-blur-sm text-white px-4 py-1 rounded-full text-sm font-medium border border-white/10">
+              © ING Skill Academy — SMARC
+            </div>
           </div>
         </>
       )}
+
+      {/* Exit Button (when UI is hidden) */}
+      {hideUI && (
+        <div className="absolute bottom-12 right-12 z-50">
+          <button
+            onClick={exitCamera}
+            aria-label="Exit and return to main UI"
+            className="
+              group relative px-8 py-4 bg-gradient-to-r from-rose-400 to-rose-500 
+              hover:from-rose-500 hover:to-rose-600 text-white font-semibold 
+              rounded-2xl transition-all duration-300 hover:scale-105 active:scale-95
+              border border-rose-300/30
+            "
+          >
+            <div className="flex items-center gap-3">
+              <X className="w-6 h-6 fill-current" />
+              <span className="text-lg">Exit</span>
+            </div>
+          </button>
+        </div>
+      )}
+
+
     </>
   );
 };
