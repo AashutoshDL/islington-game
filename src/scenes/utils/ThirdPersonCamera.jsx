@@ -2,7 +2,8 @@ import React, { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 import * as THREE from "three";
-import Character from "../environments/Character";
+// import Character from "../environments/Character";
+import SkillCharacter from "../environments/SkillCharacter";
 
 const ThirdPersonCamera = () => {
   const characterRef = useRef();
@@ -61,11 +62,11 @@ const ThirdPersonCamera = () => {
     moveDir.applyAxisAngle(new THREE.Vector3(0, 1, 0), sceneRotationY);
 
     const moving = moveDir.length() > 0;
-
+    
     if (moving) {
       if (!isMoving) {
         setIsMoving(true);
-        char.playAnimation("CharacterArmature|Walk");
+        char.playAnimation("Armature.001|mixamo.com|Layer0");
       }
 
       moveDir.normalize().multiplyScalar(speed);
@@ -78,7 +79,7 @@ const ThirdPersonCamera = () => {
     } else {
       if (isMoving) {
         setIsMoving(false);
-        char.playAnimation("CharacterArmature|Idle");
+        char.playAnimation("Idle");
       }
     }
 
@@ -102,13 +103,20 @@ const ThirdPersonCamera = () => {
 
   return (
     <>
-      <Character
+      {/* <Character
         ref={characterRef}
         position={[119, -34.45, -145]}
         rotation={[0, -0.5, 0]}
         scale={[2, 2, 2]}
-      />
-      {/* <SkillCharacter /> */}
+      /> */}
+
+        <SkillCharacter 
+        ref={characterRef}
+        position={[119, -34.45, -145]}
+        rotation={[0, -0.5, 0]}
+        scale={[16, 16, 16]}
+        />
+
       <PerspectiveCamera
         ref={camRef}
         makeDefault

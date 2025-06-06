@@ -1,69 +1,78 @@
-import React, { useRef } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import { useGLTF, useAnimations } from '@react-three/drei';
 
-export default function SkillCharacter(props) {
-  const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/models/environment_models/Skill_character.glb')
-  const { actions } = useAnimations(animations, group)
+const SkillCharacter = forwardRef((props, ref) => {
+  const group = useRef();
+  const { nodes, materials, animations } = useGLTF('/models/environment_models/Skill_Char.glb');
+  const { actions } = useAnimations(animations, group);
+
+  useImperativeHandle(ref, () => ({
+    object: group.current,
+    playAnimation: (name) => {
+      if (actions && actions[name]) {
+        actions[name].reset().fadeIn(0.2).play();
+      }
+    },
+  }));
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
         <group name="Armature" rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
-          <skinnedMesh
-            name="polySurface35"
-            geometry={nodes.polySurface35.geometry}
-            material={materials.hair}
-            skeleton={nodes.polySurface35.skeleton}
-          />
-          <skinnedMesh
-            name="polySurface50"
-            geometry={nodes.polySurface50.geometry}
-            material={materials.hair}
-            skeleton={nodes.polySurface50.skeleton}
-          />
-          <group name="polySurface66">
+          <primitive object={nodes.mixamorigHips} />
+        </group>
+        <group name="Armature001" rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+          <group name="polySurface107">
             <skinnedMesh
-              name="Mesh002"
-              geometry={nodes.Mesh002.geometry}
-              material={materials.lambert2}
-              skeleton={nodes.Mesh002.skeleton}
+              name="Mesh003"
+              geometry={nodes.Mesh003.geometry}
+              material={materials['lambert2.001']}
+              skeleton={nodes.Mesh003.skeleton}
             />
             <skinnedMesh
-              name="Mesh002_1"
-              geometry={nodes.Mesh002_1.geometry}
-              material={materials.lambert8}
-              skeleton={nodes.Mesh002_1.skeleton}
+              name="Mesh003_1"
+              geometry={nodes.Mesh003_1.geometry}
+              material={materials.texture}
+              skeleton={nodes.Mesh003_1.skeleton}
             />
             <skinnedMesh
-              name="Mesh002_2"
-              geometry={nodes.Mesh002_2.geometry}
-              material={materials.lambert3}
-              skeleton={nodes.Mesh002_2.skeleton}
+              name="Mesh003_2"
+              geometry={nodes.Mesh003_2.geometry}
+              material={materials['body.001']}
+              skeleton={nodes.Mesh003_2.skeleton}
             />
             <skinnedMesh
-              name="Mesh002_3"
-              geometry={nodes.Mesh002_3.geometry}
-              material={materials.lambert7}
-              skeleton={nodes.Mesh002_3.skeleton}
+              name="Mesh003_3"
+              geometry={nodes.Mesh003_3.geometry}
+              material={materials['hair.001']}
+              skeleton={nodes.Mesh003_3.skeleton}
             />
             <skinnedMesh
-              name="Mesh002_4"
-              geometry={nodes.Mesh002_4.geometry}
-              material={materials.body}
-              skeleton={nodes.Mesh002_4.skeleton}
+              name="Mesh003_4"
+              geometry={nodes.Mesh003_4.geometry}
+              material={materials['lambert5.001']}
+              skeleton={nodes.Mesh003_4.skeleton}
             />
             <skinnedMesh
-              name="Mesh002_5"
-              geometry={nodes.Mesh002_5.geometry}
-              material={materials.lambert5}
-              skeleton={nodes.Mesh002_5.skeleton}
+              name="Mesh003_5"
+              geometry={nodes.Mesh003_5.geometry}
+              material={materials['lambert7.001']}
+              skeleton={nodes.Mesh003_5.skeleton}
+            />
+            <skinnedMesh
+              name="Mesh003_6"
+              geometry={nodes.Mesh003_6.geometry}
+              material={materials['lambert8.001']}
+              skeleton={nodes.Mesh003_6.skeleton}
             />
           </group>
-          <primitive object={nodes.mixamorigHips} />
+          <primitive object={nodes.mixamorigHips_1} />
         </group>
       </group>
     </group>
-  )
-}
+  );
+});
 
-useGLTF.preload('/models/environment_models/Skill_character.glb')
+useGLTF.preload('/models/environment_models/Skill_Char.glb');
+
+export default SkillCharacter;
