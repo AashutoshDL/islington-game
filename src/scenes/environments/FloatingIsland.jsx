@@ -1,29 +1,18 @@
-import React, { useEffect, useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import { useGLTF } from "@react-three/drei";
+import React, { useEffect } from "react";
 
 export default function Island(props) {
-  const group = useRef()
-  const { nodes, materials, scene } = useGLTF('/models/environment_models/Floating Island.glb')
+  const { scene } = useGLTF("/models/environment_models/Floating Island.glb");
 
   useEffect(() => {
     scene.traverse((child) => {
       if (child.isMesh) {
-        child.castShadow = true
-        child.receiveShadow = true
+        child.castShadow = true;
+        child.receiveShadow = true;
+        child.material.side = 2; // DoubleSide
       }
-    })
-  }, [scene])
+    });
+  }, [scene]);
 
-  return (
-    <group ref={group} {...props} dispose={null}>
-      <mesh
-        geometry={nodes.Cube001.geometry}
-        material={materials.Material}
-        position={[0.124, 0.306, -2.77]}
-        scale={2.347}
-      />
-    </group>
-  )
+  return <primitive object={scene} {...props} />;
 }
-
-useGLTF.preload('/models/environment_models/Floating Island.glb')

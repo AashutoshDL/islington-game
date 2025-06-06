@@ -79,7 +79,7 @@ const Scene = () => {
       <Skill
         position={[-175.7, -36.5, -15]}
         rotation={[0, -0.3, 0]}
-        scale={[2, 2, 2]}
+        scale={[3, 3, 3]}
         setActiveCamera={setActiveCamera}
       />
       <SkillSSD
@@ -103,7 +103,7 @@ const Scene = () => {
         scale={[25, 2, 20]}
       />
       <HimalParking
-        position={[55, -37, -45]}
+        position={[55, -44, -45]}
         rotation={[0, 1.26, 0]}
         scale={[3, 3, 3]}
       />
@@ -153,7 +153,7 @@ const Scene = () => {
         scale={[2, 2, 2]}
       />
       {/* <CharacterController roadRef={largeRoadRef} /> */}
-      <CameraController
+      {/* <CameraController
         id="default"
         activeCamera={activeCamera}
         position={[-400, 750, -1200]}
@@ -162,7 +162,7 @@ const Scene = () => {
         near={0.1}
         far={10000}
         startPosition={[0, 100, 100]}
-      />
+      /> */}
 
       <CameraController
         id="island"
@@ -181,19 +181,12 @@ const Scene = () => {
       />
 
       {activeCamera === "thirdPerson" && <ThirdPersonCamera />}
-      {/* <mesh
-        receiveShadow
-        rotation={[-Math.PI / 2, 0, 2.8]}
-        position={[-70, 18, -90]}
-      >
-        <planeGeometry args={[1000, 1000]} />
-        <meshStandardMaterial color="lightgrey" />
-      </mesh>
 
-      <mesh castShadow position={[0, 0, 0]}>
-        <boxGeometry args={[5, 5, 5]} />
-        <meshStandardMaterial color="red" />
-      </mesh> */}
+        {/* <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0,-40,0]} receiveShadow>
+          <planeGeometry args={[300, 300]} />
+          <meshStandardMaterial color="gray" />
+        </mesh> */}
+
     </>
   );
 };

@@ -8,7 +8,6 @@ const LightWithHelper = () => {
   const { scene } = useThree();
 
   useEffect(() => {
-
     if (directionalLightRef.current) {
       const dirHelper = new DirectionalLightHelper(
         directionalLightRef.current,
@@ -30,22 +29,29 @@ const LightWithHelper = () => {
 
   return (
     <>
-      {/* <ambientLight intensity={0.5} /> */}
-
-      <directionalLight
-        ref={directionalLightRef}
-        position={[100, 500, -400]}
-        intensity={2.5}
-        castShadow
-        receiveShadow
-      />
+      <ambientLight intensity={0.5} />
 
       <directionalLight
         ref={fillLightRef}
-        position={[-100, 500, 300]}
-        intensity={1.2}
+        position={[-300, 500, -400]}
+        intensity={0.5}
         castShadow
-        receiveShadow
+      />
+
+      <directionalLight
+        castShadow
+        ref={directionalLightRef}
+        position={[500, 500, -400]}
+        intensity={1.2}
+        shadow-mapSize-width={512}
+        shadow-mapSize-height={512}
+        shadow-bias={-0.005}
+        shadow-camera-near={1}
+        shadow-camera-far={3000}
+        shadow-camera-left={-300}
+        shadow-camera-right={300}
+        shadow-camera-top={300}
+        shadow-camera-bottom={-300}
       />
     </>
   );

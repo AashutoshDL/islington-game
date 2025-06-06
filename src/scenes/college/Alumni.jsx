@@ -1,61 +1,18 @@
-import { useGLTF } from '@react-three/drei'
+import { useGLTF } from "@react-three/drei";
+import React from "react";
 
 export default function Alumni(props) {
-  const { nodes, materials } = useGLTF('/models/college_models/Alumni.glb')
-  return (
-    <group {...props} dispose={null}>
-      <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh001.geometry}
-          material={materials.lambert11}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh001_1.geometry}
-          material={materials.lambert12}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh001_2.geometry}
-          material={materials['Material.004']}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh001_3.geometry}
-          material={materials.lambert10}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh001_4.geometry}
-          material={materials.alumni_support}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh001_5.geometry}
-          material={materials.alumni_base}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh001_6.geometry}
-          material={materials.wall}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Mesh001_7.geometry}
-          material={materials.lambert14}
-        />
-      </group>
-    </group>
-  )
-}
+  const { scene } = useGLTF("/models/college_models/Alumni.glb");
 
-useGLTF.preload('/models/college_models/Alumni.glb')
+  React.useEffect(() => {
+    scene.traverse((child) => {
+      if (child.isMesh) {
+        child.castShadow = true;
+        child.receiveShadow = true;
+        child.material.side = 2;
+      }
+    });
+  }, [scene]);
+
+  return <primitive object={scene} {...props}/>;
+}
