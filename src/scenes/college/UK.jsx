@@ -1,0 +1,166 @@
+import React, { useRef, useState, useEffect } from "react";
+import { useGLTF, Html } from "@react-three/drei";
+import * as THREE from "three";
+import { useCamera } from "../context/CameraContext";
+
+export default function UK(props) {
+  const { nodes, materials } = useGLTF(
+    "/models/college_models/londonblock.glb"
+  );
+  const groupRef = useRef();
+  const [hovered, setHovered] = useState(false);
+  const { activeCamera } = useCamera();
+
+  const handlePointerOver = (e) => {
+    if (activeCamera !== "island") return;
+    e.stopPropagation();
+    setHovered(true);
+  };
+
+  const handlePointerOut = (e) => {
+    if (activeCamera !== "island") return;
+    e.stopPropagation();
+    setHovered(false);
+  };
+  return (
+    <group
+      {...props}
+      dispose={null}
+      ref={groupRef}
+      onPointerOver={handlePointerOver}
+      onPointerOut={handlePointerOut}
+    >
+      <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+        <mesh
+          geometry={nodes.Mesh001.geometry}
+          material={materials.Uk_Block_main}
+          castShadow
+          receiveShadow
+        />
+        <mesh
+          geometry={nodes.Mesh001_1.geometry}
+          material={materials.wood_windows}
+          castShadow
+          receiveShadow
+        />
+        <mesh
+          geometry={nodes.Mesh001_2.geometry}
+          material={materials.windows}
+          castShadow
+          receiveShadow
+        />
+        <mesh
+          geometry={nodes.Mesh001_3.geometry}
+          material={materials["lambert1.001"]}
+          castShadow
+          receiveShadow
+        />
+        <mesh
+          geometry={nodes.Mesh001_4.geometry}
+          material={materials.Uk_door}
+          castShadow
+          receiveShadow
+        />
+        <mesh
+          geometry={nodes.Mesh001_5.geometry}
+          material={materials.blue_windows_wood}
+          castShadow
+          receiveShadow
+        />
+        <mesh
+          geometry={nodes.Mesh001_6.geometry}
+          material={materials.lambert2}
+          castShadow
+          receiveShadow
+        />
+        <mesh
+          geometry={nodes.Mesh001_7.geometry}
+          material={materials.lambert7}
+          castShadow
+          receiveShadow
+        />
+        <mesh
+          geometry={nodes.Mesh001_8.geometry}
+          material={materials["window_glass.001"]}
+          castShadow
+          receiveShadow
+        />
+        <mesh
+          geometry={nodes.Mesh001_9.geometry}
+          material={materials.lower_windows}
+          castShadow
+          receiveShadow
+        />
+        <mesh
+          geometry={nodes.Mesh001_10.geometry}
+          material={materials["banner.001"]}
+          castShadow
+          receiveShadow
+        />
+        <mesh
+          geometry={nodes.Mesh001_11.geometry}
+          material={materials.London_block_main}
+          castShadow
+          receiveShadow
+        />
+        <mesh
+          geometry={nodes.Mesh001_12.geometry}
+          material={materials.lambert12}
+          castShadow
+          receiveShadow
+        />
+        <mesh
+          geometry={nodes.Mesh001_13.geometry}
+          material={materials.London_blue}
+          castShadow
+          receiveShadow
+        />
+        <mesh
+          geometry={nodes.Mesh001_14.geometry}
+          material={materials.Door}
+          castShadow
+          receiveShadow
+        />
+        <mesh
+          geometry={nodes.Mesh001_15.geometry}
+          material={materials.STAIS}
+          castShadow
+          receiveShadow
+        />
+        <mesh
+          geometry={nodes.Mesh001_16.geometry}
+          material={materials["WALL TOP"]}
+          castShadow
+          receiveShadow
+        />
+      </group>
+
+      {hovered && (
+        <Html position={[-10, 25, 5]} center>
+          <div style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+            {/* Load Bebas Neue font */}
+            <link
+              href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+              rel="stylesheet"
+            />
+
+            {/* Simple floating text */}
+            <div
+              style={{
+                color: "white",
+                fontSize: "18px",
+                letterSpacing: "1px",
+                textAlign: "center",
+                textShadow: "1px 1px 3px rgba(0,0,0,0.5)",
+              }}
+            >
+              UK BLOCK
+            </div>
+          </div>
+        </Html>
+      )}
+    </group>
+  );
+}
+
+useGLTF.preload("/models/college_models/londonblock.glb");
