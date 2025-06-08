@@ -15,7 +15,7 @@ import ING_Tech from "./college/ING_Tech";
 import Canteen from "./college/Canteen";
 import StartingPoint from "./college/StartingPoint";
 import BaskeballCourt from "./college/BasketballCourt";
-// import CharacterController from "./utils/CharacterController";
+import CharacterController from "./utils/CharacterController";
 import Londonblock from "./college/UK";
 import SkillSSD from "./college/SkillBlockStudentService";
 import Pavement from "./environments/pavement";
@@ -27,6 +27,7 @@ import Chautari from "./college/Chautari";
 import LightWithHelper from "./utils/LightWithHelper";
 import ThirdPersonCamera from "./utils/ThirdPersonCamera";
 import CameraController from "./utils/CameraController";
+import CameraLogger from "./utils/CameraLogger";
 
 const Scene = () => {
   const { activeCamera, setActiveCamera } = useCamera();
@@ -147,7 +148,7 @@ const Scene = () => {
         rotation={[0, -0.32, 0]}
         scale={[2, 2, 2]}
       />
-      {/* <CharacterController roadRef={largeRoadRef} /> */}
+      <CharacterController />
       <CameraController
         id="default"
         activeCamera={activeCamera}
@@ -174,10 +175,12 @@ const Scene = () => {
 
       {activeCamera === "thirdPerson" && <ThirdPersonCamera />}
 
-        {/* <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0,-40,0]} receiveShadow>
+      {/* <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0,-40,0]} receiveShadow>
           <planeGeometry args={[300, 300]} />
           <meshStandardMaterial color="gray" />
         </mesh> */}
+      
+      <CameraLogger />
 
     </>
   );
