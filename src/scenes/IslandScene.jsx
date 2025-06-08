@@ -9,8 +9,10 @@ import FloatingWrapper from "./utils/FloatingWrapper";
 import Scene from "./Scene";
 import TriggerGame from "./utils/TriggerGame";
 import { useProgress } from "@react-three/drei";
-import BackgroundIsland from "./utils/BackgroundIsland";
+import BackgroundIsland from "./environments/BackgroundIsland";
 import ThinClouds from "./environments/ThinClouds";
+import ThickClouds from "./environments/ThickClouds";
+import SkyClouds from "./utils/SkyClouds";
 
 const IslandScene = ({ onLoadComplete }) => {
   const { activeCamera, setActiveCamera } = useCamera();
@@ -30,12 +32,12 @@ const IslandScene = ({ onLoadComplete }) => {
         gl={{
           shadows: true,
         }}
-        // camera={{
-        //   position: [-400, 750, -1200],
-        //   fov: 60,
-        //   near: 0.1,
-        //   far: 10000,
-        // }}
+        camera={{
+          position: [-400, 750, -1200],
+          fov: 60,
+          near: 0.1,
+          far: 10000,
+        }}
         shadows
       >
         <fog attach="fog" args={["#ffffff", 1, 5500]} />
@@ -95,42 +97,9 @@ const IslandScene = ({ onLoadComplete }) => {
           <Scene />
         </FloatingWrapper>
 
-        {/* thick clouds */}
-        <Cloud
-          position={[1500, -3505, 0]}
-          scale={[1000, 900, 1000]}
-          opacity={1}
-          speed={0.0002}
-          segments={1}
-          depthWrite={false}
-        />
-        <Cloud
-          position={[1500, -3505, 1110]}
-          scale={[1000, 900, 1000]}
-          opacity={1}
-          speed={0.0002}
-          segments={1}
-          depthWrite={false}
-        />
-        <Cloud
-          position={[-2000, -3505, 0]}
-          scale={[1000, 900, 1000]}
-          opacity={1}
-          speed={0.0002}
-          segments={1}
-          depthWrite={false}
-        />
-        <Cloud
-          position={[-2000, -3505, 1510]}
-          scale={[1000, 900, 1000]}
-          opacity={1}
-          speed={0.0002}
-          segments={1}
-          depthWrite={false}
-        />
-
-        {/* thin clouds above the scene */}
+        <ThickClouds />
         <ThinClouds />
+        {/* <SkyClouds /> */}
       </Canvas>
       <TriggerGame />
     </>

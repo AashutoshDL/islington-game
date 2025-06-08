@@ -5,11 +5,12 @@ import { useCamera } from "./context/CameraContext";
 const UI = () => {
   const [logoError, setLogoError] = useState(false);
   const { switchCamera } = useCamera();
-  const [isMuted, setIsMuted] = useState(true);
+  const { isMuted, setIsMuted } = useCamera();
   const [showInfo, setShowInfo] = useState(false);
   const [hideUI, setHideUI] = useState(false);
 
   const toggleInfo = () => setShowInfo((prev) => !prev);
+
   const toggleMute = () => {
     setIsMuted((prev) => !prev);
   };
@@ -27,7 +28,33 @@ const UI = () => {
 
   return (
     <>
-      {/* Normal UI (when not hidden) */}
+      <div className="absolute top-10 right-10 flex flex-col gap-3 z-50">
+        {/* Mute */}
+        <button
+          onClick={toggleMute}
+          aria-label={isMuted ? "Unmute audio" : "Mute audio"}
+          className={`
+                group relative w-12 h-12 rounded-full backdrop-blur-md border border-white/20 
+                transition-all duration-300 hover:scale-105 active:scale-95
+                ${
+                  isMuted
+                    ? "bg-red-500/80 hover:bg-red-500/90 text-white shadow-lg shadow-red-500/25"
+                    : "bg-white/80 hover:bg-white/90 text-gray-700 shadow-lg shadow-black/10"
+                }
+              `}
+        >
+          {isMuted ? (
+            <VolumeX className="w-6 h-6 mx-auto" />
+          ) : (
+            <Volume2 className="w-6 h-6 mx-auto" />
+          )}
+          <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            {isMuted ? "Unmute" : "Mute"}
+          </div>
+        </button>
+
+        {/* Info */}
+      </div>
       {!hideUI && (
         <>
           {/* Logo */}
@@ -45,10 +72,7 @@ const UI = () => {
               </div>
             )}
           </div>
-
-          {/* Top-right buttons */}
           <div className="absolute top-10 right-10 flex flex-col gap-3 z-50">
-            {/* Mute */}
             <button
               onClick={toggleMute}
               aria-label={isMuted ? "Unmute audio" : "Mute audio"}
@@ -71,20 +95,19 @@ const UI = () => {
                 {isMuted ? "Unmute" : "Mute"}
               </div>
             </button>
-
-            {/* Info */}
+            {/* Top-right buttons */}
             <button
               onClick={toggleInfo}
               aria-label="Toggle information display"
               className={`
-                group relative w-12 h-12 rounded-full backdrop-blur-md border border-white/20
-                transition-all duration-300 hover:scale-105 active:scale-95
-                ${
-                  showInfo
-                    ? "bg-blue-500/80 hover:bg-blue-500/90 text-white shadow-lg shadow-blue-500/25"
-                    : "bg-white/80 hover:bg-white/90 text-gray-700 shadow-lg shadow-black/10"
-                }
-              `}
+            group relative w-12 h-12 rounded-full backdrop-blur-md border border-white/20
+            transition-all duration-300 hover:scale-105 active:scale-95
+            ${
+              showInfo
+                ? "bg-blue-500/80 hover:bg-blue-500/90 text-white shadow-lg shadow-blue-500/25"
+                : "bg-white/80 hover:bg-white/90 text-gray-700 shadow-lg shadow-black/10"
+            }
+            `}
             >
               <Info className="w-6 h-6 mx-auto" />
               <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200">
@@ -154,7 +177,6 @@ const UI = () => {
             </button>
           </div>
 
-
           {/* Copyright */}
           <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
             <div className="bg-black/20 backdrop-blur-sm text-white px-4 py-1 rounded-full text-sm font-medium border border-white/10">
@@ -184,8 +206,6 @@ const UI = () => {
           </button>
         </div>
       )}
-
-
     </>
   );
 };

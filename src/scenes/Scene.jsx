@@ -149,7 +149,7 @@ const Scene = () => {
         scale={[2, 2, 2]}
       />
       <CharacterController />
-      <CameraController
+      {/* <CameraController
         id="default"
         activeCamera={activeCamera}
         position={[-400, 750, -1200]}
@@ -158,7 +158,7 @@ const Scene = () => {
         near={0.1}
         far={10000}
         startPosition={[-250, 250, -450]}
-      />
+      /> */}
 
       <CameraController
         id="island"
