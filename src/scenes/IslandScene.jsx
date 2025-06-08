@@ -44,9 +44,9 @@ const IslandScene = ({ onLoadComplete }) => {
 
         <FloatingWrapper
           baseY={-106.3}
-          position={[-193, -106.3, 638.2]}
+          position={[30, 166, 100.2]}
           rotation={[0, -0.318, 0]}
-          scale={[238, 208, 228]}
+          scale={[6.7,6.9,6.2]}
         >
           <Island setActiveCamera={setActiveCamera} />
         </FloatingWrapper>
@@ -97,7 +97,7 @@ const IslandScene = ({ onLoadComplete }) => {
 
         {/* thick clouds */}
         <Cloud
-          position={[1500, -3505, 0]}
+          position={[1500, -3900, 0]}
           scale={[1000, 900, 1000]}
           opacity={1}
           speed={0.0002}
@@ -105,7 +105,7 @@ const IslandScene = ({ onLoadComplete }) => {
           depthWrite={false}
         />
         <Cloud
-          position={[1500, -3505, 1110]}
+          position={[1500, -8505, 1110]}
           scale={[1000, 900, 1000]}
           opacity={1}
           speed={0.0002}
@@ -113,7 +113,7 @@ const IslandScene = ({ onLoadComplete }) => {
           depthWrite={false}
         />
         <Cloud
-          position={[-2000, -3505, 0]}
+          position={[-2000, -4000, 0]}
           scale={[1000, 900, 1000]}
           opacity={1}
           speed={0.0002}
@@ -121,7 +121,7 @@ const IslandScene = ({ onLoadComplete }) => {
           depthWrite={false}
         />
         <Cloud
-          position={[-2000, -3505, 1510]}
+          position={[-2000, -4000, 1510]}
           scale={[1000, 900, 1000]}
           opacity={1}
           speed={0.0002}
