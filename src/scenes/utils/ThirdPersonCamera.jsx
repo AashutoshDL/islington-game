@@ -2,9 +2,10 @@ import React, { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 import * as THREE from "three";
-// import Character from "../environments/Character";
 import SkillCharacter from "../environments/SkillCharacter";
+import { useCamera } from "../context/CameraContext"; // <-- Import context hook
 
+//this is the code that handles the camera movement and character control
 const ThirdPersonCamera = () => {
   const characterRef = useRef();
   const camRef = useRef();
@@ -19,13 +20,16 @@ const ThirdPersonCamera = () => {
   const lookAtOffset = new THREE.Vector3(100, 150, 400);
 
   // Smoother interpolation factors
-  const cameraLerpFactor = 0.035; // slower = smoother
+  const cameraLerpFactor = 0.035;
   const lookAtLerpFactor = 0.045;
 
   const lookAtTargetVec = useRef(new THREE.Vector3());
 
-  // Your scene rotation around Y in radians (adjust this to your actual scene rotation)
-  const sceneRotationY = THREE.MathUtils.degToRad(-20); // ~12 degrees
+  // Adjust this according to your scene
+  const sceneRotationY = THREE.MathUtils.degToRad(-20);
+
+  // Import setCharacterPosition from CameraContext
+  const { setCharacterPosition } = useCamera();
 
   // Key event handlers
   useEffect(() => {
@@ -51,18 +55,18 @@ const ThirdPersonCamera = () => {
 
     const character = char.object;
 
-    // Calculate movement direction from keys pressed
+    // Calculate movement direction
     const moveDir = new THREE.Vector3();
     if (keys.current.w) moveDir.z += 1;
     if (keys.current.s) moveDir.z -= 1;
     if (keys.current.a) moveDir.x += 1;
     if (keys.current.d) moveDir.x -= 1;
 
-    // Rotate moveDir by sceneRotationY to align with rotated scene
+    // Align movement with scene rotation
     moveDir.applyAxisAngle(new THREE.Vector3(0, 1, 0), sceneRotationY);
 
     const moving = moveDir.length() > 0;
-    
+
     if (moving) {
       if (!isMoving) {
         setIsMoving(true);
@@ -72,7 +76,7 @@ const ThirdPersonCamera = () => {
       moveDir.normalize().multiplyScalar(speed);
       character.position.add(moveDir);
 
-      // Rotate character to face movement direction
+      // Smooth character rotation
       const targetAngle = Math.atan2(moveDir.x, moveDir.z);
       const currentAngle = character.rotation.y;
       character.rotation.y = THREE.MathUtils.lerp(currentAngle, targetAngle, turnSpeed);
@@ -83,7 +87,14 @@ const ThirdPersonCamera = () => {
       }
     }
 
-    // Smooth camera position following the character
+    // Update context with character position
+    setCharacterPosition({
+      x: character.position.x,
+      y: character.position.y,
+      z: character.position.z,
+    });
+
+    // Camera position smoothing
     const rotatedCameraOffset = cameraOffset.clone().applyAxisAngle(
       new THREE.Vector3(0, 1, 0),
       character.rotation.y
@@ -91,7 +102,7 @@ const ThirdPersonCamera = () => {
     const desiredCamPos = new THREE.Vector3().copy(character.position).add(rotatedCameraOffset);
     camera.position.lerp(desiredCamPos, cameraLerpFactor);
 
-    // Smooth camera lookAt target
+    // Camera look-at smoothing
     const rotatedLookAtOffset = lookAtOffset.clone().applyAxisAngle(
       new THREE.Vector3(0, 1, 0),
       character.rotation.y
@@ -103,20 +114,12 @@ const ThirdPersonCamera = () => {
 
   return (
     <>
-      {/* <Character
-        ref={characterRef}
-        position={[119, -34.45, -145]}
-        rotation={[0, -0.5, 0]}
-        scale={[2, 2, 2]}
-      /> */}
-
-        <SkillCharacter 
+      <SkillCharacter
         ref={characterRef}
         position={[119, -34.45, -145]}
         rotation={[0, -0.5, 0]}
         scale={[16, 16, 16]}
-        />
-
+      />
       <PerspectiveCamera
         ref={camRef}
         makeDefault
