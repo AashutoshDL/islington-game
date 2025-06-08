@@ -10,7 +10,7 @@ const ThirdPersonCamera = () => {
   const characterRef = useRef();
   const camRef = useRef();
 
-  const speed = 0.3;
+  const speed = 0.1;
   const turnSpeed = 0.1; // smoother character rotation
   const keys = useRef({ w: false, a: false, s: false, d: false });
   const [isMoving, setIsMoving] = useState(false);
