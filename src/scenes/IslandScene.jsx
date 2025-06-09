@@ -46,9 +46,9 @@ const IslandScene = ({ onLoadComplete }) => {
 
         <FloatingWrapper
           baseY={-106.3}
-          position={[-193, -106.3, 638.2]}
+          position={[30, 166, 100.2]}
           rotation={[0, -0.318, 0]}
-          scale={[238, 208, 228]}
+          scale={[6.7,6.9,6.2]}
         >
           <Island setActiveCamera={setActiveCamera} />
         </FloatingWrapper>

@@ -99,12 +99,12 @@ const Scene = () => {
       />
 
       <HimalParking
-        position={[55, -44, -45]}
+        position={[55, -40, -45]}
         rotation={[0, 1.26, 0]}
         scale={[3, 3, 3]}
       />
       <Chautari
-        position={[-15, -35.7, 104]}
+        position={[-15, -38.3, 104]}
         rotation={[0, -1.85, 0]}
         scale={[1.3, 1.3, 1.3]}
       />
@@ -124,7 +124,7 @@ const Scene = () => {
         scale={[2, 2, 2]}
       />
       <Londonblock
-        position={[-35, -36, 225]}
+        position={[-35, -38.2, 225]}
         rotation={[0, 2.89, 0]}
         scale={[2, 2, 2]}
       />
