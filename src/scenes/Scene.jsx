@@ -55,12 +55,12 @@ const Scene = () => {
         scale={[300, 100, 480]}
       /> */}
       <KumariRoad
-        position={[64, -104.38, -446]}
+        position={[64, -106.38, -446]}
         rotation={[0, 2.79, 0]}
         scale={[30, 20, 25]}
       />
       <LargeRoad
-        position={[70, -36.5, -72]}
+        position={[70, -36.8, -72]}
         scale={[32, 20, 35]}
         rotation={[0, -0.33, 0]}
         ref={roadRef}
@@ -71,7 +71,7 @@ const Scene = () => {
         scale={[2, 2, 2]}
       />
       <Skill
-        position={[-213, -36.5, -15]}
+        position={[-213, -36.7, -15]}
         rotation={[0, -0.3, 0]}
         scale={[3, 3, 3]}
         setActiveCamera={setActiveCamera}
@@ -82,23 +82,23 @@ const Scene = () => {
         scale={[2, 2, 2]}
       />
       <Alumni
-        position={[-55, -36, -20]}
+        position={[-55, -37.8, -20]}
         rotation={[0, -0.3, 0]}
         scale={[2, 2, 2]}
       />
       <Britian
-        position={[19, -36, -62]}
+        position={[19, -37.7, -62]}
         rotation={[0, 1.27, 0]}
         scale={[2, 2, 2]}
       />
 
       <HimalParking
-        position={[55, -40, -45]}
+        position={[58, -40.4, -45]}
         rotation={[0, 1.26, 0]}
         scale={[3, 3, 3]}
       />
       <Chautari
-        position={[-15, -38.3, 104]}
+        position={[-15, -39.5, 104]}
         rotation={[0, -1.85, 0]}
         scale={[1.3, 1.3, 1.3]}
       />
@@ -108,7 +108,7 @@ const Scene = () => {
         scale={[2, 2, 2]}
       />
       <IngTech
-        position={[-70, -38, 80]}
+        position={[-70, -38.12, 80]}
         rotation={[0, -0.25, 0]}
         scale={[2, 2, 2]}
       />
@@ -118,27 +118,27 @@ const Scene = () => {
         scale={[2, 2, 2]}
       />
       <Londonblock
-        position={[-35, -38.2, 225]}
+        position={[-35, -38.5, 225]}
         rotation={[0, 2.89, 0]}
         scale={[2, 2, 2]}
       />
       <StartingPoint
-        position={[-128, -37.35, 203]}
+        position={[-128, -38.55, 203]}
         rotation={[0, -0.32, 0]}
         scale={[2, 2, 2]}
       />
       <BaskeballCourt
-        position={[-121, -37.35, 177]}
+        position={[-121, -38.6, 177]}
         rotation={[0, -0.32, 0]}
         scale={[2, 2, 2]}
       />
       <CoffeeStation
-        position={[-93, -37.35, 195]}
+        position={[-93, -39.2, 195]}
         rotation={[0, -0.32, 0]}
         scale={[2, 2, 2]}
       />
       <Resource
-        position={[-35, -37.5, -20]}
+        position={[-35, -38.1, -20]}
         rotation={[0, -0.32, 0]}
         scale={[2, 2, 2]}
       />
