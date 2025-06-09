@@ -90,7 +90,7 @@ const IslandScene = ({ onLoadComplete }) => {
 
         <FloatingWrapper
           baseY={-746.3}
-          position={[25, 214, 18.2]}
+          position={[65, 214, 18.2]}
           rotation={[0, 0, 0]}
           scale={[1.3, 1.3, 1.3]}
         >

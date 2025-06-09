@@ -33,8 +33,7 @@ const Scene = () => {
   const { activeCamera, setActiveCamera } = useCamera();
   const { switchCamera } = useCamera();
 
-  const kumariRoadRef = useRef();
-  const largeRoadRef = useRef();
+  const roadRef = useRef();
 
   // Combine all road refs into an array
   // const allRoadRefs = [skillRoadRef, kumariRoadRef, largeRoadRef];
@@ -62,13 +61,12 @@ const Scene = () => {
         position={[64, -104.38, -446]}
         rotation={[0, 2.79, 0]}
         scale={[30, 20, 25]}
-        ref={kumariRoadRef}
       />
       <Large_road
-        position={[70, -35.34, -72]}
+        position={[70, -36.5, -72]}
         scale={[32, 20, 35]}
         rotation={[0, -0.33, 0]}
-        ref={largeRoadRef}
+        ref={roadRef}
       />
       {/* displaying colleges for the main scene */}
       <Kumari
@@ -77,13 +75,13 @@ const Scene = () => {
         scale={[2, 2, 2]}
       />
       <Skill
-        position={[-175.7, -36.5, -15]}
+        position={[-213, -36.5, -15]}
         rotation={[0, -0.3, 0]}
         scale={[3, 3, 3]}
         setActiveCamera={setActiveCamera}
       />
       <SkillSSD
-        position={[-160.3, -38.5, -60]}
+        position={[-200.3, -38.5, -90]}
         rotation={[0, -0.3, 0]}
         scale={[2, 2, 2]}
       />
@@ -109,7 +107,7 @@ const Scene = () => {
         scale={[1.3, 1.3, 1.3]}
       />
       <Impact
-        position={[85, -41.9, -12]}
+        position={[85, -37.5, -12]}
         rotation={[0, -1.88, 0]}
         scale={[2, 2, 2]}
       />
@@ -163,7 +161,7 @@ const Scene = () => {
       <CameraController
         id="island"
         activeCamera={activeCamera}
-        position={[200, 200, -200]}
+        position={[250, 200, -220]}
         lookAt={[0, 100, 0]}
         fov={60}
         near={0.1}
@@ -173,7 +171,7 @@ const Scene = () => {
         }}
       />
 
-      {activeCamera === "thirdPerson" && <ThirdPersonCamera />}
+      {activeCamera === "thirdPerson" && <ThirdPersonCamera roadRef={roadRef} />}
 
       {/* <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0,-40,0]} receiveShadow>
           <planeGeometry args={[300, 300]} />

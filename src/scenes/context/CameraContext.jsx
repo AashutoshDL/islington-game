@@ -7,7 +7,7 @@
   export const CameraProvider = ({ children }) => {
     const [activeCamera, setActiveCamera] = useState("default");
     const [floatingOffset, setFloatingOffset] = useState(0);
-    const [floatingAmplitude, setFloatingAmplitude] = useState(5);
+    const [floatingAmplitude, setFloatingAmplitude] = useState(0);
     const [characterPosition, setCharacterPosition] = useState({
       x: 0,
       y: 0,

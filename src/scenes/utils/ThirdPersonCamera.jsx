@@ -117,7 +117,7 @@ const ThirdPersonCamera = () => {
     <>
       <SkillCharacter
         ref={characterRef}
-        position={[119, -34.45, -145]}
+        position={[119, -36.7, -145]}
         rotation={[0, -0.5, 0]}
         scale={[16, 16, 16]}
       />
