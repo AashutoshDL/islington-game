@@ -116,7 +116,6 @@ const UI = () => {
             </button>
           </div>
 
-          {/* Info Panel */}
           {showInfo && (
             <div className="absolute top-44 right-10 z-50 animate-in slide-in-from-right-2 duration-300">
               <div className="bg-white/95 backdrop-blur-md border border-white/20 shadow-2xl rounded-2xl p-6 max-w-sm">

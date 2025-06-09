@@ -5,7 +5,7 @@
   export const useCamera = () => useContext(CameraContext);
 
   export const CameraProvider = ({ children }) => {
-    const [activeCamera, setActiveCamera] = useState("thirdPerson");
+    const [activeCamera, setActiveCamera] = useState("default");
     const [floatingOffset, setFloatingOffset] = useState(0);
     const [floatingAmplitude, setFloatingAmplitude] = useState(5);
     const [characterPosition, setCharacterPosition] = useState({

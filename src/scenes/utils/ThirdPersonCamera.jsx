@@ -124,7 +124,7 @@ const ThirdPersonCamera = () => {
       <PerspectiveCamera
         ref={camRef}
         makeDefault
-        position={[60, 0.4, -190]}
+        position={[130, 0.4, -190]}
         fov={60}
         near={0.1}
         far={1000}
