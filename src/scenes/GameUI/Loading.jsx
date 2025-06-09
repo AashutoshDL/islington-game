@@ -1,19 +1,5 @@
-import React, { useEffect } from 'react'
 
 const Loading = () => {
-  useEffect(() => {
-    // Load model-viewer script
-    const script = document.createElement('script');
-    script.type = 'module';
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js';
-    document.head.appendChild(script);
-
-    return () => {
-      // Cleanup script on unmount
-      document.head.removeChild(script);
-    };
-  }, []);
-
   return (
     <div className="fixed inset-0 bg-gradient-to-b from-white-900 to-white flex flex-col justify-center items-center z-50">
       {/* Loading Spinner */}

@@ -4,5 +4,9 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(),"babel-plugin-glsl"],
+  server: {
+    host: true, // Enable LAN access
+    port: 5173,  // Optional: specify port
+  },
+  plugins: [react(), tailwindcss(), "babel-plugin-glsl"],
 })
