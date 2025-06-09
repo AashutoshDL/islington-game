@@ -1,21 +1,24 @@
 import { Canvas } from "@react-three/fiber";
 import { useEffect } from "react";
-import Island from "./environments/FloatingIsland";
 import { useCamera } from "./context/CameraContext";
-import UI from "./UI";
 import { OrbitControls, Cloud } from "@react-three/drei";
-import FloatingRock from "./environments/FloatingRock";
-import FloatingWrapper from "./utils/FloatingWrapper";
-import Scene from "./Scene";
-import TriggerGame from "./utils/TriggerGame";
 import { useProgress } from "@react-three/drei";
+import UI from "./UI";
+import Scene from "./Scene";
+
+//environment imports
+import FloatingRock from "./environments/FloatingRock";
+import Island from "./environments/FloatingIsland";
 import BackgroundIsland from "./environments/BackgroundIsland";
 import ThinClouds from "./environments/ThinClouds";
 import ThickClouds from "./environments/ThickClouds";
-import SkyClouds from "./utils/SkyClouds";
+
+//utils import
+import FloatingWrapper from "./utils/FloatingWrapper";
+import TriggerGame from "./utils/TriggerGame";
 
 const IslandScene = ({ onLoadComplete }) => {
-  const { activeCamera, setActiveCamera } = useCamera();
+  const { setActiveCamera } = useCamera();
   const { active } = useProgress();
 
   useEffect(() => {
@@ -48,7 +51,7 @@ const IslandScene = ({ onLoadComplete }) => {
           baseY={-106.3}
           position={[30, 166, 100.2]}
           rotation={[0, -0.318, 0]}
-          scale={[6.7,6.9,6.2]}
+          scale={[6.7, 6.9, 6.2]}
         >
           <Island setActiveCamera={setActiveCamera} />
         </FloatingWrapper>
@@ -99,7 +102,6 @@ const IslandScene = ({ onLoadComplete }) => {
 
         <ThickClouds />
         <ThinClouds />
-        {/* <SkyClouds /> */}
       </Canvas>
       <TriggerGame />
     </>

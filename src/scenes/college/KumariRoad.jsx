@@ -1,0 +1,30 @@
+import { useGLTF } from '@react-three/drei'
+
+export default function KumariRoad(props) {
+  const { nodes, materials } = useGLTF('/models/college_models/road-kumari.glb')
+  return (
+    <group {...props} dispose={null}>
+      <group position={[0.058, 0, -0.022]} rotation={[Math.PI / 2, 0, 0]} scale={0.173}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.polySurface996.geometry}
+          material={materials['lambert57.001']}
+          position={[6.124, -59.605, -21.152]}
+          scale={[1, 0.622, 1]}
+        />
+      </group>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.polySurface1005.geometry}
+        material={materials['lambert1.001']}
+        position={[-0.065, 3.721, 0.024]}
+        rotation={[Math.PI / 2, 0, 0]}
+        scale={0.173}
+      />
+    </group>
+  )
+}
+
+useGLTF.preload('/models/college_models/road-kumari.glb')

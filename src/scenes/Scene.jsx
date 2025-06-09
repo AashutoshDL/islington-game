@@ -1,29 +1,32 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { useCamera } from "./context/CameraContext";
 
 //environment imports
-import Kumari_road from "./environments/Kumari_road";
-import Large_road from "./environments/Large_road";
-import Cars from "./environments/Cars";
-import BirdFlock from "./environments/BirdFlock";
+import KumariRoad from "./college/KumariRoad";
+import LargeRoad from "./college/LargeRoad";
 import Kumari from "./college/Kumari";
 import Skill from "./college/Skill";
 import Alumni from "./college/Alumni";
 import Britian from "./college/Britian";
 import Impact from "./college/Impact";
-import ING_Tech from "./college/ING_Tech";
+import IngTech from "./college/IngTech";
 import Canteen from "./college/Canteen";
 import StartingPoint from "./college/StartingPoint";
 import BaskeballCourt from "./college/BasketballCourt";
 import CharacterController from "./utils/CharacterController";
-import Londonblock from "./college/UK";
-import SkillSSD from "./college/SkillBlockStudentService";
-import Pavement from "./environments/pavement";
+import Londonblock from "./college/LondonBlock";
+import SkillSSD from "./college/SkillSSD";
 import CoffeeStation from "./college/CoffeeStation";
 import Resource from "./college/Resource";
-
 import HimalParking from "./college/HimalParking";
 import Chautari from "./college/Chautari";
+// import SkillRoad from "./college/SkillRoad";
+
+//environment imports
+import Cars from "./environments/Cars";
+import BirdFlock from "./environments/BirdFlock";
+
+//utils imports
 import LightWithHelper from "./utils/LightWithHelper";
 import ThirdPersonCamera from "./utils/ThirdPersonCamera";
 import CameraController from "./utils/CameraController";
@@ -35,40 +38,33 @@ const Scene = () => {
 
   const roadRef = useRef();
 
-  // Combine all road refs into an array
-  // const allRoadRefs = [skillRoadRef, kumariRoadRef, largeRoadRef];
-
   return (
     <>
       <fog attach="fog" args={["#87CEEB", 300, 7000]} />
 
-      {/* <Shrubs /> */}
-      {/* <CustomClouds /> */}
       <BirdFlock />
-      {/* <Hills /> */}
-      {/* <Forest /> */}
 
-      <Pavement count={1} />
       <Cars />
+
       <LightWithHelper />
-      {/* <Skill_road
+
+      {/* displaying colleges for the main scene */}
+      {/* <SkillRoad
         position={[45, -34.3, 22.2]}
         rotation={[0, -0.318, 0]}
         scale={[300, 100, 480]}
-        ref={skillRoadRef}
       /> */}
-      <Kumari_road
+      <KumariRoad
         position={[64, -104.38, -446]}
         rotation={[0, 2.79, 0]}
         scale={[30, 20, 25]}
       />
-      <Large_road
+      <LargeRoad
         position={[70, -36.5, -72]}
         scale={[32, 20, 35]}
         rotation={[0, -0.33, 0]}
         ref={roadRef}
       />
-      {/* displaying colleges for the main scene */}
       <Kumari
         position={[-0, -36.9, -154]}
         rotation={[0, 4.4, 0]}
@@ -111,7 +107,7 @@ const Scene = () => {
         rotation={[0, -1.88, 0]}
         scale={[2, 2, 2]}
       />
-      <ING_Tech
+      <IngTech
         position={[-70, -38, 80]}
         rotation={[0, -0.25, 0]}
         scale={[2, 2, 2]}
@@ -147,6 +143,8 @@ const Scene = () => {
         scale={[2, 2, 2]}
       />
       <CharacterController />
+
+      {/* uncomment this to make the camera so to default when pressed exit button */}
       {/* <CameraController
         id="default"
         activeCamera={activeCamera}
@@ -171,15 +169,11 @@ const Scene = () => {
         }}
       />
 
-      {activeCamera === "thirdPerson" && <ThirdPersonCamera roadRef={roadRef} />}
+      {activeCamera === "thirdPerson" && (
+        <ThirdPersonCamera roadRef={roadRef} />
+      )}
 
-      {/* <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0,-40,0]} receiveShadow>
-          <planeGeometry args={[300, 300]} />
-          <meshStandardMaterial color="gray" />
-        </mesh> */}
-      
       <CameraLogger />
-
     </>
   );
 };

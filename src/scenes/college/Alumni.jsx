@@ -1,6 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
-import { useGLTF, Html } from "@react-three/drei";
-import * as THREE from "three";
+import { useRef, useState } from "react";
+import { useGLTF } from "@react-three/drei";
 import { useCamera } from "../context/CameraContext";
 import HoverToolTip from "../utils/HoverToolTip";
 
