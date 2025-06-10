@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { useCamera } from "./context/CameraContext";
 
-// Your existing imports...
 import KumariRoad from "./college/KumariRoad";
 import LargeRoad from "./college/LargeRoad";
 import Kumari from "./college/Kumari";
