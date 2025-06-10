@@ -25,14 +25,12 @@ import LightWithHelper from "./utils/LightWithHelper";
 import ThirdPersonCamera from "./utils/ThirdPersonCamera";
 import CameraController from "./utils/CameraController";
 import CameraLogger from "./utils/CameraLogger";
-import AlumniRoad from "./college/AlumniRoad";
+import AllRoads from "./environments/Roads";
 
 const Scene = () => {
   const { activeCamera, setActiveCamera, switchCamera } = useCamera();
 
   // Memoized components
-  const MemoKumariRoad = React.memo(KumariRoad);
-  const MemoLargeRoad = React.memo(LargeRoad);
   const MemoKumari = React.memo(Kumari);
   const MemoSkill = React.memo(Skill);
   const MemoAlumni = React.memo(Alumni);
@@ -48,7 +46,6 @@ const Scene = () => {
   const MemoResource = React.memo(Resource);
   const MemoHimalParking = React.memo(HimalParking);
   const MemoChautari = React.memo(Chautari);
-  const MemoAlumniRoad = React.memo(AlumniRoad);
 
   return (
     <>
@@ -58,20 +55,12 @@ const Scene = () => {
       <Cars />
       <LightWithHelper />
 
-      <MemoKumariRoad
-        position={[60.5, -105.38, -446]}
-        rotation={[0, 2.79, 0]}
-        scale={[30, 20, 25]}
-      />
-      <MemoLargeRoad
-        position={[70, -36.5, -72]}
-        scale={[32, 20, 35]}
-        rotation={[0, -0.33, 0]}
-      />
-      <MemoKumariRoad
-        position={[-4, -71.65, -133]}
-        rotation={[0, 2.8, 0]}
-        scale={[23, 10, 15]}
+
+
+      <AllRoads
+        position={[-50, -171, -6]}
+        rotation={[0, 0, 0]}
+        scale={[0.8,0.8,0.8]}
       />
       <MemoKumari
         position={[0, -36.9, -154]}
@@ -110,7 +99,7 @@ const Scene = () => {
         scale={[1.3, 1.3, 1.3]}
       />
       <MemoImpact
-        position={[85, -37.5, -12]}
+        position={[94, -37.5, -12]}
         rotation={[0, -1.88, 0]}
         scale={[2, 2, 2]}
       />
