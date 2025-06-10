@@ -59,7 +59,7 @@ const Scene = () => {
       <LightWithHelper />
 
       <MemoKumariRoad
-        position={[64, -105.54, -446]}
+        position={[64, -104.38, -446]}
         rotation={[0, 2.79, 0]}
         scale={[30, 20, 25]}
       />

@@ -13,7 +13,7 @@ const ThirdPersonCamera = () => {
   const characterRef = useRef();
   const camRef = useRef();
 
-  const speed = 0.1;
+  const speed = 1.1;
   const turnSpeed = 0.1;
   const keys = useRef({ w: false, a: false, s: false, d: false });
   const [isMoving, setIsMoving] = useState(false);
