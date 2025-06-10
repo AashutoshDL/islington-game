@@ -85,7 +85,7 @@ const ThirdPersonCamera = () => {
     } else {
       if (isMoving) {
         setIsMoving(false);
-        char.playAnimation("Armature.001|mixamo.com");
+        char.playAnimation("Armature|mixamo.com|Layer0");
         footstepAudio.pause();
         footstepAudio.currentTime = 0;
       }

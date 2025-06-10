@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { useEffect } from "react";
 import { useCamera } from "./context/CameraContext";
-import { OrbitControls, Cloud } from "@react-three/drei";
+import { OrbitControls, Cloud, Html } from "@react-three/drei";
 import { useProgress } from "@react-three/drei";
 import UI from "./UI";
 import Scene from "./Scene";

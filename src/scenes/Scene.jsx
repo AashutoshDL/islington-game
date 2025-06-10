@@ -1,13 +1,11 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { useCamera } from "./context/CameraContext";
 
-//environment imports
 import KumariRoad from "./college/KumariRoad";
 import LargeRoad from "./college/LargeRoad";
 import Kumari from "./college/Kumari";
 import Skill from "./college/Skill";
 import Alumni from "./college/Alumni";
-import Britian from "./college/Britian";
 import Impact from "./college/Impact";
 import IngTech from "./college/IngTech";
 import Canteen from "./college/Canteen";
@@ -20,141 +18,139 @@ import CoffeeStation from "./college/CoffeeStation";
 import Resource from "./college/Resource";
 import HimalParking from "./college/HimalParking";
 import Chautari from "./college/Chautari";
-// import SkillRoad from "./college/SkillRoad";
-
-//environment imports
+import Britian from "./college/Britian";
 import Cars from "./environments/Cars";
 import BirdFlock from "./environments/BirdFlock";
-
-//utils imports
 import LightWithHelper from "./utils/LightWithHelper";
 import ThirdPersonCamera from "./utils/ThirdPersonCamera";
 import CameraController from "./utils/CameraController";
 import CameraLogger from "./utils/CameraLogger";
+import AlumniRoad from "./college/AlumniRoad";
 
 const Scene = () => {
-  const { activeCamera, setActiveCamera } = useCamera();
-  const { switchCamera } = useCamera();
+  const { activeCamera, setActiveCamera, switchCamera } = useCamera();
 
-  const roadRef = useRef();
+  // Memoized components
+  const MemoKumariRoad = React.memo(KumariRoad);
+  const MemoLargeRoad = React.memo(LargeRoad);
+  const MemoKumari = React.memo(Kumari);
+  const MemoSkill = React.memo(Skill);
+  const MemoAlumni = React.memo(Alumni);
+  const MemoBritian = React.memo(Britian);
+  const MemoImpact = React.memo(Impact);
+  const MemoIngTech = React.memo(IngTech);
+  const MemoCanteen = React.memo(Canteen);
+  const MemoStartingPoint = React.memo(StartingPoint);
+  const MemoBaskeballCourt = React.memo(BaskeballCourt);
+  const MemoLondonblock = React.memo(Londonblock);
+  const MemoSkillSSD = React.memo(SkillSSD);
+  const MemoCoffeeStation = React.memo(CoffeeStation);
+  const MemoResource = React.memo(Resource);
+  const MemoHimalParking = React.memo(HimalParking);
+  const MemoChautari = React.memo(Chautari);
+  const MemoAlumniRoad = React.memo(AlumniRoad);
 
   return (
     <>
       <fog attach="fog" args={["#87CEEB", 300, 7000]} />
 
       <BirdFlock />
-
       <Cars />
-
       <LightWithHelper />
 
-      {/* displaying colleges for the main scene */}
-      {/* <SkillRoad
-        position={[45, -34.3, 22.2]}
-        rotation={[0, -0.318, 0]}
-        scale={[300, 100, 480]}
-      /> */}
-      <KumariRoad
-        position={[64, -106.38, -446]}
+      <MemoKumariRoad
+        position={[64, -105.54, -446]}
         rotation={[0, 2.79, 0]}
         scale={[30, 20, 25]}
       />
-      <LargeRoad
-        position={[70, -36.8, -72]}
+      <MemoLargeRoad
+        position={[70, -36.5, -72]}
         scale={[32, 20, 35]}
         rotation={[0, -0.33, 0]}
-        ref={roadRef}
       />
-      <Kumari
-        position={[-0, -36.9, -154]}
+      <MemoKumariRoad
+        position={[-4, -71.65, -133]}
+        rotation={[0, 2.80, 0]}
+        scale={[23, 10, 15]}
+      />
+      <MemoKumari
+        position={[0, -36.9, -154]}
         rotation={[0, 4.4, 0]}
         scale={[2, 2, 2]}
       />
-      <Skill
-        position={[-213, -36.7, -15]}
+      <MemoSkill
+        position={[-213, -36.5, -15]}
         rotation={[0, -0.3, 0]}
         scale={[3, 3, 3]}
         setActiveCamera={setActiveCamera}
       />
-      <SkillSSD
+      <MemoSkillSSD
         position={[-200.3, -38.5, -90]}
         rotation={[0, -0.3, 0]}
         scale={[2, 2, 2]}
       />
-      <Alumni
-        position={[-55, -37.8, -20]}
+      <MemoAlumni
+        position={[-55, -36, -20]}
         rotation={[0, -0.3, 0]}
         scale={[2, 2, 2]}
       />
-      <Britian
-        position={[19, -37.7, -62]}
-        rotation={[0, 1.27, 0]}
+      <MemoBritian
+        position={[-5, -38, -53]}
+        rotation={[0, -Math.PI / 10, 0]}
         scale={[2, 2, 2]}
       />
-
-      <HimalParking
-        position={[58, -40.4, -45]}
+      <MemoHimalParking
+        position={[58, -40, -45]}
         rotation={[0, 1.26, 0]}
         scale={[3, 3, 3]}
       />
-      <Chautari
-        position={[-15, -39.5, 104]}
+      <MemoChautari
+        position={[-11, -38.3, 132]}
         rotation={[0, -1.85, 0]}
         scale={[1.3, 1.3, 1.3]}
       />
-      <Impact
+      <MemoImpact
         position={[85, -37.5, -12]}
         rotation={[0, -1.88, 0]}
         scale={[2, 2, 2]}
       />
-      <IngTech
-        position={[-70, -38.12, 80]}
+      <MemoIngTech
+        position={[-70, -38, 80]}
         rotation={[0, -0.25, 0]}
         scale={[2, 2, 2]}
       />
-      <Canteen
+      <MemoCanteen
         position={[-92, -40.35, 146]}
         rotation={[0, -0.3, 0]}
         scale={[2, 2, 2]}
       />
-      <Londonblock
-        position={[-35, -38.5, 225]}
+      <MemoLondonblock
+        position={[-35, -38.2, 225]}
         rotation={[0, 2.89, 0]}
         scale={[2, 2, 2]}
       />
-      <StartingPoint
-        position={[-128, -38.55, 203]}
+      <MemoStartingPoint
+        position={[-128, -37.35, 203]}
         rotation={[0, -0.32, 0]}
         scale={[2, 2, 2]}
       />
-      <BaskeballCourt
-        position={[-121, -38.6, 177]}
+      <MemoBaskeballCourt
+        position={[-121, -37.35, 177]}
         rotation={[0, -0.32, 0]}
         scale={[2, 2, 2]}
       />
-      <CoffeeStation
-        position={[-93, -39.2, 195]}
+      <MemoCoffeeStation
+        position={[-93, -37.35, 195]}
         rotation={[0, -0.32, 0]}
         scale={[2, 2, 2]}
       />
-      <Resource
-        position={[-35, -38.1, -20]}
+      <MemoResource
+        position={[-35, -37.5, -20]}
         rotation={[0, -0.32, 0]}
         scale={[2, 2, 2]}
       />
-      <CharacterController />
 
-      {/* uncomment this to make the camera so to default when pressed exit button */}
-      {/* <CameraController
-        id="default"
-        activeCamera={activeCamera}
-        position={[-400, 750, -1200]}
-        lookAt={[0, 100, 0]}
-        fov={60}
-        near={0.1}
-        far={10000}
-        startPosition={[-250, 250, -450]}
-      /> */}
+      <CharacterController />
 
       <CameraController
         id="island"
@@ -169,10 +165,7 @@ const Scene = () => {
         }}
       />
 
-      {activeCamera === "thirdPerson" && (
-        <ThirdPersonCamera roadRef={roadRef} />
-      )}
-
+      {activeCamera === "thirdPerson" && <ThirdPersonCamera />}
       <CameraLogger />
     </>
   );

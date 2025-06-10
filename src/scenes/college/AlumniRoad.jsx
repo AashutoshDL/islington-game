@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export default function MemoKumariRoad(props) {
+export default function AlumniRoad(props) {
   const { nodes, materials } = useGLTF('/models/college_models/alumni road.glb')
   return (
     <group {...props} dispose={null}>
