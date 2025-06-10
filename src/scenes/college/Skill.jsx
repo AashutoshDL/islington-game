@@ -1,6 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { useGLTF, Html } from "@react-three/drei";
-import * as THREE from "three";
 import { useCamera } from "../context/CameraContext";
 import HoverToolTip from "../utils/HoverToolTip";
 
@@ -30,7 +29,7 @@ export default function Skill(props) {
         onPointerOut={handlePointerOut}
       >
       <group
-        position={[1.721, -0.288, 4.841]}
+        position={[1.721, -0.9, 4.841]}
         rotation={[Math.PI / 2, 0, 0]}
         scale={[0.017, 0.025, 0.019]}>
         <mesh

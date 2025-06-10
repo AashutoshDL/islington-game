@@ -1,20 +1,71 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef, forwardRef, useImperativeHandle, useEffect } from 'react';
 import { useGLTF, useAnimations } from '@react-three/drei';
 
 const SkillCharacter = forwardRef((props, ref) => {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF('/models/environment_models/Skill_Char.glb');
   const { actions } = useAnimations(animations, group);
+  
+  const currentAction = useRef(null);
+
+  // Debug: Log available animations
+  useEffect(() => {
+    if (animations && animations.length > 0) {
+      console.log('Available animations:', animations.map(anim => anim.name));
+      console.log('Available actions:', Object.keys(actions || {}));
+    }
+  }, [animations, actions]);
 
   useImperativeHandle(ref, () => ({
     object: group.current,
     playAnimation: (name) => {
-      if (actions && actions[name]) {
-        actions[name].reset().fadeIn(0.2).play();
+      console.log('Attempting to play animation:', name);
+      
+      if (!actions) {
+        console.warn('No actions available');
+        return;
+      }
+      
+      if (!actions[name]) {
+        console.warn(`Animation "${name}" not found. Available animations:`, Object.keys(actions));
+        return;
+      }
+
+      // Stop current animation
+      if (currentAction.current && actions[currentAction.current]) {
+        actions[currentAction.current].fadeOut(0.2);
+      }
+
+      // Play new animation
+      const action = actions[name];
+      if (action) {
+        action.reset().fadeIn(0.2).play();
+        currentAction.current = name;
+        console.log(`Playing animation: ${name}`);
       }
     },
   }));
 
+  // Start with idle animation if available
+  useEffect(() => {
+    if (actions && Object.keys(actions).length > 0) {
+      // Try common idle animation names
+      const idleNames = [
+        'Armature|mixamo.com|Layer0',
+        Object.keys(actions)[0] // fallback to first animation
+      ];
+      
+      for (const name of idleNames) {
+        if (actions[name]) {
+          console.log('Starting with idle animation:', name);
+          actions[name].play();
+          currentAction.current = name;
+          break;
+        }
+      }
+    }
+  }, [actions]);
+  
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">

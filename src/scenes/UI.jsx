@@ -1,15 +1,19 @@
 import React, { useState } from "react";
-import { Volume2, VolumeX, Info, Play, X } from "lucide-react";
+import { Volume2, VolumeX, Info, Play, X, Target } from "lucide-react";
 import { useCamera } from "./context/CameraContext";
+import Objective from "./GameUI/Objective";
 
 const UI = () => {
   const [logoError, setLogoError] = useState(false);
   const { switchCamera } = useCamera();
-  const [isMuted, setIsMuted] = useState(true);
+  const { isMuted, setIsMuted } = useCamera();
   const [showInfo, setShowInfo] = useState(false);
+  const [showObjective, setShowObjective] = useState(false);
   const [hideUI, setHideUI] = useState(false);
 
   const toggleInfo = () => setShowInfo((prev) => !prev);
+  const toggleObjective = () => setShowObjective((prev) => !prev);
+
   const toggleMute = () => {
     setIsMuted((prev) => !prev);
   };
@@ -23,11 +27,11 @@ const UI = () => {
     switchCamera("default");
     setHideUI(false);
     setShowInfo(false);
+    setShowObjective(false);
   };
 
   return (
     <>
-      {/* Normal UI (when not hidden) */}
       {!hideUI && (
         <>
           {/* Logo */}
@@ -36,11 +40,11 @@ const UI = () => {
               <img
                 src="/logo.png"
                 alt="Logo"
-                className="w-52 rounded-xl "
+                className="w-52 rounded-xl"
                 onError={() => setLogoError(true)}
               />
             ) : (
-              <div className="bg-white/90 p-4 rounded-xl  text-gray-800 text-sm font-medium border border-gray-200">
+              <div className="bg-white/90 p-4 rounded-xl text-gray-800 text-sm font-medium border border-gray-200">
                 Logo not found
               </div>
             )}
@@ -48,7 +52,7 @@ const UI = () => {
 
           {/* Top-right buttons */}
           <div className="absolute top-10 right-10 flex flex-col gap-3 z-50">
-            {/* Mute */}
+            {/* Mute Button */}
             <button
               onClick={toggleMute}
               aria-label={isMuted ? "Unmute audio" : "Mute audio"}
@@ -72,7 +76,7 @@ const UI = () => {
               </div>
             </button>
 
-            {/* Info */}
+            {/* Info Button */}
             <button
               onClick={toggleInfo}
               aria-label="Toggle information display"
@@ -89,6 +93,26 @@ const UI = () => {
               <Info className="w-6 h-6 mx-auto" />
               <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                 Controls Info
+              </div>
+            </button>
+
+            {/* Objective Button */}
+            <button
+              onClick={toggleObjective}
+              aria-label="Show game objectives"
+              className={`
+                group relative w-12 h-12 rounded-full backdrop-blur-md border border-white/20
+                transition-all duration-300 hover:scale-105 active:scale-95
+                ${
+                  showObjective
+                    ? "bg-purple-500/80 hover:bg-purple-500/90 text-white shadow-lg shadow-purple-500/25"
+                    : "bg-white/80 hover:bg-white/90 text-gray-700 shadow-lg shadow-black/10"
+                }
+              `}
+            >
+              <Target className="w-6 h-6 mx-auto" />
+              <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                Game Objectives
               </div>
             </button>
           </div>
@@ -154,7 +178,6 @@ const UI = () => {
             </button>
           </div>
 
-
           {/* Copyright */}
           <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
             <div className="bg-black/20 backdrop-blur-sm text-white px-4 py-1 rounded-full text-sm font-medium border border-white/10">
@@ -185,7 +208,8 @@ const UI = () => {
         </div>
       )}
 
-
+      {/* Objective Popup */}
+      {showObjective && <Objective onClose={toggleObjective} />}
     </>
   );
 };
