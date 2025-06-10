@@ -5,8 +5,8 @@ import RansomwareGameUI from "../GameUI/RansomewareUI"; // the Q&A game
 import * as THREE from "three";
 
 // Define different trigger positions for different games
-const MEMORY_GAME_POSITION = new THREE.Vector3(85, -35.9, -12); // Original memory game position
-const RANSOMWARE_GAME_POSITION = new THREE.Vector3(-213, -36.5, -15); // New position for ransomware game
+const MEMORY_GAME_POSITION = new THREE.Vector3(-5, -38, -53);
+const RANSOMWARE_GAME_POSITION = new THREE.Vector3(-213, -36.5, -15);
 const TRIGGER_RADIUS = 30;
 
 export default function TriggerGames() {

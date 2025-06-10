@@ -70,7 +70,7 @@ const Scene = () => {
       />
       <MemoKumariRoad
         position={[-4, -71.65, -133]}
-        rotation={[0, 2.80, 0]}
+        rotation={[0, 2.8, 0]}
         scale={[23, 10, 15]}
       />
       <MemoKumari
@@ -166,8 +166,8 @@ const Scene = () => {
       <CameraController
         id="island"
         activeCamera={activeCamera}
-        position={[250, 200, -220]}
-        lookAt={[0, 100, 0]}
+        position={[222.4, 172, -178.9]}
+        lookAt={[100, 150, 400]}
         fov={60}
         near={0.1}
         far={10000}

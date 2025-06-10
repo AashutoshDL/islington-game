@@ -5,7 +5,6 @@ import * as THREE from "three";
 import SkillCharacter from "../environments/SkillCharacter";
 import { useCamera } from "../context/CameraContext";
 
-// Footstep sound setup
 const footstepAudio = new Audio("/audio/walk sound.wav");
 footstepAudio.loop = true;
 
@@ -20,6 +19,7 @@ const ThirdPersonCamera = () => {
 
   const cameraOffset = new THREE.Vector3(-1, 5, -7);
   const lookAtOffset = new THREE.Vector3(100, 150, 400);
+
   const cameraLerpFactor = 0.035;
   const lookAtLerpFactor = 0.045;
   const lookAtTargetVec = useRef(new THREE.Vector3());
@@ -58,13 +58,13 @@ const ThirdPersonCamera = () => {
     if (!char || !camera) return;
 
     const character = char.object;
-    
+
     // Create movement vector relative to character's local space
     const localMoveDir = new THREE.Vector3();
-    if (keys.current.w) localMoveDir.z += 1;  // Forward
-    if (keys.current.s) localMoveDir.z -= 1;  // Backward
-    if (keys.current.a) localMoveDir.x += 1;  // Left
-    if (keys.current.d) localMoveDir.x -= 1;  // Right
+    if (keys.current.w) localMoveDir.z += 1; // Forward
+    if (keys.current.s) localMoveDir.z -= 1; // Backward
+    if (keys.current.a) localMoveDir.x += 1; // Left
+    if (keys.current.d) localMoveDir.x -= 1; // Right
 
     const moving = localMoveDir.length() > 0;
 
@@ -83,13 +83,16 @@ const ThirdPersonCamera = () => {
       // Transform the local movement direction to world space
       // This takes into account both the character's current rotation AND the scene rotation
       const worldMoveDir = localMoveDir.clone();
-      
+
       // First apply the character's current rotation
-      worldMoveDir.applyAxisAngle(new THREE.Vector3(0, 1, 0), character.rotation.y);
-      
+      worldMoveDir.applyAxisAngle(
+        new THREE.Vector3(0, 1, 0),
+        character.rotation.y
+      );
+
       // Then apply the scene rotation
       worldMoveDir.applyAxisAngle(new THREE.Vector3(0, 1, 0), sceneRotationY);
-      
+
       // Scale by speed and apply to character position
       worldMoveDir.multiplyScalar(speed);
       character.position.add(worldMoveDir);
@@ -98,12 +101,11 @@ const ThirdPersonCamera = () => {
       // Forward/backward movement doesn't change character facing direction
       if (keys.current.a || keys.current.d) {
         let rotationAmount = 0;
-        if (keys.current.a) rotationAmount += turnSpeed;  // Turn left
-        if (keys.current.d) rotationAmount -= turnSpeed;  // Turn right
-        
+        if (keys.current.a) rotationAmount += turnSpeed; // Turn left
+        if (keys.current.d) rotationAmount -= turnSpeed; // Turn right
+
         character.rotation.y += rotationAmount;
       }
-
     } else {
       if (isMoving) {
         setIsMoving(false);
@@ -119,18 +121,20 @@ const ThirdPersonCamera = () => {
       z: character.position.z,
     });
 
-    const rotatedCameraOffset = cameraOffset.clone().applyAxisAngle(
-      new THREE.Vector3(0, 1, 0),
-      character.rotation.y
-    );
-    const desiredCamPos = new THREE.Vector3().copy(character.position).add(rotatedCameraOffset);
+    const rotatedCameraOffset = cameraOffset
+      .clone()
+      .applyAxisAngle(new THREE.Vector3(0, 1, 0), character.rotation.y);
+    const desiredCamPos = new THREE.Vector3()
+      .copy(character.position)
+      .add(rotatedCameraOffset);
     camera.position.lerp(desiredCamPos, cameraLerpFactor);
 
-    const rotatedLookAtOffset = lookAtOffset.clone().applyAxisAngle(
-      new THREE.Vector3(0, 1, 0),
-      character.rotation.y
-    );
-    const desiredLookAt = new THREE.Vector3().copy(character.position).add(rotatedLookAtOffset);
+    const rotatedLookAtOffset = lookAtOffset
+      .clone()
+      .applyAxisAngle(new THREE.Vector3(0, 1, 0), character.rotation.y);
+    const desiredLookAt = new THREE.Vector3()
+      .copy(character.position)
+      .add(rotatedLookAtOffset);
     lookAtTargetVec.current.lerp(desiredLookAt, lookAtLerpFactor);
     camera.lookAt(lookAtTargetVec.current);
   });
@@ -143,10 +147,11 @@ const ThirdPersonCamera = () => {
         rotation={[0, -0.5, 0]}
         scale={[16, 16, 16]}
       />
+
       <PerspectiveCamera
         ref={camRef}
         makeDefault
-        position={[130, 0.4, -190]}
+        position={[118, -31.7, -152]}
         fov={60}
         near={0.1}
         far={1000}

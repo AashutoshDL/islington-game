@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import { Volume2, VolumeX, Info, Play, X } from "lucide-react";
+import { Volume2, VolumeX, Info, Play, X, Target } from "lucide-react";
 import { useCamera } from "./context/CameraContext";
+import Objective from "./GameUI/Objective";
 
 const UI = () => {
   const [logoError, setLogoError] = useState(false);
   const { switchCamera } = useCamera();
   const { isMuted, setIsMuted } = useCamera();
   const [showInfo, setShowInfo] = useState(false);
+  const [showObjective, setShowObjective] = useState(false);
   const [hideUI, setHideUI] = useState(false);
 
   const toggleInfo = () => setShowInfo((prev) => !prev);
+  const toggleObjective = () => setShowObjective((prev) => !prev);
 
   const toggleMute = () => {
     setIsMuted((prev) => !prev);
@@ -24,37 +27,11 @@ const UI = () => {
     switchCamera("default");
     setHideUI(false);
     setShowInfo(false);
+    setShowObjective(false);
   };
 
   return (
     <>
-      <div className="absolute top-10 right-10 flex flex-col gap-3 z-50">
-        {/* Mute */}
-        <button
-          onClick={toggleMute}
-          aria-label={isMuted ? "Unmute audio" : "Mute audio"}
-          className={`
-                group relative w-12 h-12 rounded-full backdrop-blur-md border border-white/20 
-                transition-all duration-300 hover:scale-105 active:scale-95
-                ${
-                  isMuted
-                    ? "bg-red-500/80 hover:bg-red-500/90 text-white shadow-lg shadow-red-500/25"
-                    : "bg-white/80 hover:bg-white/90 text-gray-700 shadow-lg shadow-black/10"
-                }
-              `}
-        >
-          {isMuted ? (
-            <VolumeX className="w-6 h-6 mx-auto" />
-          ) : (
-            <Volume2 className="w-6 h-6 mx-auto" />
-          )}
-          <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-            {isMuted ? "Unmute" : "Mute"}
-          </div>
-        </button>
-
-        {/* Info */}
-      </div>
       {!hideUI && (
         <>
           {/* Logo */}
@@ -63,16 +40,19 @@ const UI = () => {
               <img
                 src="/logo.png"
                 alt="Logo"
-                className="w-52 rounded-xl "
+                className="w-52 rounded-xl"
                 onError={() => setLogoError(true)}
               />
             ) : (
-              <div className="bg-white/90 p-4 rounded-xl  text-gray-800 text-sm font-medium border border-gray-200">
+              <div className="bg-white/90 p-4 rounded-xl text-gray-800 text-sm font-medium border border-gray-200">
                 Logo not found
               </div>
             )}
           </div>
+
+          {/* Top-right buttons */}
           <div className="absolute top-10 right-10 flex flex-col gap-3 z-50">
+            {/* Mute Button */}
             <button
               onClick={toggleMute}
               aria-label={isMuted ? "Unmute audio" : "Mute audio"}
@@ -95,27 +75,49 @@ const UI = () => {
                 {isMuted ? "Unmute" : "Mute"}
               </div>
             </button>
-            {/* Top-right buttons */}
+
+            {/* Info Button */}
             <button
               onClick={toggleInfo}
               aria-label="Toggle information display"
               className={`
-            group relative w-12 h-12 rounded-full backdrop-blur-md border border-white/20
-            transition-all duration-300 hover:scale-105 active:scale-95
-            ${
-              showInfo
-                ? "bg-blue-500/80 hover:bg-blue-500/90 text-white shadow-lg shadow-blue-500/25"
-                : "bg-white/80 hover:bg-white/90 text-gray-700 shadow-lg shadow-black/10"
-            }
-            `}
+                group relative w-12 h-12 rounded-full backdrop-blur-md border border-white/20
+                transition-all duration-300 hover:scale-105 active:scale-95
+                ${
+                  showInfo
+                    ? "bg-blue-500/80 hover:bg-blue-500/90 text-white shadow-lg shadow-blue-500/25"
+                    : "bg-white/80 hover:bg-white/90 text-gray-700 shadow-lg shadow-black/10"
+                }
+              `}
             >
               <Info className="w-6 h-6 mx-auto" />
               <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                 Controls Info
               </div>
             </button>
+
+            {/* Objective Button */}
+            <button
+              onClick={toggleObjective}
+              aria-label="Show game objectives"
+              className={`
+                group relative w-12 h-12 rounded-full backdrop-blur-md border border-white/20
+                transition-all duration-300 hover:scale-105 active:scale-95
+                ${
+                  showObjective
+                    ? "bg-purple-500/80 hover:bg-purple-500/90 text-white shadow-lg shadow-purple-500/25"
+                    : "bg-white/80 hover:bg-white/90 text-gray-700 shadow-lg shadow-black/10"
+                }
+              `}
+            >
+              <Target className="w-6 h-6 mx-auto" />
+              <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                Game Objectives
+              </div>
+            </button>
           </div>
 
+          {/* Info Panel */}
           {showInfo && (
             <div className="absolute top-44 right-10 z-50 animate-in slide-in-from-right-2 duration-300">
               <div className="bg-white/95 backdrop-blur-md border border-white/20 shadow-2xl rounded-2xl p-6 max-w-sm">
@@ -205,6 +207,9 @@ const UI = () => {
           </button>
         </div>
       )}
+
+      {/* Objective Popup */}
+      {showObjective && <Objective onClose={toggleObjective} />}
     </>
   );
 };
