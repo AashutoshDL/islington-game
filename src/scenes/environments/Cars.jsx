@@ -9,9 +9,9 @@ export const getcarsRefs = () => carsRefs;
 // Define the path for the white car (adjust these waypoints to match your scene)
 const whiteCar_path = [
   // Starting position
-  new THREE.Vector3(-80, -38.2, -223),
-  new THREE.Vector3(116, -36, -150),
-  new THREE.Vector3(75, -36, -23),
+  new THREE.Vector3(-80, -36.5, -223),
+  new THREE.Vector3(116, -36.5, -150),
+  new THREE.Vector3(75, -36.5, -23),
   new THREE.Vector3(58, -36.5, 32),
 
   // Back to start

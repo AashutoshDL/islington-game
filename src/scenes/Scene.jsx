@@ -59,7 +59,7 @@ const Scene = () => {
       <LightWithHelper />
 
       <MemoKumariRoad
-        position={[64, -104.38, -446]}
+        position={[60.5, -105.38, -446]}
         rotation={[0, 2.79, 0]}
         scale={[30, 20, 25]}
       />
@@ -151,6 +151,17 @@ const Scene = () => {
       />
 
       <CharacterController />
+
+      {/* <CameraController
+        id="default"
+        activeCamera={activeCamera}
+        position={[-400, 750, -1200]}
+        lookAt={[0, 100, 0]}
+        fov={60}
+        near={0.1}  
+        far={10000}
+        startPosition={[-250, 250, -450]}
+      /> */}
 
       <CameraController
         id="island"
