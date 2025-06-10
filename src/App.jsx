@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<IslandScene />} />
         <Route path="/terminal" element={<Terminal />} />
+        <Route path="/loading" element={<Loading />} />
       </Routes>
     </Suspense>
   );

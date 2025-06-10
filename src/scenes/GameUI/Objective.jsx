@@ -3,7 +3,7 @@ import { X, Shield, Brain, Target, Gamepad2, Star, ChevronRight } from 'lucide-r
 
 const Objective = ({ onClose }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <div className="fixed inset-0 bg-transparent bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 rounded-2xl shadow-2xl max-w-2xl w-full relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
