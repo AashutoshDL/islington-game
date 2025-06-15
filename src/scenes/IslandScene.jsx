@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { useEffect } from "react";
 import { useCamera } from "./context/CameraContext";
-import { OrbitControls, Cloud } from "@react-three/drei";
+import { OrbitControls, Cloud, Html } from "@react-three/drei";
 import { useProgress } from "@react-three/drei";
 import UI from "./UI";
 import Scene from "./Scene";
@@ -16,6 +16,144 @@ import ThickClouds from "./environments/ThickClouds";
 //utils import
 import FloatingWrapper from "./utils/FloatingWrapper";
 import TriggerGame from "./utils/TriggerGame";
+import { useSceneExporter } from "./utils/SceneExporter";
+
+// Move ExportPanel inside Canvas as a component that uses Html from drei
+const ExportPanel = () => {
+  const { exportScene, getStats } = useSceneExporter();
+
+  const handleExportFull = async () => {
+    try {
+      await exportScene({
+        fileName: "college_scene_full.glb",
+        excludeTypes: ["Camera", "Light", "Helper"],
+        optimize: true,
+      });
+      alert("Scene exported successfully!");
+    } catch (error) {
+      alert("Export failed: " + error.message);
+    }
+  };
+
+  const handleExportOptimized = async () => {
+    try {
+      await exportScene({
+        fileName: "college_scene_optimized.glb",
+        excludeTypes: ["Camera", "Light", "Helper"],
+        maxTextureSize: 2048,
+        optimize: true,
+      });
+      alert("Optimized scene exported successfully!");
+    } catch (error) {
+      alert("Export failed: " + error.message);
+    }
+  };
+
+  const handleShowStats = () => {
+    const stats = getStats();
+    console.log("Scene Statistics:", stats);
+    alert(`Scene Stats:
+Total Objects: ${stats.totalObjects}
+Meshes: ${stats.meshes}
+Materials: ${stats.materials}
+Textures: ${stats.textures}
+Vertices: ${stats.vertices}
+Faces: ${Math.floor(stats.faces)}`);
+  };
+
+  return (
+    <Html
+      position={[0, 0, 0]}
+      style={{
+        position: "fixed",
+        top: "20px",
+        right: "20px",
+        zIndex: 1000,
+        pointerEvents: "auto", // Important: allow interactions
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+          background: "rgba(0, 0, 0, 0.8)",
+          padding: "15px",
+          borderRadius: "8px",
+          backdropFilter: "blur(10px)",
+        }}
+      >
+        <h3
+          style={{
+            color: "white",
+            margin: "0 0 10px 0",
+            fontSize: "14px",
+            textAlign: "center",
+          }}
+        >
+          Export Controls
+        </h3>
+
+        <button
+          onClick={handleExportFull}
+          style={{
+            padding: "10px 15px",
+            backgroundColor: "#4CAF50",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            fontSize: "12px",
+            fontWeight: "bold",
+            transition: "background-color 0.3s",
+          }}
+          onMouseEnter={(e) => (e.target.style.backgroundColor = "#45a049")}
+          onMouseLeave={(e) => (e.target.style.backgroundColor = "#4CAF50")}
+        >
+          Export Full Scene
+        </button>
+
+        <button
+          onClick={handleExportOptimized}
+          style={{
+            padding: "10px 15px",
+            backgroundColor: "#2196F3",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            fontSize: "12px",
+            fontWeight: "bold",
+            transition: "background-color 0.3s",
+          }}
+          onMouseEnter={(e) => (e.target.style.backgroundColor = "#1976D2")}
+          onMouseLeave={(e) => (e.target.style.backgroundColor = "#2196F3")}
+        >
+          Export Optimized
+        </button>
+
+        <button
+          onClick={handleShowStats}
+          style={{
+            padding: "10px 15px",
+            backgroundColor: "#FF9800",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            fontSize: "12px",
+            fontWeight: "bold",
+            transition: "background-color 0.3s",
+          }}
+          onMouseEnter={(e) => (e.target.style.backgroundColor = "#F57C00")}
+          onMouseLeave={(e) => (e.target.style.backgroundColor = "#FF9800")}
+        >
+          Show Stats
+        </button>
+      </div>
+    </Html>
+  );
+};
 
 const IslandScene = ({ onLoadComplete }) => {
   const { setActiveCamera } = useCamera();
@@ -46,6 +184,9 @@ const IslandScene = ({ onLoadComplete }) => {
         <fog attach="fog" args={["#ffffff", 1, 5500]} />
 
         <OrbitControls enablePan={true} maxDistance={2000} minDistance={1} />
+
+        {/* Export Panel now inside Canvas */}
+        <ExportPanel />
 
         <FloatingWrapper
           baseY={-106.3}
