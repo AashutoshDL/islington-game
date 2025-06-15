@@ -27,16 +27,16 @@ const IslandScene = () => {
         <Canvas
           style={{ width: "100vw", height: "100vh", background: "#72badb" }}
           gl={{ shadows: true }}
-          camera={{
-            position: [-400, 750, -1200],
-            fov: 60,
-            near: 0.1,
-            far: 10000,
-          }}
+          // camera={{
+          //   position: [-400, 750, -1200],
+          //   fov: 60,
+          //   near: 0.1,
+          //   far: 10000,
+          // }}
           shadows
         >
           <fog attach="fog" args={["#ffffff", 1, 5500]} />
-          
+
           <OrbitControls enablePan={true} maxDistance={2000} minDistance={1} />
 
           <FloatingWrapper

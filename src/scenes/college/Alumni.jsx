@@ -3,32 +3,32 @@ import { useGLTF } from "@react-three/drei";
 import { useCamera } from "../context/CameraContext";
 import HoverToolTip from "../utils/HoverToolTip";
 
-
 export default function Alumni(props) {
-  const { nodes, materials } = useGLTF('/models/college_models/Alumni.glb')
-    const groupRef = useRef();
-    const [hovered, setHovered] = useState(false);
-    const { activeCamera } = useCamera();
-  
-    const handlePointerOver = (e) => {
-      if (activeCamera == "default") return;
-      e.stopPropagation();
-      setHovered(true);
-    };
-  
-    const handlePointerOut = (e) => {
-      if (activeCamera == "default") return;
-      e.stopPropagation();
-      setHovered(false);
-    };
-    return (
-      <group
-        {...props}
-        dispose={null}
-        ref={groupRef}
-        onPointerOver={handlePointerOver}
-        onPointerOut={handlePointerOut}
-      >
+  const { nodes, materials } = useGLTF("/models/college_models/Alumni.glb");
+  const groupRef = useRef();
+  const [hovered, setHovered] = useState(false);
+  const { activeCamera } = useCamera();
+
+  const handlePointerOver = (e) => {
+    if (activeCamera == "island") return;
+    e.stopPropagation();
+    setHovered(true);
+  };
+
+  const handlePointerOut = (e) => {
+    if (activeCamera == "island") return;
+    e.stopPropagation();
+    setHovered(false);
+  };
+
+  return (
+    <group
+      {...props}
+      dispose={null}
+      ref={groupRef}
+      onPointerOver={handlePointerOver}
+      onPointerOut={handlePointerOut}
+    >
       <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
         <mesh
           castShadow
@@ -46,7 +46,7 @@ export default function Alumni(props) {
           castShadow
           receiveShadow
           geometry={nodes.Mesh001_2.geometry}
-          material={materials['Material.004']}
+          material={materials["Material.004"]}
         />
         <mesh
           castShadow
@@ -80,9 +80,8 @@ export default function Alumni(props) {
         />
       </group>
       {hovered && <HoverToolTip text="Alumni Block" position={[15, 25, 5]} />}
-
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/models/college_models/Alumni.glb')
+useGLTF.preload("/models/college_models/Alumni.glb");

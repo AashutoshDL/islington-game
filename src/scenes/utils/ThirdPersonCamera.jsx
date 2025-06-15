@@ -44,6 +44,75 @@ const ThirdPersonCamera = () => {
     };
   }, []);
 
+  // Prevent mouse interactions from affecting the camera
+  useEffect(() => {
+    const preventMouseInteraction = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      return false;
+    };
+
+    const preventTouchInteraction = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      return false;
+    };
+
+    const preventContextMenu = (e) => {
+      e.preventDefault();
+      return false;
+    };
+
+    const preventWheel = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    };
+
+    // Add event listeners with capture: true to intercept events before they reach orbit controls
+    document.addEventListener("mousedown", preventMouseInteraction, { capture: true, passive: false });
+    document.addEventListener("mousemove", preventMouseInteraction, { capture: true, passive: false });
+    document.addEventListener("mouseup", preventMouseInteraction, { capture: true, passive: false });
+    // document.addEventListener("click", preventMouseInteraction, { capture: true, passive: false });
+    // document.addEventListener("dblclick", preventMouseInteraction, { capture: true, passive: false });
+    document.addEventListener("wheel", preventWheel, { capture: true, passive: false });
+    document.addEventListener("contextmenu", preventContextMenu, { capture: true, passive: false });
+    
+    // Prevent touch interactions
+    document.addEventListener("touchstart", preventTouchInteraction, { capture: true, passive: false });
+    document.addEventListener("touchmove", preventTouchInteraction, { capture: true, passive: false });
+    document.addEventListener("touchend", preventTouchInteraction, { capture: true, passive: false });
+    document.addEventListener("touchcancel", preventTouchInteraction, { capture: true, passive: false });
+
+    // Prevent pointer events
+    document.addEventListener("pointerdown", preventMouseInteraction, { capture: true, passive: false });
+    document.addEventListener("pointermove", preventMouseInteraction, { capture: true, passive: false });
+    document.addEventListener("pointerup", preventMouseInteraction, { capture: true, passive: false });
+    document.addEventListener("pointercancel", preventMouseInteraction, { capture: true, passive: false });
+
+    return () => {
+      document.removeEventListener("mousedown", preventMouseInteraction, { capture: true });
+      document.removeEventListener("mousemove", preventMouseInteraction, { capture: true });
+      document.removeEventListener("mouseup", preventMouseInteraction, { capture: true });
+      // document.removeEventListener("click", preventMouseInteraction, { capture: true });
+      // document.removeEventListener("dblclick", preventMouseInteraction, { capture: true });
+      document.removeEventListener("wheel", preventWheel, { capture: true });
+      document.removeEventListener("contextmenu", preventContextMenu, { capture: true });
+      
+      document.removeEventListener("touchstart", preventTouchInteraction, { capture: true });
+      document.removeEventListener("touchmove", preventTouchInteraction, { capture: true });
+      document.removeEventListener("touchend", preventTouchInteraction, { capture: true });
+      document.removeEventListener("touchcancel", preventTouchInteraction, { capture: true });
+
+      document.removeEventListener("pointerdown", preventMouseInteraction, { capture: true });
+      document.removeEventListener("pointermove", preventMouseInteraction, { capture: true });
+      document.removeEventListener("pointerup", preventMouseInteraction, { capture: true });
+      document.removeEventListener("pointercancel", preventMouseInteraction, { capture: true });
+    };
+  }, []);
+
   useEffect(() => {
     // Stop audio if muted state changes to true
     if (isMuted && !footstepAudio.paused) {
@@ -58,6 +127,13 @@ const ThirdPersonCamera = () => {
     if (!char || !camera) return;
 
     const character = char.object;
+
+    // Force camera to maintain its controlled position and rotation
+    // This ensures orbit controls cannot override our camera positioning
+    if (camera.parent && camera.parent.matrixAutoUpdate !== false) {
+      camera.matrixAutoUpdate = true;
+      camera.updateMatrix();
+    }
 
     // Create movement vector relative to character's local space
     const localMoveDir = new THREE.Vector3();
@@ -137,6 +213,10 @@ const ThirdPersonCamera = () => {
       .add(rotatedLookAtOffset);
     lookAtTargetVec.current.lerp(desiredLookAt, lookAtLerpFactor);
     camera.lookAt(lookAtTargetVec.current);
+
+    // Force update the camera matrix to prevent external controls from overriding
+    camera.updateMatrix();
+    camera.updateMatrixWorld(true);
   });
 
   return (
@@ -145,9 +225,8 @@ const ThirdPersonCamera = () => {
         ref={characterRef}
         position={[119, -36.7, -145]}
         rotation={[0, -0.5, 0]}
-        scale={[16, 16, 16]}
+        scale={[13, 13, 13]}
       />
-
       <PerspectiveCamera
         ref={camRef}
         makeDefault

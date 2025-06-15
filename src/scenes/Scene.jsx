@@ -1,8 +1,6 @@
 import React, { useRef } from "react";
 import { useCamera } from "./context/CameraContext";
 
-import KumariRoad from "./college/KumariRoad";
-import LargeRoad from "./college/LargeRoad";
 import Kumari from "./college/Kumari";
 import Skill from "./college/Skill";
 import Alumni from "./college/Alumni";
@@ -49,14 +47,10 @@ const Scene = () => {
 
   return (
     <>
-      <fog attach="fog" args={["#87CEEB", 300, 7000]} />
-
       <BirdFlock />
       <Cars />
       <LightWithHelper />
-
-
-
+      
       <AllRoads
         position={[-50, -171, -6]}
         rotation={[0, 0, 0]}
@@ -141,7 +135,7 @@ const Scene = () => {
 
       <CharacterController />
 
-      {/* <CameraController
+      <CameraController
         id="default"
         activeCamera={activeCamera}
         position={[-400, 750, -1200]}
@@ -150,7 +144,7 @@ const Scene = () => {
         near={0.1}  
         far={10000}
         startPosition={[-250, 250, -450]}
-      /> */}
+      />
 
       <CameraController
         id="island"
@@ -164,7 +158,7 @@ const Scene = () => {
           switchCamera("thirdPerson");
         }}
       />
-
+      
       {activeCamera === "thirdPerson" && <ThirdPersonCamera />}
       <CameraLogger />
     </>
