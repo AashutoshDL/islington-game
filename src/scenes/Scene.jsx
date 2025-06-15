@@ -79,6 +79,7 @@ const Scene = () => {
         rotation={[0, 4.4, 0]}
         scale={[2, 2, 2]}
       />
+
       <MemoSkill
         position={[-213, -36.5, -15]}
         rotation={[0, -0.3, 0]}
@@ -90,6 +91,7 @@ const Scene = () => {
         rotation={[0, -0.3, 0]}
         scale={[2, 2, 2]}
       />
+
       <MemoAlumni
         position={[-55, -36, -20]}
         rotation={[0, -0.3, 0]}
@@ -123,6 +125,21 @@ const Scene = () => {
       <MemoCanteen
         position={[-92, -40.35, 146]}
         rotation={[0, -0.3, 0]}
+        scale={[2, 2, 2]}
+      />
+      <StartingPoint
+        position={[-128, -38.55, 203]}
+        rotation={[0, -0.32, 0]}
+        scale={[2, 2, 2]}
+      />
+      <BaskeballCourt
+        position={[-121, -38.6, 177]}
+        rotation={[0, -0.32, 0]}
+        scale={[2, 2, 2]}
+      />
+      <CoffeeStation
+        position={[-93, -39.2, 195]}
+        rotation={[0, -0.32, 0]}
         scale={[2, 2, 2]}
       />
       <MemoLondonblock
